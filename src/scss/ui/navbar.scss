@@ -29,6 +29,7 @@
   @include hreg;
   font-size: size(20, 16);
   line-height: 1em;
+  color: inherit;
 }
 
 .navbar__right-items {
@@ -38,4 +39,17 @@
 
 .navbar__cols {
   align-items: baseline;
+}
+
+.e-black {
+  .logo {
+    svg {
+      fill: white;
+    }
+  }
+  .navbar {
+    &::before {
+      background-color: white;
+    }
+  }
 }

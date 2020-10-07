@@ -12,7 +12,9 @@ body {
   font-size: size(24, 18);
   // height: 100vh;
   // overflow: hidden;
-  background: $lg;
+  background-color: $lg;
+  position: relative;
+  transition: background 1s ease, color 1s ease;
 }
 
 button {
@@ -20,15 +22,7 @@ button {
   outline: none;
 }
 
-.theme-btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: $black;
-  position: fixed;
-  right: $g-offset;
-  bottom: 36px;
-}
+
 
 .js-sticky-area {
   width: 140%;

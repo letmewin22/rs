@@ -23,6 +23,8 @@
   top: 0;
   left: 0;
   overflow: hidden;
+  transition: background .5s ease;
+
 }
 
 .btn__circle-overlay {
@@ -31,10 +33,21 @@
   background-color: #315CCB;
   opacity: .7;
   border-radius: 40%;
-  transition: transform 1s $easing;
+  transition: transform 1s $easing, background .5s ease;
   transform: translateY(110%);
+  z-index: -1;
 }
 
 .btn__text {
   display: block;
+}
+
+
+.e-black {
+  .btn__circle {
+    background: $accent2;
+  }
+  .btn__circle-overlay {
+    background: $accent2;
+  }
 }

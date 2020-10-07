@@ -1,0 +1,36 @@
+.e-black {
+  color: white;
+  background-color: $black;
+  .theme-btn {
+    background-color: $lg;
+  }
+}
+
+
+.theme-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: $black;
+  position: fixed;
+  right: $g-offset;
+  bottom: 36px;
+  transition: background .5s ease;
+}
+
+
+.theme-overlay {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  right: $g-offset;
+  bottom: 36px;
+  border-radius: 50%;
+  z-index: -1;
+  &--black {
+    background-color: $black;
+  }
+  &--white {
+    background-color: $lg;
+  }
+}

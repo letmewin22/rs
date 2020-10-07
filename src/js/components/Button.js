@@ -35,27 +35,27 @@ export default class Button {
   }
 
   mouseHandler(e) {
-    const tl = gsap.timeline()
 
     this.$stickyItems.forEach(el => {
+
       const bounds = el.getBoundingClientRect()
       const power = el.dataset.power.split(', ')
       const s = this.computedProps(e, bounds)
 
-      tl.to( el,
+      gsap.to( el,
         {
+          delay: 0,
           duration: 1,
           y: s.y * +power[1],
           x: s.x * +power[0],
           ease: 'power2.out',
-        }, 0)
+        })
     })
   }
 
   mouseleaveHandler() {
-    const tl = gsap.timeline()
     this.$stickyItems.forEach(el => {
-      tl.to(el, {duration: 1, y: 0, x: 0, ease: 'power2.out'}, 0)
+      gsap.to(el, {delay: 0, duration: 1, y: 0, x: 0, ease: 'power2.out'})
     })
   }
 
