@@ -9,12 +9,10 @@ export default class Button {
   }
 
   init() {
-
     this.area = createNewElement('div', 'js-sticky-area')
     this.$btn.appendChild(this.area)
 
-    this.$btnCircle = this.$btn.querySelector('.btn__circle')
-    this.$btnText = this.$btn.querySelector('.btn__text')
+    this.$stickyItems = this.$btn.querySelectorAll('.js-sticky-item')
 
     this.mouseHandler = this.mouseHandler.bind(this)
     this.mouseleaveHandler = this.mouseleaveHandler.bind(this)
@@ -27,8 +25,8 @@ export default class Button {
     const s = e.clientX - sizes.left
     const o = e.clientY - sizes.top
 
-    const x = ((s - sizes.width / 2) / sizes.width)
-    const y = ((o - sizes.height / 2) / sizes.height)
+    const x = (s - sizes.width / 2) / sizes.width
+    const y = (o - sizes.height / 2) / sizes.height
 
     return {
       x,
@@ -37,34 +35,28 @@ export default class Button {
   }
 
   mouseHandler(e) {
-
-    const btnSizes = this.$btn.getBoundingClientRect()
-    const textSizes = this.$btnText.getBoundingClientRect()
-
-    const s1 = this.computedProps(e, btnSizes)
-    const s2 = this.computedProps(e, textSizes)
-
     const tl = gsap.timeline()
 
-    tl.to(this.$btnCircle, {
-      duration: 1,
-      y: s1.y * 60,
-      x: s1.x * 60,
-      ease: 'power2.out',
-    })
+    this.$stickyItems.forEach(el => {
+      const bounds = el.getBoundingClientRect()
+      const power = el.dataset.power.split(', ')
+      const s = this.computedProps(e, bounds)
 
-    tl.to(
-      this.$btnText,
-      {duration: 1, y: s2.y * 10, x: s2.x * 100, ease: 'power2.out'},
-      0,
-    )
+      tl.to( el,
+        {
+          duration: 1,
+          y: s.y * +power[1],
+          x: s.x * +power[0],
+          ease: 'power2.out',
+        }, 0)
+    })
   }
 
   mouseleaveHandler() {
     const tl = gsap.timeline()
-
-    tl.to(this.$btnCircle, {duration: 1, y: 0, x: 0, ease: 'power2.out'})
-    tl.to(this.$btnText, {duration: 1, y: 0, x: 0, ease: 'power2.out'}, 0)
+    this.$stickyItems.forEach(el => {
+      tl.to(el, {duration: 1, y: 0, x: 0, ease: 'power2.out'}, 0)
+    })
   }
 
   destroy() {
