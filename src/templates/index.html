@@ -1,0 +1,23 @@
+{% set title = "Main" %}
+{% set route = "home" %}
+
+{% extends "layouts/_layout.html" %}
+{% import "data/data.html" as items %}
+
+{% block content %}
+  <header class="home-header">
+    <div class="container home-header__container">
+      <h1 class="h1 home-header__h1 h1-withcols">
+        <span class="container nm">
+          <span class="cols">
+            <span class="h1-withcols__line h1-withcols__line--first-line">I am Roman Stets,</span>
+            <span class="h1-withcols__line h1-withcols__line--second-line">copywriter</span>
+            <span class="h1-withcols__line h1-withcols__line--third-line">and co-founder of</span>
+            <span class="h1-withcols__line h1-withcols__line--fourth-line">emotiON agency</span>
+          </span>
+        </span>
+      </h1>
+    </div>
+  </header>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+.container {
+  padding-left: $g-offset;
+  padding-right: $g-offset;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+  &.nm {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.cols {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 7.06% 32.28% 6.08% 24.29% 30.29%;
+  grid-auto-flow: column;
+  align-items: baseline;
+}
+
+.cols__col-1 {
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+.cols__col-2 {
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+
+.cols__col-3 {
+  grid-column-start: 3;
+  grid-column-end: 3;
+}
+
+.cols__col-4 {
+  grid-column-start: 4;
+  grid-column-end: 4;
+}
+
+.cols__col-5 {
+  grid-column-start: 5;
+  grid-column-end: 5;
+}

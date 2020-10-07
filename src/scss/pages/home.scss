@@ -1,0 +1,29 @@
+.home-header {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.home-header__container {
+  display: flex;
+  align-items: center;
+  padding-top: 36px;
+}
+
+.home-header__h1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.h1-withcols__line {
+  display: block;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  &--second-line {
+    grid-column-start: 4;
+  }
+  &--fourth-line {
+    @include hi;
+  }
+}

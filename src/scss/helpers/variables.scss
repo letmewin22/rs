@@ -1,0 +1,33 @@
+:root {
+  --black: #222222;
+  --accent: #2E54B7;
+  --lg: #F1F1F1;
+  --accent2: linear-gradient(179.9deg, #2E54B7 -9.86%, #A04AF7 99.91%);
+  --g-offset: 2.08vw;
+}
+
+
+//colors
+$black: var(--black);
+$accent: var(--accent);
+$lg: var(--lg);
+$accent2: var(--accent2);
+
+//screen config
+$maxWidth: 1920;
+$minWidth: 375;
+
+//breakpoints
+$br1: 1240px;
+$br2: 960px;
+$br3: 768px;
+$br4: 460px;
+
+//fonts
+$def-size: size(24, 16);
+
+//easings
+$easing: cubic-bezier(0.16, 1, 0.3, 1);
+
+// layouts
+$g-offset: var(--g-offset);

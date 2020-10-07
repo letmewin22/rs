@@ -1,0 +1,36 @@
+.navbar {
+  position: absolute;
+  top: 36px;
+  width: 100%;
+  &::before {
+    content: '';
+    display: block;
+    width: calc(100% - var(--g-offset) * 2);
+    height: 2px;
+    background-color: $black;
+    margin: 0 auto;
+  }
+}
+
+.navbar__container {
+  padding-top: 4px;
+  display: flex;
+  align-items: baseline;
+  // justify-content: space-between;
+}
+
+.navbar__text {
+  font-size: size(20, 16);
+  line-height: 1em;
+}
+
+.navbar__menu {
+  @include hreg;
+  font-size: size(20, 16);
+  line-height: 1em;
+}
+
+.navbar__right-items {
+  display: flex;
+  justify-content: space-between;
+}
