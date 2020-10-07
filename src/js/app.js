@@ -2,6 +2,8 @@ import Highway from '@dogstudio/highway'
 import '@/libs/smoothscroll'
 
 import cssWebP from '@/libs/testWebP'
+import splitting from 'splitting'
+import gsap from 'gsap'
 // import {Home} from './renderers'
 
 cssWebP()
@@ -15,16 +17,20 @@ cssWebP()
 //   }
 // })
 
-class Test {
-  static variable = 'test'
+// const h1Lines = document.querySelectorAll('.h1-withcols__line')
 
-  constructor() {
-    this.init()
-  }
 
-  init() {
-    console.log('is innited')
-  }
-}
+// h1Lines.forEach((el) => {
+//   splitting({target: el, by: 'chars'})
+// })
+// window.addEventListener('load', () => {
+//   const tl = gsap.timeline()
 
-console.log(Test.variable)
+//   tl.to(document.querySelectorAll('.char'), {
+//     duration: 1,
+//     y: 0,
+//     ease: 'expo.out',
+//     stagger: 0.016,
+//   })
+// })
+

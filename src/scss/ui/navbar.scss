@@ -1,6 +1,7 @@
 .navbar {
   position: absolute;
   top: 36px;
+  z-index: 100;
   width: 100%;
   &::before {
     content: '';
@@ -33,4 +34,8 @@
 .navbar__right-items {
   display: flex;
   justify-content: space-between;
+}
+
+.navbar__cols {
+  align-items: baseline;
 }
