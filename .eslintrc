@@ -33,7 +33,8 @@
     "arrow-spacing": 2,
     "arrow-parens": "off",
     "comma-dangle": "off",
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "no-extend-native": "off"
   },
 
   "extends": ["eslint:recommended", "google"]

@@ -1,0 +1,40 @@
+.btn {
+  width: size(260, 210);
+  height: size(260, 210);
+  @include h;
+  color: white;
+  font-size: 16px;
+  position: relative;
+  padding: 10px;
+  &:hover {
+    .btn__circle-overlay {
+      transform: translateY(0%);
+    }
+  }
+}
+
+.btn__circle {
+  width: 100%;
+  height: 100%;
+  background-color: $accent;
+  border-radius: 50%;
+  z-index: -2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.btn__circle-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: #315CCB;
+  opacity: .7;
+  border-radius: 40%;
+  transition: transform 1s $easing;
+  transform: translateY(110%);
+}
+
+.btn__text {
+  display: block;
+}

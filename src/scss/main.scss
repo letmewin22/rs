@@ -29,3 +29,12 @@ button {
   right: $g-offset;
   bottom: 36px;
 }
+
+.js-sticky-area {
+  width: 140%;
+  height: 140%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+}

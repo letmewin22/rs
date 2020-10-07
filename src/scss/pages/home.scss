@@ -76,9 +76,18 @@
   top: 50%;
 }
 
-.p {
+.positioning-section__p {
   max-width: 340px;
   &--long {
     max-width: 390px;
   }
+}
+
+.positioning-section__cols {
+  margin-top: size(60, 40);
+}
+
+.positioning-section__btn {
+  position: absolute;
+  z-index: 10;
 }
