@@ -7,9 +7,9 @@
 
 body {
   @include reg;
-  color: $black;
+  color: var(--secondary);
   line-height: 1.5em;
-  font-size: size(24, 18);
+  font-size: 1.25vw;
   // height: 100vh;
   // overflow: hidden;
   background-color: $lg;

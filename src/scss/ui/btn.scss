@@ -6,6 +6,7 @@
   font-size: 16px;
   position: relative;
   padding: 10px;
+  z-index: 2;
   &:hover {
     .btn__circle-overlay {
       transform: translateY(0%);
@@ -43,7 +44,7 @@
 }
 
 
-.e-black {
+[data-theme=e-black] {
   .btn__circle {
     background: $accent2;
   }

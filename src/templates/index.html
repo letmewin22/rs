@@ -1,26 +1,40 @@
 {% set title = "Main" %}
 {% set route = "home" %}
-
 {% extends "layouts/_layout.html" %}
-{% import "data/data.html" as items %}
 
+{% import "data/data.html" as items %}
 {% block content %}
   <header class="home-header">
     <div class="container home-header__container">
       <h1 class="h1 home-header__h1 h1-withcols">
         <span class="container nm">
           <span class="cols">
-            <span class="h1-withcols__line h1-withcols__line--first-line cols__col">I am Roman Stets,</span>
+            <span
+            class="h1-withcols__line h1-withcols__line--first-line cols__col"
+            >I am Roman Stets,</span
+          >
             <span class="h1-withcols__img">
-              <img src="./img/home/header.gif" alt="cat-gif">
+              <img src="./img/home/header.gif" alt="cat-gif"/>
               <span class="h1-img__text">don’t hover this shit</span>
             </span>
-            <span class="h1-withcols__line h1-withcols__line--second-line cols__col cols__col-s-4">
+            <span
+            class="h1-withcols__line h1-withcols__line--second-line cols__col cols__col-s-4"
+          >
             copywriter
-            </span>
-            <span class="h1-withcols__line h1-withcols__line--third-line cols__col">and co-founder of</span>
-            <span class="h1-withcols__line h1-withcols__line--fourth-line cols__col it">
-              <a target='_blank' rel='noreferer noopener' href="https://emotion-agency.com">emotiON agency</a>
+          </span>
+            <span
+            class="h1-withcols__line h1-withcols__line--third-line cols__col"
+            >and co-founder of</span
+          >
+            <span
+            class="h1-withcols__line h1-withcols__line--fourth-line cols__col it"
+          >
+              <a
+              target="_blank"
+              rel="noreferer noopener"
+              href="https://emotion-agency.com"
+              >emotiON agency</a
+            >
             </span>
           </span>
         </span>
@@ -29,38 +43,146 @@
   </header>
   <main>
     <section class="section positioning-section">
-      <div class="container section__container last">
+      <div class="container section__container">
         <h2 class="h2 h2-withcols">
           <span class="container nm">
             <span class="cols">
               <span class="h2-withcols__line cols__col">
-            I work with <span class="it">companies</span>
+              I work with <span class="it">companies</span>
               </span>
               <span class="h2-withcols__line cols__col cols__col-s-2">
               and <span class="it">brands</span> as a
-              </span>
-              <span class="h2-withcols__line cols__col">private specialist on a</span>
-              <span class="h2-withcols__line cols__col cols__col-s-4 it">project basis.</span>
+            </span>
+              <span class="h2-withcols__line cols__col"
+              >private specialist on a</span
+            >
+              <span class="h2-withcols__line cols__col cols__col-s-4 it"
+              >project basis.</span
+            >
             </span>
           </span>
         </h2>
-         <button class="btn positioning-section__btn js-sticky">
-          <div data-power="60, 60" class="btn__circle js-sticky-item">
-            <div class="btn__circle-overlay"></div>
-          </div>
-          <span data-power="100, 10" class="btn__text js-sticky-item">more about me</span>
-        </button>
+        {{ mixins.btn('more about me', 'positioning-section__btn') }}
         <div class="container nm">
           <div class="cols positioning-section__cols">
-            <p class="positioning-section__p cols__col cols__col-s-4 cols__col-end-5">
+            <p
+            class="positioning-section__p cols__col cols__col-s-4 cols__col-end-5"
+          >
             I write texts for websites, social networks, blogs and media
-            </p>
-            <p class="positioning-section__p cols__col cols__col-s-4 cols__col-end-5">
+          </p>
+            <p
+            class="positioning-section__p cols__col cols__col-s-4 cols__col-end-5"
+          >
             I create concepts for sites, web services, mobile applications
-            </p>
-            <p class="positioning-section__p positioning-section__p--long cols__col cols__col-s-5 cols__col-end-6">
-            Coming up with ideas for launching and promoting products in the Internet
-            </p>
+          </p>
+            <p
+            class="positioning-section__p positioning-section__p--long cols__col cols__col-s-5 cols__col-end-6"
+          >
+            Coming up with ideas for launching and promoting products in the
+            Internet
+          </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section phiposophy-section">
+      <div class="container section__container">
+        <div class="container nm phiposophy-section__h2-container">
+          <div class="cols">
+            <h2 class="h2 cols__col cols__col-s-4">Phiposophy</h2>
+          </div>
+        </div>
+        <div class="phiposophy-section__items">
+          <div class="phiposophy-section__item phiposophy-section__item--first">
+          Text alone will not solve a business problem. Need an idea in which
+          people recognize themselves, their lives or situations.
+        </div>
+          <div class="phiposophy-section__item phiposophy-section__item--second">
+          I write useful texts that explain to people the essence of a service
+          or product.
+        </div>
+          <div class="phiposophy-section__item phiposophy-section__item--third">
+          First of all — I'm an entrepreneur <br/><br/>
+          Additional specializations are project manager and a little marketer.
+          There is also a higher education — «International Economics» &
+          «Marketing».
+        </div>
+          <div class="phiposophy-section__item phiposophy-section__item--fourth">
+          I believe that it is necessary to evaluate the work of a copywriter by
+          the ideas that he generates and how he embodies in the text the
+          meanings transmitted by the business.
+        </div>
+        </div>
+      </div>
+    </section>
+    <section class="section join-section">
+      <div class="container section__container">
+        <div class="section__line"></div>
+        <h2 class="h2 h2-withcols">
+          <span class="container nm">
+            <span class="cols">
+              <span class="h2-withcols__img">
+                <img src="./img/home/join.gif" alt="boy-gif"/>
+              </span>
+              <span class="h2-withcols__line cols__col cols__col-s-4"
+              >I join the</span
+            >
+              <span class="h2-withcols__line cols__col it">project at</span>
+              <span class="h2-withcols__line cols__col">any stage</span>
+            </span>
+          </span>
+        </h2>
+        <div class="container nm">
+          <div class="cols join-section__cols">
+            <p class="join-section__p cols__col cols__col-s-4 cols__col-end-4">
+            But it will be great if we start cooperation at the idea stage: it
+            will help me dive deeper into the problem to find the best solution.
+          </p>
+            <p class="join-section__p join-section__p--long cols__col cols__col-s-5 cols__col-end-5">
+            The unexpected truth about yourself is what attracts your customers.
+            I help find these meanings, pack them into text and convey to the
+            right people.
+          </p>
+          </div>
+        </div>
+        <div class="container nm">
+          <div class="cols join-section__btn-cols">
+            {{ mixins.btn('talk about project', 'join-section__btn cols__col cols__col-s-4') }}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section cases-section">
+      <div class="container section__container">
+        <div class="section__line cases-section__line"></div>
+        <div class="cases-section__text">
+          <h2 class="h2">my works</h2>
+          <p>My portfolio is diverse. There are landing page texts, SEO-optimized corporate blog articles, presentations, social media posts, and sales pitch.</p>
+        </div>
+        <div class="container nm">
+          <div class="cols cases-section__items">
+            <div class="cases-section__separator cols__col cols__col-s-4 cols__col-end-4"></div>
+            <a href="#" class="cases-section__item cases-section__item--1 cols__col cols__col-end-3">
+              <img src="../img/posters/1.jpg" alt="portfolio-img">
+            </a>
+            <a href="#" class="cases-section__item cases-section__item--2 cols__col cols__col-s-4 cols__col-end-4">
+              <img src="../img/posters/2.jpg" alt="portfolio-img">
+            </a>
+            <a href="#" class="cases-section__item cases-section__item--3 cols__col cols__col-s-5 cols__col-end-6">
+              <img src="../img/posters/6.jpg" alt="portfolio-img">
+            </a>
+          </div>
+          <div class="cols cases-section__items">
+            {{ mixins.btn('more projects', 'cases-section__btn cols__col cols__col-s-4') }}
+            <a href="#" class="cases-section__item cases-section__item--1 cols__col cols__col-end-3">
+              <img src="../img/posters/5.jpg" alt="portfolio-img">
+            </a>
+            <a href="#" class="cases-section__item cases-section__item--2 cols__col cols__col-s-4 cols__col-end-4">
+              <img src="../img/posters/4.jpg" alt="portfolio-img">
+            </a>
+            <a href="#" class="cases-section__item cases-section__item--3 cols__col cols__col-s-5 cols__col-end-6">
+              <img src="../img/posters/8.jpg" alt="portfolio-img">
+            </a>
           </div>
         </div>
       </div>

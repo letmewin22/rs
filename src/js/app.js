@@ -3,8 +3,9 @@ import '@/libs/smoothscroll'
 
 import cssWebP from '@/libs/testWebP'
 import splitting from 'splitting'
+import gsap from 'gsap'
 import Button from './components/Button'
-import {theme} from './components/theme'
+import Theme from './components/Theme'
 // import {Home} from './renderers'
 
 cssWebP()
@@ -29,15 +30,20 @@ cssWebP()
 //   tl.to(document.querySelectorAll('.char'), {
 //     duration: 1,
 //     y: 0,
+//     rotationX: 0,
 //     ease: 'expo.out',
 //     stagger: 0.016,
 //   })
 // })
+const btns = document.querySelectorAll('.js-sticky')
 
-new Button(document.querySelector('.js-sticky'))
+btns.forEach(btn => {
+  new Button(btn)
+})
+
 
 // document.querySelectorAll('.h2-withcols__line').forEach(el => {
 //   splitting({target: el, by: 'chars'})
 // })
 
-theme()
+new Theme()

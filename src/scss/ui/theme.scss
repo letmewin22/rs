@@ -1,6 +1,12 @@
-.e-black {
-  color: white;
-  background-color: $black;
+body {
+  --primary: white;
+  --secondary: var(--black);
+}
+
+[data-theme=e-black] {
+  --primary: var(--black);
+  --secondary: white;
+  background-color: var(--primary);
   .theme-btn {
     background-color: $lg;
   }

@@ -1,7 +1,10 @@
-{% macro h2(text, selector) %}
-  <div class="h2-wrapper">
-    <div class="h2__line h2__line--before"></div>
-    <h2 class="h2 {{selector}}">{{text|safe}}</h2>
-    <div class="h2__line h2__line--after"></div>
+{% macro btn(text, selector) %}
+<button class="btn {{selector}} js-sticky">
+  <div data-power="60, 60" class="btn__circle js-sticky-item">
+    <div class="btn__circle-overlay"></div>
   </div>
+  <span data-power="100, 10" class="btn__text js-sticky-item"
+    >{{text|safe}}</span
+  >
+</button>
 {% endmacro %}

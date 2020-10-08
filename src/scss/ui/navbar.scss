@@ -8,8 +8,9 @@
     display: block;
     width: calc(100% - var(--g-offset) * 2);
     height: 2px;
-    background-color: $black;
+    background-color: var(--secondary);
     margin: 0 auto;
+    transition: background .6s ease;
   }
 }
 
@@ -41,15 +42,10 @@
   align-items: baseline;
 }
 
-.e-black {
-  .logo {
-    svg {
-      fill: white;
-    }
-  }
-  .navbar {
-    &::before {
-      background-color: white;
-    }
+.navbar__logo {
+  svg {
+    fill: var(--secondary);
+    transition: fill .6s ease;
+    max-width: 100%;
   }
 }

@@ -1,36 +1,54 @@
 import {createNewElement} from '../utils/createNewElement'
 import gsap from 'gsap'
 
+export default class Theme {
 
-export const theme = () => {
-  const themeBtn = document.querySelector('.theme-btn')
-
-  const theme = {
+  theme = {
     current: 'white',
   }
 
-  // const lsTheme = JSON.parse(localStorage.getItem('theme')) || theme
+  constructor() {
+    this.$themeBtn = document.querySelector('.theme-btn')
 
-  // theme = Object.assign(theme, lsTheme)
-
-  // localStorage.setItem('theme', JSON.stringify(theme))
-
-  const setTheme = () => {
-
-    document.body.classList = `e-${theme.current}`
-
-    theme.current === 'white' ?
-      (theme.current = 'black') :
-      (theme.current = 'white')
+    this.init()
   }
 
-  const themeChanger = () => {
+  init() {
+    const lsTheme = JSON.parse(localStorage.getItem('theme')) || this.theme
+
+    this.theme = {...this.theme, ...lsTheme}
+
+    localStorage.setItem('theme', JSON.stringify(this.theme))
+
+    this.themeChanger = this.themeChanger.bind(this)
+
+    this.$themeBtn.addEventListener('click', this.themeChanger)
+
+    this.setTheme()
+
+  }
+
+  get themeToggle() {
+    return this.theme.current === 'white' ?
+      this.theme.current = 'black' :
+      this.theme.current = 'white'
+  }
+
+  setTheme() {
+
+    document.body.setAttribute('data-theme', `e-${this.theme.current}`)
+
+    localStorage.setItem('theme', JSON.stringify({...this.theme}))
+
+    this.themeToggle
+  }
+
+  themeChanger() {
+
     const overlay = createNewElement('div', 'theme-overlay')
+    overlay.classList.add(`theme-overlay--${this.theme.current}`)
 
-    overlay.classList.add(`theme-overlay--${theme.current}`)
-    setTheme()
-    console.log(theme)
-
+    this.setTheme()
     document.body.appendChild(overlay)
 
     gsap.to(overlay, {
@@ -39,10 +57,7 @@ export const theme = () => {
       ease: 'power3.out',
       onComplete: () => {
         document.body.removeChild(overlay)
-        // localStorage.setItem('theme', JSON.stringify(theme))
       },
     })
   }
-  setTheme()
-  themeBtn.addEventListener('click', themeChanger)
 }

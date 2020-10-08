@@ -39,15 +39,15 @@ export default class Button {
     this.$stickyItems.forEach(el => {
 
       const bounds = el.getBoundingClientRect()
-      const power = el.dataset.power.split(', ')
+      const [x, y] = el.dataset.power.split(', ')
       const s = this.computedProps(e, bounds)
 
       gsap.to( el,
         {
           delay: 0,
           duration: 1,
-          y: s.y * +power[1],
-          x: s.x * +power[0],
+          y: s.y * +y,
+          x: s.x * +x,
           ease: 'power2.out',
         })
     })
