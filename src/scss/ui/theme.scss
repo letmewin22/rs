@@ -1,10 +1,12 @@
 body {
   --primary: white;
+  --primary2: var(--lg);
   --secondary: var(--black);
 }
 
 [data-theme=e-black] {
   --primary: var(--black);
+  --primary2: var(--black);
   --secondary: white;
   background-color: var(--primary);
   .theme-btn {
@@ -21,7 +23,15 @@ body {
   position: fixed;
   right: $g-offset;
   bottom: 36px;
-  transition: background .5s ease;
+  transition: background .5s ease, transform .5s cubic-bezier(.17,.67,.3,1.33), opacity .5s ease;
+  z-index: 100;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &.disabled {
+    opacity: 0;
+    transform: scale(0.5);
+  }
 }
 
 

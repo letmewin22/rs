@@ -6,6 +6,10 @@ import splitting from 'splitting'
 import gsap from 'gsap'
 import Button from './components/Button'
 import Theme from './components/Theme'
+import strip from './components/strip'
+import ScrollBar from './components/Scrollbar'
+import NavbarPos from './utils/navbarPos'
+import themeBtn from './utils/themeBtn'
 // import {Home} from './renderers'
 
 cssWebP()
@@ -47,3 +51,22 @@ btns.forEach(btn => {
 // })
 
 new Theme()
+
+strip('strip--white', 'strip__wrapper', 20)
+strip('strip--blue', 'strip__wrapper', 24, 'right')
+
+new ScrollBar()
+
+const si = document.querySelectorAll('.custom:not(html):not(#scroll-container)')
+
+si.forEach(el => {
+  new ScrollBar(el)
+})
+
+const navbarPos = new NavbarPos()
+
+navbarPos.init()
+
+themeBtn()
+
+

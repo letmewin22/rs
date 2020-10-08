@@ -62,7 +62,7 @@
             </span>
           </span>
         </h2>
-        {{ mixins.btn('more about me', 'positioning-section__btn') }}
+        {{ mixins.link('more about me', 'positioning-section__btn') }}
         <div class="container nm">
           <div class="cols positioning-section__cols">
             <p
@@ -173,7 +173,7 @@
             </a>
           </div>
           <div class="cols cases-section__items">
-            {{ mixins.btn('more projects', 'cases-section__btn cols__col cols__col-s-4') }}
+            {{ mixins.link('more projects', 'cases-section__btn cols__col cols__col-s-4') }}
             <a href="#" class="cases-section__item cases-section__item--1 cols__col cols__col-end-3">
               <img src="../img/posters/5.jpg" alt="portfolio-img">
             </a>
@@ -188,4 +188,43 @@
       </div>
     </section>
   </main>
+  <footer class="footer home__footer">
+    <div class="container footer__container nm">
+      <div class="strips">
+        <div class="strip strip--white">
+          <div class="strip__wrapper">
+            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
+            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
+            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
+            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
+          </div>
+        </div>
+        <div class="strip strip--blue">
+          <div class="strip__wrapper">
+            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
+            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
+            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
+            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
+          </div>
+        </div>
+      </div>
+      {{ mixins.btn('send a request', 'footer__btn') }}
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <div class="footer__line"></div>
+        <div class="footer__items">
+          <div class="container nm">
+            <div class="cols footer__cols">
+              <span class="footer__copyright cols__col cols__col-end-3">Roman Stets (c) 2020</span>
+              <a href="#" class="footer__link cols__col cols__col-s-4 cols__col-end-4">facebook</a>
+              <a href="#" class="footer__link footer__link--2 cols__col cols__col-s-5 cols__col-end-5">instagram</a>
+              <a href="#" class="footer__made-by cols__col cols__col-s-5">by emotion</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 {% endblock %}

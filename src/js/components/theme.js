@@ -43,10 +43,19 @@ export default class Theme {
     this.themeToggle
   }
 
+  playSound() {
+    const audio = new Audio('./audio/theme3.mp3')
+    audio.volume = 0.1
+    audio.playbackRate = 0.8
+    audio.play()
+  }
+
   themeChanger() {
 
     const overlay = createNewElement('div', 'theme-overlay')
     overlay.classList.add(`theme-overlay--${this.theme.current}`)
+
+    this.playSound()
 
     this.setTheme()
     document.body.appendChild(overlay)

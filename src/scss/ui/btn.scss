@@ -7,6 +7,9 @@
   position: relative;
   padding: 10px;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     .btn__circle-overlay {
       transform: translateY(0%);
@@ -41,6 +44,9 @@
 
 .btn__text {
   display: block;
+  line-height: 1em;
+  width: 100%;
+  text-align: center;
 }
 
 

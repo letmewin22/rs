@@ -1,8 +1,19 @@
+.nav-hidden {
+  .navbar {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
+
 .navbar {
   position: absolute;
-  top: 36px;
+  top: 0;
+  padding-top: 36px;
+  padding-bottom: 16px;
   z-index: 100;
   width: 100%;
+  background-color: var(--primary2);
+  transition: opacity .25s ease, transform .25s ease, background .5s ease;
   &::before {
     content: '';
     display: block;
@@ -10,7 +21,10 @@
     height: 2px;
     background-color: var(--secondary);
     margin: 0 auto;
-    transition: background .6s ease;
+    @include bt;
+  }
+  &.remove-bg {
+    background-color: transparent;
   }
 }
 
@@ -22,7 +36,7 @@
 }
 
 .navbar__text {
-  font-size: size(20, 16);
+  font-size: 1.1vw;
   line-height: 1em;
 }
 

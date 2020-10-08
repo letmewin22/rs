@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   padding-top: 60px;
+  height: 100%;
 }
 
 .home-header__h1 {
@@ -19,7 +20,7 @@
 .h1-withcols__line {
   overflow: hidden;
   perspective: 1000px;
-  padding-right: 10px;
+  padding-right: 18px;
   .char {
     display: inline-block;
     transform: translateY(110%) rotateX(-60deg);
@@ -31,23 +32,28 @@
   &--fourth-line {
     width: fit-content;
     position: relative;
-    &::after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 1px;
-      background-color: rgba(#222222, 0.2);
-      position: absolute;
-      bottom: 1.8vw;
-      left: 0;
-      right: auto;
-      transition: width .7s ease;
-    }
-    &:hover {
+    a {
+      display: inline-block;
+      position: relative;
       &::after {
-        left: auto;
-        width: 0;
-        right: 0;
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: var(--secondary);
+        opacity: 0.2;
+        position: absolute;
+        bottom: 1.8vw;
+        left: 0;
+        right: auto;
+        transition: width 0.7s ease;
+      }
+      &:hover {
+        &::after {
+          left: auto;
+          width: 0;
+          right: 0;
+        }
       }
     }
   }
@@ -95,7 +101,6 @@
   z-index: 10;
 }
 
-
 .phiposophy-section__items {
   width: 100%;
   position: relative;
@@ -113,7 +118,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  transition: border-color .5s ease;
+  transition: border-color 0.5s ease;
   // position: absolute;
   &--first {
     width: 31vw;
@@ -149,7 +154,6 @@
   left: 0;
 }
 
-
 .join-section__p {
   max-width: 19.375vw;
   &--long {
@@ -162,7 +166,7 @@
   height: 1px;
   background-color: var(--secondary);
   margin-bottom: 50px;
-  transition: background .6s ease;
+  transition: background 0.6s ease;
 }
 
 .join-section__cols {
@@ -188,7 +192,7 @@
 
 .cases-section__item {
   display: block;
-  
+
   img {
     display: block;
     max-width: 100%;
@@ -210,7 +214,7 @@
   width: 1px;
   height: 26.66vw;
   background: var(--secondary);
-  transition: background .5s ease;
+  @include bt;
   transform: rotate(20deg);
   transform-origin: bottom;
   position: absolute;

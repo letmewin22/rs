@@ -66,3 +66,11 @@
 		font-style: #{$style};
 	}
 }
+
+@mixin bt() {
+  transition: background .5s ease;
+}
+
+@mixin ct() {
+  transition: color .5s ease;
+}

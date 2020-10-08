@@ -5,13 +5,23 @@
   }
 }
 
+.custom {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+}
+
 body {
   @include reg;
   color: var(--secondary);
   line-height: 1.5em;
   font-size: 1.25vw;
-  // height: 100vh;
-  // overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden !important;
   background-color: $lg;
   position: relative;
   transition: background 1s ease, color 1s ease;
@@ -22,7 +32,16 @@ button {
   outline: none;
 }
 
+#scroll-container {
+  height: calc( var(--vh, 1vh) * 100);
+  overflow: auto;
+  width: 100vw;
+  overscroll-behavior-y: none;
+}
 
+#scroller {
+  overscroll-behavior-y: none;
+}
 
 .js-sticky-area {
   width: 140%;
