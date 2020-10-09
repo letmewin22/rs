@@ -53,7 +53,14 @@ button {
 }
 
 .e-fixed {
-  main, footer {
-    opacity: 0;
+
+}
+
+
+.js-l {
+  perspective: 1000px;
+  overflow: hidden;
+  .char {
+    display: inline-block;
   }
 }

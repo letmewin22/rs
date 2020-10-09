@@ -46,6 +46,7 @@
   line-height: 1em;
   color: inherit;
   display: flex;
+  position: relative;
   align-items: center;
   &::before {
     content: '';
@@ -83,4 +84,11 @@
     transition: fill .6s ease;
     max-width: 100%;
   }
+}
+
+.js-nav-close {
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  display: none;
 }

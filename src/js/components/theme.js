@@ -44,9 +44,9 @@ export default class Theme {
   }
 
   playSound() {
-    const audio = new Audio('./audio/theme3.mp3')
-    audio.volume = 0.1
-    audio.playbackRate = 0.8
+    const audio = new Audio('./audio/theme4.mp3')
+    audio.volume = 0.5
+    // audio.playbackRate = 0.8
     audio.play()
   }
 

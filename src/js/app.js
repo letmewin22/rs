@@ -3,7 +3,6 @@ import '@/libs/smoothscroll'
 
 import cssWebP from '@/libs/testWebP'
 import splitting from 'splitting'
-import gsap from 'gsap'
 import Button from './components/Button'
 import Theme from './components/Theme'
 import strip from './components/strip'
@@ -11,52 +10,46 @@ import ScrollBar from './components/Scrollbar'
 import NavbarPos from './utils/navbarPos'
 import themeBtn from './utils/themeBtn'
 import Nav from './components/Nav'
-import {circle} from './components/Circle'
-// import {Home} from './renderers'
+import ChangeView from './components/ChangeView'
+import {intersectionOvserver} from './utils/intersectionOvserver'
+import {Home} from './core/renderers'
 
 cssWebP()
-// const H = new Highway.Core({
-//   renderers: {
-//     home
-//   },
-//   transitions: {
-//     name: CustomTransition,
-//     default: OtherTransition
-//   }
-// })
+// const H =
+new Highway.Core({
+  renderers: {
+    home: Home,
+  },
+  //   transitions: {
+  //     name: CustomTransition,
+  //     default: OtherTransition
+  //   }
+})
+
 window.addEventListener('load', () => {
-  const h1Lines = document.querySelectorAll('.h1-withcols__line')
+  // const h1Lines = document.querySelectorAll('.h1-withcols__line')
 
-  h1Lines.forEach((el) => {
-    splitting({target: el, by: 'chars'})
-  })
+  // h1Lines.forEach((el) => {
+  //   splitting({target: el, by: 'chars'})
+  // })
 
-  const tl = gsap.timeline()
-
-  tl.to(document.querySelectorAll('h1 .char'), {
-    duration: 1,
-    y: 0,
-    rotationX: 0,
-    ease: 'expo.out',
-    stagger: 0.016,
-  })
+  ChangeView.in()
 
   //   // const chars = [...document.querySelectorAll('.char')].reverse()
 
-//   // tl.to(chars, {
-//   //   duration: 0.6,
-//   //   y: '110%',
-//   //   rotationX: 60,
-//   //   ease: 'expo.in',
-//   //   stagger: 0.016,
-//   // })
+  //   // tl.to(chars, {
+  //   //   duration: 0.6,
+  //   //   y: '110%',
+  //   //   rotationX: 60,
+  //   //   ease: 'expo.in',
+  //   //   stagger: 0.016,
+  //   // })
 })
 const btns = document.querySelectorAll('.js-sticky')
 
-btns.forEach(btn => {
+btns.forEach((btn) => {
   new Button(btn)
 })
-
 
 // document.querySelectorAll('.h2-withcols__line').forEach(el => {
 //   splitting({target: el, by: 'chars'})
@@ -71,7 +64,7 @@ new ScrollBar()
 
 const si = document.querySelectorAll('.custom:not(html):not(#scroll-container)')
 
-si.forEach(el => {
+si.forEach((el) => {
   new ScrollBar(el)
 })
 
@@ -81,7 +74,14 @@ navbarPos.init()
 
 themeBtn()
 
-
 new Nav()
 
-// circle()
+const sections = [
+  ...document.querySelectorAll('.section'),
+  document.querySelector('header'),
+  document.querySelector('footer'),
+]
+
+sections.forEach((section) => {
+  intersectionOvserver(section)
+})

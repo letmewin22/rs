@@ -1,5 +1,5 @@
 import gsap from 'gsap'
-import mutationObserver from '../mutationObserver'
+import mutationObserver from '../utils/mutationObserver'
 
 export default class ScrollBar {
   constructor(el) {

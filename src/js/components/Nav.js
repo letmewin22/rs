@@ -44,12 +44,16 @@ export default class Nav {
     this.isOpen ? this.close() : this.open()
   }
   open() {
+    document.querySelector('.js-nav-open').style.display = 'none'
+    document.querySelector('.js-nav-close').style.display = 'block'
     this.$nav.classList.add('e-open')
     document.body.classList.add('e-fixed')
     ChangeView.out(this.openAnim.bind(this))
     this.isOpen = true
   }
   close() {
+    document.querySelector('.js-nav-open').style.display = 'block'
+    document.querySelector('.js-nav-close').style.display = 'none'
     this.$nav.classList.remove('e-open')
     this.isOpen = false
     this.closeAnim()
