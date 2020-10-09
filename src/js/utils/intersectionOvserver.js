@@ -1,6 +1,8 @@
+import noop from './noop'
+
 export const intersectionOvserver = (el, cb) => {
 
-  cb = cb ?? function() {}
+  cb = cb ?? noop
   const b = el.getBoundingClientRect()
 
   if (b.top < window.innerHeight && -b.top <= b.height) {

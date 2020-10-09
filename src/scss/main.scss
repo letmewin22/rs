@@ -52,15 +52,23 @@ button {
   transform: translate(-50%, -50%); 
 }
 
-.e-fixed {
-
-}
-
 
 .js-l {
   perspective: 1000px;
   overflow: hidden;
   .char {
     display: inline-block;
+  }
+}
+
+.e-fixed {
+  overflow: hidden;
+  overflow-x: auto;
+  .scrollbar:not(.block-scrollbar) {
+    display: none;
+  }
+  #scroll-container {
+    overflow: hidden;
+    overflow-x: auto;
   }
 }

@@ -1,4 +1,4 @@
-import {createNewElement} from '../utils/createNewElement'
+import {createNewElement} from '@/utils/createNewElement'
 import gsap from 'gsap'
 
 export default class Theme {
@@ -55,7 +55,7 @@ export default class Theme {
     const overlay = createNewElement('div', 'theme-overlay')
     overlay.classList.add(`theme-overlay--${this.theme.current}`)
 
-    this.playSound()
+    // this.playSound()
 
     this.setTheme()
     document.body.appendChild(overlay)

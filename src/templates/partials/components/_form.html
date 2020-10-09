@@ -1,0 +1,40 @@
+<div class="form-wrapper custom">
+  <button class="form-wrapper__close-btn">Close</button>
+  <div class="container form-wrapper__container">
+    <form novalidate class="form cols">
+      <span class="form__label cols__col cols__col-s-3 js-form-item">Hello,</span>
+      <div class="form__input-wrapper cols__col">
+        <label for="name" class="form__label js-form-item">my name is</label>
+        <input 
+          type="text" 
+          id="name" 
+          name="name" 
+          class="form__input" 
+          placeholder="enter your name"
+        >
+      </div>
+      <div class="form__input-wrapper cols__col cols__col-s-2">
+        <label for="phone" class="form__label js-form-item">call me</label>
+        <input 
+          type="tel" 
+          id="phone" 
+          name="phone" 
+          class="form__input" 
+          placeholder="enter your phone"
+        >
+      </div>
+        <span class="form__label cols__col cols__col-s-3 js-form-item">or send</span>
+        <div class="form__input-wrapper cols__col">
+          <label for="phone" class="form__label js-form-item">an e-mail</label>
+          <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          class="form__input" 
+          placeholder="enter your e-mail"
+        >
+        {{ mixins.btn('send', 'form__btn', 'submit') }}
+        </div>
+      </form>
+    </div>
+  </div>

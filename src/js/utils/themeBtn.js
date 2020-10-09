@@ -1,9 +1,8 @@
+import {isFixed} from './isFixed'
+
 const themeBtn = () => {
-  if (
-    -document.getElementById('scroller').getBoundingClientRect().y +
-      window.innerHeight >=
-    document.getElementById('scroller').getBoundingClientRect().height * 0.94
-  ) {
+  const b = document.getElementById('scroller').getBoundingClientRect()
+  if (-b.y + window.innerHeight >= b.height * 0.94 && !isFixed()) {
     document.querySelector('.theme-btn').classList.add('disabled')
   } else {
     document.querySelector('.theme-btn').classList.remove('disabled')

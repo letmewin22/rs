@@ -1,12 +1,11 @@
 import gsap from 'gsap'
 import splitting from 'splitting'
-import noop from '../utils/noop'
+import noop from '@/utils/noop'
 
 
 export default class ChangeView {
 
-  static in(cb) {
-
+  static prepare(cb) {
     cb = typeof cb !== undefined ? cb : noop
 
     const lines = document.querySelectorAll('.js-in-view .js-l')
@@ -15,10 +14,14 @@ export default class ChangeView {
       !el.classList.contains('splitting') &&
       splitting({target: el, by: 'chars'})
     })
+  }
+
+  static in(cb) {
+
+    this.prepare(cb)
 
     const chars = document.querySelectorAll('.js-in-view .char')
     const i = document.querySelectorAll('.js-in-view .js-i')
-
 
     const tl = gsap.timeline({onComplete: cb})
 
@@ -39,6 +42,7 @@ export default class ChangeView {
       ease: 'expo.out',
       stagger: 0.016,
     })
+
     i.length && tl.to(i,
       {
         duration: 1,
@@ -51,15 +55,7 @@ export default class ChangeView {
   }
   static out(cb) {
 
-    cb = typeof cb !== undefined ? cb : noop
-
-
-    const lines = document.querySelectorAll('.js-in-view .js-l')
-
-    lines.length && lines.forEach((el) => {
-      !el.classList.contains('splitting') &&
-      splitting({target: el, by: 'chars'})
-    })
+    this.prepare(cb)
 
     const chars = [...document.querySelectorAll('.js-in-view .char')].reverse()
     const i = document.querySelectorAll('.js-in-view .js-i')
@@ -83,13 +79,14 @@ export default class ChangeView {
       ease: 'expo.in',
       stagger: 0.016,
     })
+
     i.length && tl.to(i,
       {
         duration: 1,
         opacity: 0,
         y: 40,
         ease: 'expo.in',
-        stagger: 0.12,
+        stagger: 0.05,
       }, 0)
   }
 }

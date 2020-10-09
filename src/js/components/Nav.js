@@ -1,19 +1,7 @@
 import gsap from 'gsap'
 import splitting from 'splitting'
+
 import ChangeView from './ChangeView'
-
-function blah() {
-  const chars = [...document.querySelectorAll('h1 .char')].reverse()
-  const tl = gsap.timeline()
-
-  tl.to(chars, {
-    duration: 0.6,
-    y: '110%',
-    rotationX: 60,
-    ease: 'expo.in',
-    stagger: 0.016,
-  })
-}
 
 export default class Nav {
   constructor() {
@@ -46,6 +34,7 @@ export default class Nav {
   open() {
     document.querySelector('.js-nav-open').style.display = 'none'
     document.querySelector('.js-nav-close').style.display = 'block'
+
     this.$nav.classList.add('e-open')
     document.body.classList.add('e-fixed')
     ChangeView.out(this.openAnim.bind(this))
@@ -54,6 +43,7 @@ export default class Nav {
   close() {
     document.querySelector('.js-nav-open').style.display = 'block'
     document.querySelector('.js-nav-close').style.display = 'none'
+
     this.$nav.classList.remove('e-open')
     this.isOpen = false
     this.closeAnim()

@@ -1,5 +1,5 @@
 import gsap from 'gsap'
-import {createNewElement} from '../utils/createNewElement'
+import {createNewElement} from '@/utils/createNewElement'
 
 export default class Button {
   constructor($el) {

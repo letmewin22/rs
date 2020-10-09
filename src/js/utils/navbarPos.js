@@ -1,3 +1,5 @@
+import {isFixed} from './isFixed'
+
 export default class NavbarPos {
   constructor() {
     this.mouseFunc = (e) => {
@@ -17,20 +19,17 @@ export default class NavbarPos {
   }
 
   scrollNav() {
-    if (
-      document.getElementById('scroller').getBoundingClientRect().top >
-      this.scrollPos
-    ) {
+    const b = document.getElementById('scroller').getBoundingClientRect()
+    if (b.top > this.scrollPos || isFixed()) {
       document.body.classList.remove('nav-hidden')
       document.removeEventListener('mousemove', this.mouseFunc)
-    } else if (
-      document.getElementById('scroller').getBoundingClientRect().top <
-        this.scrollPos &&
-      this.scrollPos <= 0
-    ) {
+
+    } else if (b.top < this.scrollPos && this.scrollPos <= 0) {
       document.body.classList.add('nav-hidden')
       document.querySelector('.navbar').classList.remove('remove-bg')
+
       document.addEventListener('mousemove', this.mouseFunc)
+
     } else if (this.scrollPos === 0) {
       document.querySelector('.navbar').classList.add('remove-bg')
     }
