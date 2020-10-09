@@ -5,8 +5,8 @@
   bottom: 0;
   right: 0;
   z-index: 99;
-  background: var(--primary2);
-  display: none;
+  // background: var(--primary2);
+  visibility: hidden;
 }
 
 .nav__container {
@@ -29,6 +29,7 @@
 .nav__item {
   @include h;
   font-size: 5vw;
+  display: flex;
   width: fit-content;
   line-height: 1.1em;
   position: relative;
@@ -36,64 +37,62 @@
   grid-column-end: 2;
   white-space: nowrap;
   color: var(--secondary);
-  &::after {
-    display: block;
-    position: absolute;
-    top: -12px;
-    right: -20px;
-    font-size: 0.8vw;
-    line-height: 1em;
-    @include reg;
-    opacity: .6;
-  }
   transition: color .4s ease;
   &:hover {
     color: $accent;
   }
-  &--1 {
-    &::after {
-      content: '01';
-    }
-  }
   &--2 {
     grid-column-start: 1;
     grid-column-end: 1;
-    &::after {
-      content: '02';
-    }
   }
   &--3 {
     grid-column-start: 2;
     grid-column-end: 2;
-    &::before {
-      content: '/';
-      display: inline-block;
-      color: var(--secondary);
-      @include ct;
-      // background: $black;
-      // height: 1em;
-      // width: 1px;
-      // transform: rotate(20deg);
-    }
-    &::after {
-      content: '03';
-    }
   }
-  &--4 {
-    &::after {
-      content: '04';
-    }
-  }
+}
+
+.nav__separator {
+  display: inline-block;
+  color: var(--secondary);
+  opacity: 0;
+  @include ct;
+}
+
+.nav__num {
+  display: block;
+  position: absolute;
+  top: -12px;
+  right: -20px;
+  font-size: 0.8vw;
+  line-height: 1em;
+  @include reg;
+  opacity: 0;
 }
 
 .nav__right {
   width: 28.75vw;
   height: 63.3vh;
+  overflow: hidden;
   img {
     max-width: 100%;
     display: block;
     object-fit: cover;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transform: translateY(110%) rotate(-20deg);
+  }
+}
+
+.js-nav-item {
+  a {
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1em;
+    perspective: 1000px;
+    .char {
+      display: inline-block;
+      transform: translateY(110%) rotateX(60deg);
+    }
   }
 }

@@ -16,6 +16,24 @@
   }
 }
 
+@mixin h2() {
+  font-size: 8.33vw;
+  @include h;
+  line-height: 1.1em;
+  @media screen and (max-height: 680px) and (orientation: landscape) {
+    font-size: 7.33vw;
+  }
+}
+
+@mixin h1() {
+  font-size: 7.25vw;
+  @include h;
+  line-height: 1.05em;
+  @media screen and (max-height: 680px) and (orientation: landscape) {
+    font-size: 7vw;
+  }
+}
+
 .it {
   @include hi;
 }

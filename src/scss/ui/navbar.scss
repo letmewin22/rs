@@ -42,9 +42,30 @@
 
 .navbar__menu {
   @include hreg;
-  font-size: size(20, 16);
+  font-size: 0.9em;
   line-height: 1em;
   color: inherit;
+  display: flex;
+  align-items: center;
+  &::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--secondary);
+    margin-right: 10px;
+    margin-top: -0.3vw;
+    opacity: 0;
+    transform: translateX(15px) scale(0.1);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  &:hover {
+    &::before {
+      opacity: 1;
+      transform: translateX(0px) scale(1);
+    }
+  }
 }
 
 .navbar__right-items {

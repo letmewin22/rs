@@ -40,6 +40,7 @@
 .footer__copyright {
   font-size: 0.8vw;
   width: fit-content;
+  line-height: 1em;
 }
 
 .footer__link  {
@@ -59,4 +60,11 @@
   justify-self: end;
   font-size: 0.8vw;
   color: $accent;
+  line-height: 1em;
+}
+
+[data-theme=e-black] {
+  .footer__made-by {
+    color: white;
+  } 
 }

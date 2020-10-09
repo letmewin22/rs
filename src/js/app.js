@@ -10,6 +10,8 @@ import strip from './components/strip'
 import ScrollBar from './components/Scrollbar'
 import NavbarPos from './utils/navbarPos'
 import themeBtn from './utils/themeBtn'
+import Nav from './components/Nav'
+import {circle} from './components/Circle'
 // import {Home} from './renderers'
 
 cssWebP()
@@ -22,23 +24,33 @@ cssWebP()
 //     default: OtherTransition
 //   }
 // })
-// window.addEventListener('load', () => {
-//   const h1Lines = document.querySelectorAll('.h1-withcols__line')
+window.addEventListener('load', () => {
+  const h1Lines = document.querySelectorAll('.h1-withcols__line')
 
-//   h1Lines.forEach((el) => {
-//     splitting({target: el, by: 'chars'})
-//   })
+  h1Lines.forEach((el) => {
+    splitting({target: el, by: 'chars'})
+  })
 
-//   const tl = gsap.timeline()
+  const tl = gsap.timeline()
 
-//   tl.to(document.querySelectorAll('.char'), {
-//     duration: 1,
-//     y: 0,
-//     rotationX: 0,
-//     ease: 'expo.out',
-//     stagger: 0.016,
-//   })
-// })
+  tl.to(document.querySelectorAll('h1 .char'), {
+    duration: 1,
+    y: 0,
+    rotationX: 0,
+    ease: 'expo.out',
+    stagger: 0.016,
+  })
+
+  //   // const chars = [...document.querySelectorAll('.char')].reverse()
+
+//   // tl.to(chars, {
+//   //   duration: 0.6,
+//   //   y: '110%',
+//   //   rotationX: 60,
+//   //   ease: 'expo.in',
+//   //   stagger: 0.016,
+//   // })
+})
 const btns = document.querySelectorAll('.js-sticky')
 
 btns.forEach(btn => {
@@ -70,3 +82,6 @@ navbarPos.init()
 themeBtn()
 
 
+new Nav()
+
+// circle()
