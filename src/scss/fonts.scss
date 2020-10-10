@@ -6,7 +6,7 @@
     font-size: 7.33vw;
   }
   @include media('<=#{$br2}') {
-    font-size: size(160, 35.6) !important;
+    font-size: size(160, 35) !important;
   }
 }
 

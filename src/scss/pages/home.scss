@@ -106,7 +106,7 @@
 }
 
 .positioning-section__cols {
-  margin-top: size(60, 40);
+  margin-top: size(60, 20);
   grid-auto-rows: 5.46875vw;
 }
 
@@ -276,6 +276,7 @@
     position: static;
     p {
       max-width: none;
+      margin-top: 20px;
     }
   }
 }
@@ -297,6 +298,9 @@
   }
   @include media('<=#{$br2}') {
     margin-top: 40px;
+    &.m-hide {
+      display: none;
+    }
   }
 }
 

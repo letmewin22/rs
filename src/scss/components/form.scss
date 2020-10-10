@@ -24,6 +24,10 @@
   height: 100%;
   display: flex;
   align-items: center;
+  @include media('<=#{$br2}') {
+    align-items: flex-start;
+    padding-top: 60px;
+  }
 }
 
 .form {

@@ -10,11 +10,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  &:hover {
-    .btn__circle-overlay {
-      transform: translateY(0%);
+  @include media('>=#{$br2}') {
+    &:hover {
+      .btn__circle-overlay {
+        transform: translateY(0%);
+      }
     }
   }
+
   @include media('<=#{$br2}') {
     width: size(260, 210);
     height: size(260, 210);
@@ -45,6 +48,9 @@
   transition: transform 1s $easing, background .5s ease;
   transform: translateY(110%);
   z-index: -1;
+  @include media('<=#{$br2}') {
+    display: none;
+  }
 }
 
 .btn__text {
