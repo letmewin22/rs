@@ -20,6 +20,9 @@
 .h1-withcols__line {
   perspective: 1000px;
   padding-right: 18px;
+  @include media('<=#{$br2}') {
+    padding-right: 0px;
+  }
   &--second-line {
     white-space: nowrap;
     margin-left: -0.3vw;
@@ -69,7 +72,6 @@
   }
 }
 
-
 .h1-img__text {
   @include reg;
   font-size: 0.8vw;
@@ -79,12 +81,27 @@
   position: absolute;
   right: -4vw;
   top: 50%;
+  @include media('<=1100px') {
+    display: none;
+  }
 }
 
 .positioning-section__p {
   max-width: 17.85vw;
   &--long {
     max-width: 20.312vw;
+  }
+  @include media('<=#{$br2}') {
+    max-width: 50%;
+    &--long {
+      max-width: inherit;
+    }
+    + .positioning-section__p {
+      margin-top: 20px;
+    }
+  }
+  @include media('<=#{$br3}') {
+    max-width: 100%;
   }
 }
 
@@ -94,16 +111,33 @@
 }
 
 .positioning-section__btn {
-  position: absolute;
-  z-index: 10;
+  margin: 0 auto;
+  margin-top: 40px;
+  order: 3;
+  @include media('>=#{$br2}') {
+    position: absolute;
+    z-index: 10;
+    margin: 0px;
+  }
 }
+
+.positioning-section__container {
+  @include media('<=#{$br2}') {
+    display: flex;
+    flex-direction: column;
+  }
+  }
 
 .phiposophy-section__items {
   width: 100%;
   position: relative;
+  margin-top: 40px;
+  @include media('>=#{$br2}') {
   display: grid;
   grid-template-columns: 30vw 22.14vw 42vw;
   grid-auto-rows: 29.427vw;
+  margin-top: 0px;
+  }
 }
 
 .phiposophy-section__item {
@@ -116,7 +150,13 @@
   align-items: center;
   text-align: center;
   transition: border-color 0.5s ease;
-  // position: absolute;
+  @include media('<=#{$br2}') {
+    width: 335px;
+    height: 335px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @include media('>=#{$br2}') {
   &--first {
     width: 31vw;
     height: 31vw;
@@ -124,13 +164,13 @@
   &--second {
     width: 26.14vw;
     height: 26.14vw;
-    padding: 0 79px;
+    padding: 0 4.16vw;
     margin-top: 9.84375vw;
   }
   &--third {
     width: 30.6vw;
     height: 30.6vw;
-    padding: 0 50px;
+    padding: 0 2.6vw;
     grid-column-start: 1;
     grid-column-end: 2;
     margin-left: 9.73958vw;
@@ -138,23 +178,47 @@
   &--fourth {
     width: 42vw;
     height: 42vw;
-    padding: 0 57px;
+    padding: 0 3vw;
     margin-top: 17.9375vw;
     grid-column-start: 3;
     grid-column-end: 3;
     grid-row-start: 1;
   }
 }
+}
 
 .phiposophy-section__h2-container {
-  position: absolute;
-  left: 0;
+  @include media('>=#{$br2}') {
+    position: absolute;
+    left: 0;
+  }
 }
 
 .join-section__p {
   max-width: 19.375vw;
   &--long {
     max-width: 28.96vw;
+  }
+  @include media('<=#{$br2}') {
+    max-width: 50%;
+    &--long {
+      max-width: inherit;
+    }
+    + .join-section__p {
+      margin-top: 20px;
+    }
+  }
+  @include media('<=#{$br3}') {
+    max-width: 100%;
+  }
+}
+
+.mob-img-c {
+  display: block;
+  width: 100%;
+  .h1-withcols__img {
+    width: 100%;
+    height: 1.5em;
   }
 }
 
@@ -168,10 +232,25 @@
 
 .join-section__cols {
   margin-top: -15vw;
+  @media screen and (max-height: 680px) and (orientation: landscape) {
+    margin-top: -13.8vw;
+  }
+  @include media('<=#{$br2}') {
+    margin-top: 20px;
+  }
 }
 
 .join-section__btn-cols {
   margin-top: 8.07vw;
+  @include media('<=#{$br2}') {
+    margin-top: 40px;
+  }
+}
+
+.join-section__btn {
+  @include media('<=#{$br2}') {
+    margin: 0 auto;
+  } 
 }
 
 .cases-section__line {
@@ -219,4 +298,11 @@
 
 .cases-section__btn {
   position: absolute;
+}
+
+.h2-withcols__img {
+  @include media('<=#{$br2}') {
+    display: inline-block;
+    height: 1.5em;
+  }
 }

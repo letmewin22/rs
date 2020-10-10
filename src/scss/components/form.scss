@@ -1,3 +1,10 @@
+@mixin ft() {
+  @include h;
+  text-transform: uppercase;
+  font-size: 7vw;
+  line-height: 1em;
+}
+
 .form-wrapper {
   position: fixed;
   top: 0;
@@ -21,10 +28,7 @@
 }
 
 .form__label {
-  @include h;
-  text-transform: uppercase;
-  font-size: 7vw;
-  line-height: 1em;
+  @include ft;
 }
 
 .form__btn {
@@ -88,6 +92,29 @@
   }
 }
 
+.form-thankyou {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  color: white;
+  visibility: hidden;
+}
+
+.form-thankyou__text {
+  @include ft;
+  line-height: 1.3em;
+  overflow: hidden;
+}
+
+.form-thankyou__container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 
 
 input:-webkit-autofill,
@@ -130,3 +157,4 @@ select:-webkit-autofill:focus {
       transform: translateY(110%) rotateX(60deg);
     }
 }
+

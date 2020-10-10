@@ -1,9 +1,9 @@
 .btn {
-  width: size(260, 210);
-  height: size(260, 210);
+  width: 13.54vw;
+  height: 13.54vw;
   @include h;
   color: white;
-  font-size: 16px;
+  font-size: 0.9vw;
   position: relative;
   padding: 10px;
   z-index: 2;
@@ -14,6 +14,11 @@
     .btn__circle-overlay {
       transform: translateY(0%);
     }
+  }
+  @include media('<=#{$br2}') {
+    width: size(260, 210);
+    height: size(260, 210);
+    font-size: 16px;
   }
 }
 

@@ -2,12 +2,14 @@ body {
   --primary: white;
   --primary2: var(--lg);
   --secondary: var(--black);
+  --acc: var(--accent);
 }
 
 [data-theme=e-black] {
   --primary: var(--black);
   --primary2: var(--black);
   --secondary: white;
+  --acc: var(--accent2);
   background-color: var(--primary);
   .theme-btn {
     background-color: $lg;

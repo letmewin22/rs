@@ -25,6 +25,12 @@
   grid-template-columns: 18.125vw 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-row-gap: 20px;
+  @include media('<=#{$br2}') {
+  grid-template-columns: 8.5em 1fr;
+  }
+  @include media('<=360px') {
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
 }
 .nav__item {
   @include h;
@@ -48,6 +54,13 @@
   &--3 {
     grid-column-start: 2;
     grid-column-end: 2;
+    @include media('<=360px') {
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+  }
+  @include media('<=#{$br2}') {
+    font-size: size(100, 42);
   }
 }
 
@@ -56,6 +69,9 @@
   color: var(--secondary);
   opacity: 0;
   @include ct;
+  @include media('<=360px') {
+    display: none;
+  }
 }
 
 .nav__num {
@@ -67,6 +83,10 @@
   line-height: 1em;
   @include reg;
   opacity: 0;
+  @include media('<=#{$br2}') {
+   font-size: size(16, 12);
+   right: -12px;
+  }
 }
 
 .nav__right {

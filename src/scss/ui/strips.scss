@@ -24,6 +24,10 @@
     transform: translateY(-50%) rotate(8deg);
     justify-content: flex-end;
   }
+  @include media('<=#{$br2}') {
+    padding-top: 24px;
+    padding-bottom: 16px;
+  }
 }
 
 .strip__wrapper {
@@ -37,5 +41,8 @@
   white-space: nowrap;
   @media screen and (max-height: 680px) and (orientation: landscape) {
     font-size: 7.33vw;
+  }
+  @include media('<=#{$br2}') {
+    font-size: size(160, 36);
   }
 }

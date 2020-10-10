@@ -5,6 +5,9 @@
   @media screen and (max-height: 680px) and (orientation: landscape) {
     font-size: 7.33vw;
   }
+  @include media('<=#{$br2}') {
+    font-size: size(160, 35.6) !important;
+  }
 }
 
 .h2 {
@@ -14,9 +17,12 @@
   @media screen and (max-height: 680px) and (orientation: landscape) {
     font-size: 7vw;
   }
+  @include media('<=#{$br2}') {
+    font-size: size(140, 36) !important;
+  }
 }
 
-@mixin h2() {
+@mixin h1() {
   font-size: 8.33vw;
   @include h;
   line-height: 1.1em;
@@ -25,7 +31,7 @@
   }
 }
 
-@mixin h1() {
+@mixin h2() {
   font-size: 7.25vw;
   @include h;
   line-height: 1.05em;

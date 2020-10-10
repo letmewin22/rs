@@ -25,6 +25,9 @@ body {
   background-color: $lg;
   position: relative;
   transition: background 1s ease, color 1s ease;
+  @include media('<=#{$br2}') {
+    font-size: size(24, 18);
+  }
 }
 
 button {

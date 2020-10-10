@@ -23,12 +23,23 @@
   width: 100%;
   grid-template-columns: 7.06% 32.28% 6.08% 24.29% 30.29%;
   grid-auto-flow: column;
+  @include media('<=#{$br2}') {
+    display: block;
+  }
 }
 
 .cols__col {
   display: block;
   grid-column-start: 1;
   grid-column-end: 6;
+}
+
+h1, h2 {
+  .cols__col {
+  @include media('<=#{$br2}') {
+    display: inline;
+  }
+}
 }
 
 .cols__col-1 {

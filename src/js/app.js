@@ -13,6 +13,8 @@ import ChangeView from './components/ChangeView'
 import {intersectionOvserver} from './utils/intersectionOvserver'
 import {Home} from './core/renderers'
 import FormPopUp from './components/FormPopUp'
+import {form} from './components/Form'
+import moveEl from './libs/moveEl'
 
 cssWebP()
 // const H =
@@ -28,6 +30,7 @@ new Highway.Core({
 
 window.addEventListener('load', () => {
   ChangeView.in()
+  moveEl()
 })
 const btns = document.querySelectorAll('.js-sticky')
 
@@ -55,7 +58,9 @@ navbarPos.init()
 themeBtn()
 
 new Nav()
-new FormPopUp()
+
+const formpoup = new FormPopUp()
+formpoup.init()
 
 const sections = [
   ...document.querySelectorAll('.section'),
@@ -66,3 +71,6 @@ const sections = [
 sections.forEach((section) => {
   intersectionOvserver(section)
 })
+
+
+form()

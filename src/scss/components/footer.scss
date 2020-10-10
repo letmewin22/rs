@@ -35,12 +35,19 @@
 
 .footer__cols {
   align-items: baseline;
+  @include media('<=#{$br2}') {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .footer__copyright {
   font-size: 0.8vw;
   width: fit-content;
   line-height: 1em;
+  @include media('<=#{$br2}') {
+    font-size: 16px;
+  }
 }
 
 .footer__link  {
@@ -50,6 +57,9 @@
   &--2 {
     grid-row-start: 1;
     grid-row-end: 1;
+  }
+  @include media('<=#{$br2}') {
+    display: none;
   }
 }
 
@@ -61,6 +71,9 @@
   font-size: 0.8vw;
   color: $accent;
   line-height: 1em;
+  @include media('<=#{$br2}') {
+    font-size: 16px;
+  }
 }
 
 [data-theme=e-black] {

@@ -9,11 +9,12 @@
       <h1 class="h1 home-header__h1 h1-withcols">
         <span class="container nm">
           <span class="cols">
+          <span class="mob-img-c"></span>
             <span
             class="h1-withcols__line h1-withcols__line--first-line cols__col js-l"
             >I am Roman Stets,</span
           >
-            <span class="h1-withcols__img js-i">
+            <span class="h1-withcols__img js-i" data-move="mob-img-c,1,960">
               <img src="./img/home/header.gif" alt="cat-gif"/>
               <span class="h1-img__text">don’t hover this shit</span>
             </span>
@@ -43,7 +44,7 @@
   </header>
   <main>
     <section class="section positioning-section">
-      <div class="container section__container">
+      <div class="container positioning-section__container section__container">
         <h2 class="h2 h2-withcols">
           <span class="container nm">
             <span class="cols">
@@ -147,7 +148,7 @@
         </div>
         <div class="container nm">
           <div class="cols join-section__btn-cols">
-            {{ mixins.btn('talk about project', 'join-section__btn cols__col cols__col-s-4 js-i') }}
+            {{ mixins.btn('talk about project', 'join-section__btn cols__col cols__col-s-4 js-i js-fo') }}
           </div>
         </div>
       </div>
@@ -208,7 +209,7 @@
           </div>
         </div>
       </div>
-      {{ mixins.btn('send a request', 'footer__btn js-i') }}
+      {{ mixins.btn('send a request', 'footer__btn js-i js-fo') }}
     </div>
 
     <div class="footer__bottom js-i">

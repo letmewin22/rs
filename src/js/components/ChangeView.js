@@ -25,10 +25,16 @@ export default class ChangeView {
 
     const tl = gsap.timeline({onComplete: cb})
 
-    chars.length && tl.set(chars, {
+    const set = {
       y: '110%',
       rotationX: 60
-    })
+    }
+
+    if (screen.width <=960) {
+      set.opacity = '0'
+    }
+
+    chars.length && tl.set(chars, set)
 
     i.length && tl.set(i, {
       opacity: 0,
@@ -42,6 +48,15 @@ export default class ChangeView {
       ease: 'expo.out',
       stagger: 0.016,
     })
+
+    if (screen.width <= 960) {
+      chars.length && tl.to(chars, {
+        duration: 1,
+        opacity: 1,
+        ease: 'expo.out',
+        stagger: 0.016,
+      }, 0)
+    }
 
     i.length && tl.to(i,
       {
@@ -62,10 +77,16 @@ export default class ChangeView {
 
     const tl = gsap.timeline({onComplete: cb})
 
-    chars.length && tl.set(chars, {
+    const set = {
       y: '0%',
       rotationX: 0
-    })
+    }
+
+    if (screen.width <=960) {
+      set.opacity = '1'
+    }
+
+    chars.length && tl.set(chars, set)
 
     i.length && tl.set(i, {
       opacity: 1,
@@ -79,6 +100,14 @@ export default class ChangeView {
       ease: 'expo.in',
       stagger: 0.016,
     })
+
+    if (screen.width <= 960) {
+      chars.length && tl.to(chars, {
+        duration: 0.6,
+        opacity: 0,
+        stagger: 0.016,
+      }, 0)
+    }
 
     i.length && tl.to(i,
       {

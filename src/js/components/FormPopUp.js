@@ -6,14 +6,13 @@ import ChangeView from './ChangeView'
 export default class FormPopUp {
   constructor() {
     this.$form = document.querySelector('.form-wrapper')
-    this.$openBtn = document.querySelector('.footer__btn')
+    this.$openBtn = document.querySelectorAll('.js-fo')
     this.$closeBtn = document.querySelector('.form-wrapper__close-btn')
     this.$formItems = document.querySelectorAll('.js-form-item')
     this.$inputs = document.querySelectorAll('.form__input')
     this.$btn = document.querySelectorAll('.form__btn')
 
     this.isOpen = false
-    this.init()
   }
 
   init() {
@@ -24,7 +23,7 @@ export default class FormPopUp {
     this.open = this.open.bind(this)
     this.close = this.close.bind(this)
 
-    this.$openBtn.addEventListener('click', this.open)
+    this.$openBtn.forEach(btn => btn.addEventListener('click', this.open))
     this.$closeBtn.addEventListener('click', this.close)
 
   }
@@ -77,7 +76,7 @@ export default class FormPopUp {
   }
 
   destroy() {
-    this.$openBtn.removeEventListener('click', this.open)
+    this.$openBtn.forEach(btn => btn.removeEventListener('click', this.open))
     this.$closeBtn.removeEventListener('click', this.close)
   }
 }

@@ -38,6 +38,9 @@
 .navbar__text {
   font-size: 1.1vw;
   line-height: 1em;
+  @include media('<=#{$br2}') {
+    display: none;
+  }
 }
 
 .navbar__menu {
@@ -76,6 +79,12 @@
 
 .navbar__cols {
   align-items: baseline;
+  margin-top: 4px;
+  @include media('<=#{$br2}') {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .navbar__logo {
@@ -83,6 +92,9 @@
     fill: var(--secondary);
     transition: fill .6s ease;
     max-width: 100%;
+  }
+  @include media('<=#{$br2}') {
+    width: 109px;
   }
 }
 
