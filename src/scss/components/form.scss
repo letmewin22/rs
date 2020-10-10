@@ -3,6 +3,9 @@
   text-transform: uppercase;
   font-size: 7vw;
   line-height: 1em;
+  @include media('<=#{$br2}') {
+    font-size: size(140, 36);
+  }
 }
 
 .form-wrapper {
@@ -32,15 +35,27 @@
 }
 
 .form__btn {
-  position: absolute;
-  right: 0;
-  bottom: -5vw;
-  opacity: 0;
+  @include media('>=#{$br2}') {
+    position: absolute;
+    right: 0;
+    bottom: -5vw;
+    opacity: 0;
+  }
+  @include media('<=#{$br2}') {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
 }
 
 .form__input-wrapper {
   display: flex;
   align-items: baseline;
+  @include media('<=#{$br2}') {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
 }
 
 .form-wrapper__close-btn {
@@ -66,7 +81,7 @@
     margin-top: -0.3vw;
     opacity: 0;
     transform: translateX(15px) scale(0.1);
-    transition: opacity .4s ease, transform .4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
   &:hover {
     &::before {
@@ -79,16 +94,23 @@
 .form__input {
   background-color: transparent;
   opacity: 0;
-  border-bottom: 1px solid #C4C4C4;
+  border-bottom: 1px solid #c4c4c4;
   flex-grow: 1;
   margin-left: 1.25vw;
   padding-left: 2.08vw;
   padding-bottom: 0.41vw;
   position: relative;
   top: -12px;
-  transition: border-color .3s ease;
+  transition: border-color 0.3s ease;
   &:focus {
     border-color: $accent;
+  }
+  @include media('<=#{$br2}') {
+    margin-top: 12px;
+    width: 100%;
+    top: 0;
+    padding-left: 0;
+    font-size: 16px;
   }
 }
 
@@ -115,10 +137,8 @@
   align-items: center;
 }
 
-
-
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -131,30 +151,29 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-[data-theme=e-black] {
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  box-shadow: 0 0 0px 1000px $black inset;
-  transition: background-color 5000s ease-in-out 0s;
-}
+[data-theme='e-black'] {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    box-shadow: 0 0 0px 1000px $black inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }
 
 .js-form-item {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1em;
+  perspective: 1000px;
+  .char {
     display: inline-block;
-    overflow: hidden;
-    line-height: 1em;
-    perspective: 1000px;
-    .char {
-      display: inline-block;
-      transform: translateY(110%) rotateX(60deg);
-    }
+    transform: translateY(110%) rotateX(60deg);
+  }
 }
-

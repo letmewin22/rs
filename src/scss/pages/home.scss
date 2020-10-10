@@ -1,5 +1,5 @@
 .home-header {
-  height: 100vh;
+  height: var(--vh);
   width: 100%;
   position: relative;
 }
@@ -126,17 +126,17 @@
     display: flex;
     flex-direction: column;
   }
-  }
+}
 
 .phiposophy-section__items {
   width: 100%;
   position: relative;
   margin-top: 40px;
   @include media('>=#{$br2}') {
-  display: grid;
-  grid-template-columns: 30vw 22.14vw 42vw;
-  grid-auto-rows: 29.427vw;
-  margin-top: 0px;
+    display: grid;
+    grid-template-columns: 30vw 22.14vw 42vw;
+    grid-auto-rows: 29.427vw;
+    margin-top: 0px;
   }
 }
 
@@ -155,36 +155,37 @@
     height: 335px;
     padding-left: 10px;
     padding-right: 10px;
+    font-size: 16px;
   }
   @include media('>=#{$br2}') {
-  &--first {
-    width: 31vw;
-    height: 31vw;
+    &--first {
+      width: 31vw;
+      height: 31vw;
+    }
+    &--second {
+      width: 26.14vw;
+      height: 26.14vw;
+      padding: 0 4.16vw;
+      margin-top: 9.84375vw;
+    }
+    &--third {
+      width: 30.6vw;
+      height: 30.6vw;
+      padding: 0 2.6vw;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      margin-left: 9.73958vw;
+    }
+    &--fourth {
+      width: 42vw;
+      height: 42vw;
+      padding: 0 3vw;
+      margin-top: 17.9375vw;
+      grid-column-start: 3;
+      grid-column-end: 3;
+      grid-row-start: 1;
+    }
   }
-  &--second {
-    width: 26.14vw;
-    height: 26.14vw;
-    padding: 0 4.16vw;
-    margin-top: 9.84375vw;
-  }
-  &--third {
-    width: 30.6vw;
-    height: 30.6vw;
-    padding: 0 2.6vw;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    margin-left: 9.73958vw;
-  }
-  &--fourth {
-    width: 42vw;
-    height: 42vw;
-    padding: 0 3vw;
-    margin-top: 17.9375vw;
-    grid-column-start: 3;
-    grid-column-end: 3;
-    grid-row-start: 1;
-  }
-}
 }
 
 .phiposophy-section__h2-container {
@@ -228,6 +229,9 @@
   background-color: var(--secondary);
   margin-bottom: 50px;
   transition: background 0.6s ease;
+  @include media('<=#{$br2}') {
+    margin-bottom: 12px;
+  }
 }
 
 .join-section__cols {
@@ -250,11 +254,14 @@
 .join-section__btn {
   @include media('<=#{$br2}') {
     margin: 0 auto;
-  } 
+  }
 }
 
 .cases-section__line {
   margin-bottom: 30px;
+  @include media('<=#{$br2}') {
+    display: none;
+  }
 }
 
 .cases-section__text {
@@ -264,26 +271,41 @@
     margin-top: 1.1vw;
     max-width: 31vw;
   }
+  @include media('<=#{$br2}') {
+    max-width: none;
+    position: static;
+    p {
+      max-width: none;
+    }
+  }
 }
 
 .cases-section__item {
   display: block;
-
   img {
     display: block;
     max-width: 100%;
   }
-  &--1 {
-    margin-top: 26.4vw;
+  @include media('>=#{$br2}') {
+    &--1 {
+      margin-top: 26.4vw;
+    }
+    &--2 {
+      margin-top: 39.1vw;
+      max-width: 72%;
+    }
   }
-  &--2 {
-    margin-top: 39.1vw;
-    max-width: 72%;
+  @include media('<=#{$br2}') {
+    margin-top: 40px;
   }
 }
 
 .cases-section__items {
   position: relative;
+  @include media('<=#{$br2}') {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .cases-section__separator {
@@ -294,10 +316,20 @@
   transform: rotate(20deg);
   transform-origin: bottom;
   position: absolute;
+  @include media('<=#{$br2}') {
+    display: none;
+  }
 }
 
 .cases-section__btn {
-  position: absolute;
+  @include media('>=#{$br2}') {
+    position: absolute;
+  }
+  @include media('<=#{$br2}') {
+    order: 7;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
 }
 
 .h2-withcols__img {

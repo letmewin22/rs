@@ -15,6 +15,8 @@ import {Home} from './core/renderers'
 import FormPopUp from './components/FormPopUp'
 import {form} from './components/Form'
 import moveEl from './libs/moveEl'
+import Resize from './utils/Resize'
+import {winH} from './utils/winH'
 
 cssWebP()
 // const H =
@@ -27,6 +29,12 @@ new Highway.Core({
   //     default: OtherTransition
   //   }
 })
+
+
+const resize = new Resize(() => {
+  winH()
+})
+resize.init()
 
 window.addEventListener('load', () => {
   ChangeView.in()

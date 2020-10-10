@@ -14,6 +14,9 @@
   width: 100%;
   background-color: var(--primary2);
   transition: opacity .25s ease, transform .25s ease, background .5s ease;
+  @include media('<=#{$br2}') {
+    padding-top: 24px;
+  }
   &::before {
     content: '';
     display: block;

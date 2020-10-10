@@ -19,7 +19,7 @@ body {
   color: var(--secondary);
   line-height: 1.5em;
   font-size: 1.25vw;
-  height: 100vh;
+  height: var(--vh);
   position: fixed;
   overflow: hidden !important;
   background-color: $lg;
@@ -36,7 +36,7 @@ button {
 }
 
 #scroll-container {
-  height: calc( var(--vh, 1vh) * 100);
+  height: var(--vh);
   overflow: auto;
   width: 100vw;
   overscroll-behavior-y: none;
@@ -62,6 +62,12 @@ button {
   .char {
     display: inline-block;
   }
+  .word {
+    @include media('<=#{$br2}') {
+      display: inline-block;
+    }
+  }
+
 }
 
 .e-fixed {
