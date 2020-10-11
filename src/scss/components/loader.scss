@@ -5,7 +5,7 @@
   bottom: 0;
   right: 0;
   z-index: 10000;
-  background: var(--primary2);
+  // background: var(--primary2);
   // display: none;
 }
 
@@ -17,17 +17,38 @@
 
 .loader__cols {
   margin-top: -12vh;
+  @include media('<=#{$br2}') {
+    margin-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
 
 .loader__big-text {
   @include h1;
+  perspective: 1000px;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1em;
   &--2 {
     margin-top: 4vh;
+  }
+  .char {
+    display: inline-block;
+  }
+  @include media('<=#{$br2}') {
+    flex: 1 0 100%;
+    &--2 {
+      flex: 1 0 100%;
+      text-align: end;
+    }
   }
 }
 
 .loader__text {
   margin-top: 1.64vw;
+  display: inline-block;
 }
 
 .loader__progress {
@@ -46,6 +67,18 @@
     width: 100%;
     height: 100%;
     display: block;
+    transform: rotate(90deg);
+    path {
+      stroke-dasharray: 628.4071044921875;
+      stroke-dashoffset: 628.4071044921875;
+    }
+  }
+  @include media('<=#{$br2}') {
+    width: size(544, 209);
+    height: size(544, 209);
+    position: static;
+    margin-top: 20px;
+    flex: 1 0 40%;
   }
 }
 
@@ -54,4 +87,13 @@
   font-size: 16vh;
   line-height: 1em;
   position: absolute;
+  @include media('<=#{$br2}') {
+    font-size: size(200, 42);
+  }
+}
+
+.loader__text {
+  @include media('<=#{$br2}') {
+    flex: 0 1 40%;
+  }
 }

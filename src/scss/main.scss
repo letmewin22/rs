@@ -81,3 +81,12 @@ button {
     overflow-x: auto;
   }
 }
+
+.site-wrapper {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.js-ui-load {
+  opacity: 0;
+}

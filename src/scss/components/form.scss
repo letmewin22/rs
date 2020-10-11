@@ -46,8 +46,8 @@
     opacity: 0;
   }
   @include media('<=#{$br2}') {
-    width: 130px;
-    height: 130px;
+    // width: 130px;
+    // height: 130px;
     margin: 0 auto;
     margin-top: 40px;
   }
@@ -106,6 +106,7 @@
   position: relative;
   top: -12px;
   transition: border-color 0.3s ease;
+  border-radius: 0px;
   &:focus {
     border-color: $accent;
   }

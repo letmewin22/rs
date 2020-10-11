@@ -1,4 +1,4 @@
-.h1 {
+@mixin h1() {
   font-size: 8.33vw;
   @include h;
   line-height: 1.1em;
@@ -10,7 +10,7 @@
   }
 }
 
-.h2 {
+@mixin h2() {
   font-size: 7.25vw;
   @include h;
   line-height: 1.05em;
@@ -22,23 +22,16 @@
   }
 }
 
-@mixin h1() {
-  font-size: 8.33vw;
-  @include h;
-  line-height: 1.1em;
-  @media screen and (max-height: 680px) and (orientation: landscape) {
-    font-size: 7.33vw;
-  }
+
+.h1 {
+  @include h1;
 }
 
-@mixin h2() {
-  font-size: 7.25vw;
-  @include h;
-  line-height: 1.05em;
-  @media screen and (max-height: 680px) and (orientation: landscape) {
-    font-size: 7vw;
-  }
+.h2 {
+  @include h2;
 }
+
+
 
 .it {
   @include hi;

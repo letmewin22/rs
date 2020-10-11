@@ -1,6 +1,6 @@
 .nav-hidden {
   .navbar {
-    opacity: 0;
+    opacity: 0 !important;
     transform: translateY(-60px);
   }
 }

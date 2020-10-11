@@ -9,7 +9,6 @@ import ScrollBar from './components/Scrollbar'
 import NavbarPos from './utils/navbarPos'
 import themeBtn from './utils/themeBtn'
 import Nav from './components/Nav'
-import ChangeView from './components/ChangeView'
 import {intersectionOvserver} from './utils/intersectionOvserver'
 import {Home} from './core/renderers'
 import FormPopUp from './components/FormPopUp'
@@ -17,6 +16,7 @@ import {form} from './components/Form'
 import moveEl from './libs/moveEl'
 import Resize from './utils/Resize'
 import {winH} from './utils/winH'
+import Loader from './components/Loader'
 
 cssWebP()
 // const H =
@@ -37,7 +37,7 @@ const resize = new Resize(() => {
 resize.init()
 
 window.addEventListener('load', () => {
-  ChangeView.in()
+  new Loader()
   moveEl()
 })
 const btns = document.querySelectorAll('.js-sticky')

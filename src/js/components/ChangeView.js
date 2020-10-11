@@ -16,6 +16,7 @@ export default class ChangeView {
     })
   }
 
+
   static in(cb) {
 
     this.prepare(cb)

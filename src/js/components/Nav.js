@@ -63,13 +63,13 @@ export default class Nav {
     })
     tl.to(this.$navS, {duration: 0.5, opacity: 1}, 0.5)
     tl.to(this.$navN, {duration: 0.5, opacity: 0.6}, 0.5)
-    tl.to(this.$navImg, {
-      duration: 2,
-      y: 0,
-      rotation: '0deg',
-      opacity: 1,
-      ease: 'expo.out'
-    }, 0.5)
+    // tl.to(this.$navImg, {
+    //   duration: 2,
+    //   y: 0,
+    //   rotation: '0deg',
+    //   opacity: 1,
+    //   ease: 'expo.out'
+    // }, 0.5)
   }
   closeAnim() {
     const tl = gsap.timeline()
