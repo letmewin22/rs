@@ -43,11 +43,13 @@ export default class Loader {
       this.imgLoad.on('progress', (instance, image) => this.onProgress(image))
       this.imgLoad.on('fail', () => {
         setTimeout(() => {
-          this.counter(100, this.countImages)
+          const res = this.circle + (this.countImages * this.step)
+          this.counter(100, res)
         }, 650)
       })
     } else {
-      this.counter(100, this.countImages)
+      const res = this.circle + (this.countImages * this.step)
+      this.counter(100, res)
     }
   }
 
