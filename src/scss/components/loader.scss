@@ -71,6 +71,7 @@
     path {
       stroke-dasharray: 628.4071044921875;
       stroke-dashoffset: 628.4071044921875;
+      transform: translate(1px, 1px);
     }
   }
   @include media('<=#{$br2}') {
