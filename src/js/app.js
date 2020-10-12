@@ -37,6 +37,14 @@ const resize = new Resize(() => {
 resize.init()
 
 window.addEventListener('load', () => {
+  // const pictures = document.querySelectorAll('picture')
+  // console.log(pictures)
+  // pictures.length && pictures.forEach(pic => {
+  //   pic.setAttribute('data-pli', '')
+  //   console.log(pic)
+  //   // pic.querySelector('img').removeAttribute('data-pli')
+  // })
+
   new Loader()
   moveEl()
 })

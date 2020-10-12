@@ -22,8 +22,8 @@ export default class Loader {
 
     this.num = {num: 0}
     this.state = false
-
     this.init()
+
   }
 
   init() {
@@ -31,9 +31,11 @@ export default class Loader {
     this.step = this.circle / this.countImages
 
     document.body.style.cursor = 'wait'
-    document.documentElement.classList.remove('loading')
+    document.body.classList.remove('loading')
     document.body.classList.add('e-fixed')
-    document.querySelector('.site-wrapper').style.opacity = '0'
+    document.querySelector('.site-wrapper').style.cssText = `
+      transition: opacity 1s ease;
+    `
 
     if (this.pli.length > 0) {
       this.imgLoad = imagesLoaded(document.querySelectorAll('[data-pli]'), {
@@ -114,12 +116,14 @@ export default class Loader {
         document.querySelector('.site-wrapper').style.opacity = '1'
       }
     })
-
+    tl.delay(0.2)
     tl.to(this.percentHTML,
       {
         opacity: 0,
-        duration: 0.5
-      })
+        y: '50%',
+        duration: 0.5,
+        ease: 'expo.in',
+      }, 0.61)
 
     tl.to(this.progressHTML,
       {

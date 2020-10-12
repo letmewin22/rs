@@ -1,8 +1,8 @@
 {% macro btn(text, selector, type) %}
 <button {% if type %}type={{type}}{% endif %} class="btn {{selector}} js-sticky">
-  <div data-power="60, 60" class="btn__circle js-sticky-item">
-    <div class="btn__circle-overlay"></div>
-  </div>
+  <span data-power="60, 60" class="btn__circle js-sticky-item">
+    <span class="btn__circle-overlay"></span>
+  </span>
   <span data-power="80, 7" class="btn__text js-sticky-item"
     >{{text|safe}}</span
   >

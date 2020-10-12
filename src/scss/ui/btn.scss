@@ -29,6 +29,7 @@
   width: 100%;
   height: 100%;
   background-color: $accent;
+  display: block;
   border-radius: 50%;
   z-index: -2;
   position: absolute;
@@ -42,6 +43,7 @@
 .btn__circle-overlay {
   width: 100%;
   height: 100%;
+  display: block;
   background-color: #315CCB;
   opacity: .7;
   border-radius: 40%;

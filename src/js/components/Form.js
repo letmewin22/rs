@@ -9,7 +9,6 @@ export const form = () => {
   const tnx = document.querySelector('.form-thankyou')
 
   const lines = document.querySelectorAll('.js-fl')
-  console.log(lines)
 
   lines.length &&
     lines.forEach((el) => {

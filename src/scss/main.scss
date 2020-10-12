@@ -24,9 +24,12 @@ body {
   overflow: hidden !important;
   background-color: $lg;
   position: relative;
-  transition: background 1s ease, color 1s ease;
+  transition: background 1s ease, color 1s ease, opacity 0.5s ease;
   @include media('<=#{$br2}') {
     font-size: size(24, 18);
+  }
+  &.loading {
+    opacity: 0;
   }
 }
 
@@ -84,9 +87,17 @@ button {
 
 .site-wrapper {
   opacity: 0;
-  transition: opacity 1s ease;
 }
 
 .js-ui-load {
   opacity: 0;
 }
+
+// .a-i, .a-h {
+//   opacity: 0;
+//   transform: translateY(80px);
+// }
+
+// .a-l, .section__line.a-l {
+//   width: 0%;
+// }

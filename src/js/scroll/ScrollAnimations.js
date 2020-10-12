@@ -5,65 +5,39 @@ class ScrollAnimations extends ScrollInView {
   constructor() {
     super()
 
-    NodeList.prototype.animation = function (options) {
+    NodeList.prototype.animation = function(options) {
       this.length > 0 && gsap.to(this, options)
     }
 
     this.sections = document.querySelectorAll('.section')
 
-    new ScrollInView(this.sections, this.sectionAnimation, 0.5)
+    new ScrollInView(this.sections, this.sectionAnimation, 0.35)
   }
 
   sectionAnimation(elem) {
-    elem.querySelectorAll('.a-line')
+    elem.querySelectorAll('.a-i')
       .animation({
-        duration: 1,
+        duration: 0.7,
+        y: '0',
+        opacity: '1',
+        ease: 'power2.out',
+        stagger: 0.2
+      })
+
+    elem.querySelectorAll('.a-h')
+      .animation({
+        duration: 0.7,
+        opacity: 1,
+        y: 0,
+        ease: 'power2.out',
+      })
+    elem.querySelectorAll('.a-l')
+      .animation({
+        duration: 0.7,
         width: '100%',
-        ease: 'power1.out',
-        stagger: 0.2,
+        ease: 'power2.out',
       })
 
-    elem.querySelectorAll('.a-h2')
-      .animation({
-        duration: 1,
-        delay: 0.2,
-        opacity: 1,
-        y: 0,
-        ease: 'power1.out',
-      })
-
-    elem.querySelectorAll('.a-btn')
-      .animation({ duration: 1, delay: 0.4, opacity: 1, ease: 'power1.out' })
-
-    elem.querySelectorAll('.a-p')
-      .animation({
-        duration: 1,
-        delay: 0.5,
-        opacity: 1,
-        y: 0,
-        ease: 'power1.out',
-        stagger: 0.2,
-      })
-
-    elem.querySelectorAll('.a-item')
-      .animation({
-        duration: 1,
-        delay: 0.4,
-        opacity: 1,
-        y: 0,
-        ease: 'power1.out',
-        stagger: 0.2,
-      })
-
-    elem.querySelectorAll('.a-titem')
-      .animation({
-        duration: 1,
-        delay: 0.4,
-        opacity: 1,
-        y: 0,
-        ease: 'power1.out',
-        stagger: 0.2,
-      })
   }
 }
 
