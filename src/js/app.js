@@ -12,11 +12,11 @@ import Nav from './components/Nav'
 import {intersectionOvserver} from './utils/intersectionOvserver'
 import {Home} from './core/renderers'
 import FormPopUp from './components/FormPopUp'
-import {form} from './components/Form'
 import moveEl from './libs/moveEl'
 import Resize from './utils/Resize'
 import {winH} from './utils/winH'
 import Loader from './components/Loader'
+import FormSubmit from './form/FormSubmit'
 
 cssWebP()
 // const H =
@@ -32,6 +32,7 @@ new Highway.Core({
 
 
 const resize = new Resize(() => {
+
   winH()
 })
 resize.init()
@@ -89,5 +90,4 @@ sections.forEach((section) => {
 })
 
 
-form()
-
+new FormSubmit(document.querySelector('.form'))

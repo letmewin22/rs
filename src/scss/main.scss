@@ -101,3 +101,22 @@ button {
 // .a-l, .section__line.a-l {
 //   width: 0%;
 // }
+
+
+#app {
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	touch-action: none;
+	width: 100% ;
+	pointer-events: none;
+	background-color: transparent; 
+  opacity: 1;
+  z-index: 10000;
+}	
+
+.js-webgl-element-hidden {
+  opacity: 0 
+}
+	

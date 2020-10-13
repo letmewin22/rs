@@ -4,6 +4,7 @@
   --lg: #F1F1F1;
   --accent2: linear-gradient(179.9deg, #2E54B7 -9.86%, #A04AF7 99.91%);
   --g-offset: 2.08vw;
+  --red: #E73737;
   @media screen and (max-width: 960px) {
     --g-offset: 20px;
   }
@@ -15,6 +16,7 @@ $black: var(--black);
 $accent: var(--accent);
 $lg: var(--lg);
 $accent2: var(--accent2);
+$red: var(--red);
 
 //screen config
 $maxWidth: 1920;

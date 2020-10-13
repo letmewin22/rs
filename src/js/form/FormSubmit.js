@@ -1,6 +1,6 @@
 import FormInputs from './FormInputs.js'
 import serialize from './formSend.js'
-import animation from './animation.js'
+import {animation} from './animation.js'
 
 export default class FormSubmit extends FormInputs {
 
@@ -12,13 +12,8 @@ export default class FormSubmit extends FormInputs {
   }
 
   validation() {
-
-    this.validateText.querySelector('.koef-inp').innerHTML = this.koef
-    this.validateText.querySelector('.koef-outp').innerHTML = this.koef - this.phone.value.trim('').length
-    this.validateText.style.opacity = '1'
-    this.label.classList.add('red')
-    this.formButton.classList.add('red')
-    this.phone.focus()
+    this.form.classList.add('error')
+    this.email.focus()
   }
 
   requestLoad() {
@@ -27,9 +22,9 @@ export default class FormSubmit extends FormInputs {
     // window.dataLayer.push({'event': 'form_sent'})
     document.body.classList.remove('form-focused')
     for (const input of this.input) {
-      input.classList.remove('focus')
+      input.parentNode.classList.remove('focus')
     }
-    animation(this.formButton)
+    animation(this.form)
 
   }
 
@@ -74,10 +69,9 @@ export default class FormSubmit extends FormInputs {
   }
 
 
-
   submit(e) {
     e.preventDefault()
-    if (this.phone.value.trim('').length < this.koef) {
+    if (!this.regExp.test(this.email.value)) {
       this.validation()
     } else {
       this.requestSend()

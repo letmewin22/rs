@@ -1,48 +1,43 @@
 export default class FormInputs {
 
   constructor(form) {
-  
+
     this.form = form
     this.input = this.form.querySelectorAll('.form__input')
-    this.phone = this.form.querySelector('[type=tel]')
     this.email = this.form.querySelector('[type=email]')
-    
-    this.validateText = this.form.querySelector('.form__validate-text')
-    
-    this.formButton = this.form.querySelector('.btn')
-    this.label = this.form.querySelector('.required')
-
-    this.koef = +this.validateText.getAttribute('data-value')
-
+    this.phone = this.form.querySelector('[type=tel]')
+    this.btn = this.form.querySelector('.btn')
     this.focus()
     this.blur()
     this.reset()
-
-    this.phone.oninput = () => this.onInput()
+    this.regExp = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/
+    this.email.oninput = () => this.onInput()
+    this.phone.oninput = () => this.onPhoneInput()
 
     this.form.classList.add('activated')
 
   }
 
-  onInput() {
+  onPhoneInput() {
     this.phone.value = this.phone.value
       .replace(/[A-z]|[А-я]|[*!@#$%^&{}[\]~""/|=]/g, '')
       .replace( /  +/g, ' ' )
-    if (this.phone.value.length < this.koef) {
+  }
+
+  onInput() {
+    if (!this.regExp.test(this.email.value)) {
       this.validation()
     } else {
-      this.validateText.style.opacity = '0'
-      this.label.classList.remove('red')
-      this.formButton.classList.remove('red')
+      this.form.classList.remove('error')
     }
   }
 
   focus() {
 
     function focus(e) {
-      const t = e.target 
+      const t = e.target
 
-      t.classList.add('focus')
+      t.parentNode.classList.add('focus')
       document.body.classList.add('form-focused')
     }
 
@@ -54,9 +49,9 @@ export default class FormInputs {
   blur() {
 
     function blur(e) {
-      const t = e.target 
+      const t = e.target
       if (t.value === '') {
-        t.classList.remove('focus')
+        t.parentNode.classList.remove('focus')
         document.body.classList.remove('form-focused')
       }
     }
@@ -68,21 +63,12 @@ export default class FormInputs {
 
   reset() {
     document.body.addEventListener('click', () => {
-      this.validateText.style.opacity = '0'
-      this.label.classList = 'form__label-content'
-      this.label.classList.remove('red')
-      this.formButton.classList.remove('red')
+      this.form.classList.remove('error')
     })
 
     this.phone.oninput = () => {
-      this.validateText.style.opacity = '0'
-      this.label.classList.remove('red')
-      this.formButton.classList.remove('red')
+      this.form.classList.remove('error')
     }
-
-    this.formButton.addEventListener('mouseleave', () => {
-      this.formButton.classList.remove('red')
-    })
   }
 
 }

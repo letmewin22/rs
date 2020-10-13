@@ -5,36 +5,47 @@
       <span class="form__label cols__col cols__col-s-3 js-form-item">Hello,</span>
       <div class="form__input-wrapper cols__col">
         <label for="name" class="form__label js-form-item">my name is</label>
-        <input 
+        <div class="form__input-container">
+          <input 
           type="text" 
           id="name" 
           name="name" 
           class="form__input" 
           placeholder="enter your name"
         >
+        <div class="form__input-line"></div>
+        </div>
       </div>
       <div class="form__input-wrapper cols__col cols__col-s-2">
         <label for="phone" class="form__label js-form-item">call me</label>
-        <input 
+        <div class="form__input-container">
+          <input 
           type="tel" 
           id="phone" 
           name="phone" 
           class="form__input" 
-          placeholder="enter your phone*"
+          placeholder="enter your phone"
         >
+        <div class="form__input-line"></div>
+        </div>
       </div>
-        <span class="form__label cols__col cols__col-s-3 js-form-item">or send</span>
-        <div class="form__input-wrapper cols__col">
-          <label for="phone" class="form__label js-form-item">an e-mail</label>
+      <span class="form__label cols__col cols__col-s-3 js-form-item">or send</span>
+      <div class="form__input-wrapper cols__col">
+        <label for="phone" class="form__label js-form-item">an e-mail</label>
+        <div class="form__input-container">
           <input 
           type="email" 
           id="email" 
           name="email" 
           class="form__input" 
-          placeholder="enter your e-mail"
+          placeholder="enter your e-mail*"
         >
-        {{ mixins.btn('send', 'form__btn', 'submit') }}
+          <span class="form__validate-text">incorrect email</span>
+          <div class="form__input-line"></div>
         </div>
-      </form>
-    </div>
+
+      </div>
+      {{ mixins.btn('send', 'form__btn', 'submit') }}
+    </form>
   </div>
+</div>

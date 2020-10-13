@@ -9,7 +9,7 @@ export default class FormPopUp {
     this.$openBtn = document.querySelectorAll('.js-fo')
     this.$closeBtn = document.querySelector('.form-wrapper__close-btn')
     this.$formItems = document.querySelectorAll('.js-form-item')
-    this.$inputs = document.querySelectorAll('.form__input')
+    this.$inputs = document.querySelectorAll('.form__input-container')
     this.$btn = document.querySelectorAll('.form__btn')
 
     this.isOpen = false
