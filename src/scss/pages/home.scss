@@ -334,11 +334,16 @@
   }
   @include media('>=#{$br2}') {
     &--1 {
-      margin-top: 26.4vw;
+      margin-top: 23.4vw;
+      max-width: 62%;
     }
     &--2 {
-      margin-top: 39.1vw;
+      margin-top: 41.1vw;
       max-width: 72%;
+    }
+    &--3 {
+      max-width: 73%;
+      justify-self: end;
     }
   }
   @include media('<=#{$br2}') {
@@ -360,6 +365,7 @@
 .cases-section__separator {
   width: 1px;
   height: 26.66vw;
+  margin-top: 6vw;
   background: var(--secondary);
   @include bt;
   transform: rotate(20deg);
@@ -373,6 +379,7 @@
 .cases-section__btn {
   @include media('>=#{$br2}') {
     position: absolute;
+    top: 22%;
   }
   @include media('<=#{$br2}') {
     order: 7;

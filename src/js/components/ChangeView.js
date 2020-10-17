@@ -50,6 +50,8 @@ export default class ChangeView {
       stagger: 0.016,
     })
 
+    window.scene && window.scene.show()
+
     if (screen.width <= 960) {
       chars.length && tl.to(chars, {
         duration: 1,
@@ -88,6 +90,7 @@ export default class ChangeView {
     }
 
     chars.length && tl.set(chars, set)
+    window.scene && window.scene.hide()
 
     i.length && tl.set(i, {
       opacity: 1,

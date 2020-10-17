@@ -9,7 +9,7 @@ export default class NavbarPos {
 
   init() {
     this.scrollPos = 0
-    this.scrollNav()
+    window.raf.on(this.scrollNav.bind(this))
   }
 
   mouseHandler(e) {
@@ -38,11 +38,11 @@ export default class NavbarPos {
       .getElementById('scroller')
       .getBoundingClientRect().top
 
-    this.raf = window.requestAnimationFrame(this.scrollNav.bind(this))
+    // this.raf = window.requestAnimationFrame(this.scrollNav.bind(this))
   }
 
   destroy() {
     this.scrollPos = 0
-    cancelAnimationFrame(this.raf)
+    // cancelAnimationFrame(this.raf)
   }
 }

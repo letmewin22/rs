@@ -36,7 +36,7 @@ const config = {
   watch: {
     html: sourceFolder + '/**/*.html',
     css: sourceFolder + '/scss/**/*.{scss,sass}',
-    js: sourceFolder + '/js/**/*.{js, glsl, json}',
+    js: sourceFolder + '/js/**/*.{js,glsl,json}',
     img: sourceFolder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
     video: sourceFolder + '/video/*',
     audio: sourceFolder + '/audio/*'

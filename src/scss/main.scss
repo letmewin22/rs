@@ -5,14 +5,16 @@
   }
 }
 
-.custom {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-  }
-}
+// .custom {
+//   scrollbar-width: none;
+//   -ms-overflow-style: none;
+//   &::-webkit-scrollbar {
+//     width: 0px;
+//     background: transparent;
+//   }
+// }
+
+html, body { height: 100% }
 
 body {
   @include reg;
@@ -38,11 +40,28 @@ button {
   outline: none;
 }
 
+#root {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+}
+
+#app {
+  overflow: auto;
+  height: 8403px;
+  position: relative;
+}
+
 #scroll-container {
   height: var(--vh);
   overflow: auto;
+  // overflow: hidden;
   width: 100vw;
   overscroll-behavior-y: none;
+  // position: fixed;
+  top: 0;
+  left: 0;
+  // pointer-events: none;
 }
 
 #scroller {
@@ -103,7 +122,7 @@ button {
 // }
 
 
-#app {
+#gl {
 	height: 100%;
 	left: 0;
 	position: fixed;
@@ -113,10 +132,14 @@ button {
 	pointer-events: none;
 	background-color: transparent; 
   opacity: 1;
-  z-index: 10000;
+  z-index: 0;
 }	
 
-.js-webgl-element-hidden {
+.js-hidden {
   opacity: 0 
 }
-	
+
+// .section {
+//   position: absolute;
+//   top: 0;
+// }

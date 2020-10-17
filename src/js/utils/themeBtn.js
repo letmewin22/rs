@@ -7,7 +7,6 @@ const themeBtn = () => {
   } else {
     document.querySelector('.theme-btn').classList.remove('disabled')
   }
-  window.requestAnimationFrame(themeBtn)
 }
 
 export default themeBtn
