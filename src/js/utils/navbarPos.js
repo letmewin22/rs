@@ -1,3 +1,4 @@
+import {state} from '../state'
 import {isFixed} from './isFixed'
 
 export default class NavbarPos {
@@ -19,7 +20,10 @@ export default class NavbarPos {
   }
 
   scrollNav() {
-    const b = document.getElementById('scroller').getBoundingClientRect()
+    // const b = document.getElementById('scroller').getBoundingClientRect()
+    const b = {
+      top: -state.scrolled
+    }
     if (b.top > this.scrollPos || isFixed()) {
       document.body.classList.remove('nav-hidden')
       document.removeEventListener('mousemove', this.mouseFunc)
@@ -34,15 +38,14 @@ export default class NavbarPos {
       document.querySelector('.navbar').classList.add('remove-bg')
     }
 
-    this.scrollPos = document
-      .getElementById('scroller')
-      .getBoundingClientRect().top
-
-    // this.raf = window.requestAnimationFrame(this.scrollNav.bind(this))
+    // this.scrollPos = document
+    //   .getElementById('scroller')
+    //   .getBoundingClientRect().top
+    this.scrollPos = -state.scrolled
   }
 
   destroy() {
     this.scrollPos = 0
-    // cancelAnimationFrame(this.raf)
+    window.raf.off(this.scrollNav.bind(this))
   }
 }

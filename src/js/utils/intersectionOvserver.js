@@ -5,7 +5,7 @@ export const intersectionOvserver = (el, cb) => {
   cb = cb ?? noop
   const b = el.getBoundingClientRect()
 
-  if (b.top <= window.innerHeight && -b.top <= b.height) {
+  if (b.top < window.innerHeight && -b.top <= b.height) {
     if (!el.classList.contains('js-in-view')) {
       el.classList.add('js-in-view')
       cb()

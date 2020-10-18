@@ -40,28 +40,14 @@ button {
   outline: none;
 }
 
-#root {
-  height: 100%;
-  overflow: auto;
-  position: relative;
-}
-
-#app {
-  overflow: auto;
-  height: 8403px;
-  position: relative;
-}
-
 #scroll-container {
-  height: var(--vh);
-  overflow: auto;
-  // overflow: hidden;
-  width: 100vw;
-  overscroll-behavior-y: none;
-  // position: fixed;
+  position: fixed;
   top: 0;
+  right: 0;
   left: 0;
-  // pointer-events: none;
+  width: 100%;
+  height: auto;
+  margin: auto;
 }
 
 #scroller {

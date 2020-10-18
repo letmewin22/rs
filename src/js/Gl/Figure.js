@@ -37,10 +37,9 @@ export default class Figure {
     const uniforms = {
       uTexture: {type: 't', value: this.image},
       uTime: {value: 0},
-      uState: {value: 0},
       uDistortion: {value: 0},
       uCenter: {value: 0},
-      uOpacity: {value: 1}
+      uVisibility: {value: 1}
     }
 
     this.material = new THREE.ShaderMaterial({
@@ -71,9 +70,9 @@ export default class Figure {
 
     this.sizes.set(width, height)
     this.offset.set(left - ww / 2 + width / 2, pos + wh / 2 -top - height / 2)
-    console.log(pos)
     const x = (left-ww/2)/(ww/2) * 0.5
-    this.mesh.material.uniforms.uCenter.value = x
+    this.mesh.material.uniforms.uCenter.value = ww > 960 ? x : 0
+
   }
 
   update() {
@@ -89,10 +88,6 @@ export default class Figure {
   }
 
   mouseEnter() {
-    gsap.to(this.mesh.material.uniforms.uState, {
-      duration: 1.5,
-      value: 1,
-    })
     gsap.to(this.mesh.material.uniforms.uDistortion, {
       duration: 1.5,
       value: 1
@@ -100,10 +95,6 @@ export default class Figure {
   }
 
   mouseLeave() {
-    gsap.to(this.mesh.material.uniforms.uState, {
-      duration: 1.5,
-      value: 0
-    })
     gsap.to(this.mesh.material.uniforms.uDistortion, {
       duration: 1.5,
       value: 0

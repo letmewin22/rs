@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import * as THREE from 'three'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
+import {state} from '../state'
 
 import Figure from './Figure'
 
@@ -18,7 +19,7 @@ export default class Scene {
     this.time = 0
 
     this.figures = []
-    this.fOpacity = []
+    this.fVisibility = []
 
     this.resize = this.resize.bind(this)
     window.addEventListener('resize', this.resize)
@@ -50,7 +51,7 @@ export default class Scene {
     this.$imgs.forEach(img => {
       const figureIns = new Figure(this.scene, img)
       this.figures.push(figureIns)
-      this.fOpacity.push(figureIns.mesh.material.uniforms.uOpacity)
+      this.fVisibility.push(figureIns.mesh.material.uniforms.uVisibility)
     })
   }
 
@@ -88,22 +89,23 @@ export default class Scene {
 
   updatePos(pos) {
     this.figures.forEach(figure => {
-      figure.getSizes(document.querySelector('#scroll-container').scrollTop)
+      figure.getSizes(pos)
       figure.resize()
     })
   }
 
   animate() {
     this.time++
-    this.updatePos()
     this.figures.forEach(figure => {
       figure.update()
     })
+    this.updatePos(state.scrolled)
     this.renderer.render(this.scene, this.camera)
   }
 
   show() {
-    gsap.to(this.fOpacity, {
+    console.log(this.fVisibility)
+    gsap.to(this.fVisibility, {
       duration: 1,
       value: 1,
       ease: 'expo.out',
@@ -111,7 +113,7 @@ export default class Scene {
     })
   }
   hide() {
-    gsap.to(this.fOpacity, {
+    gsap.to(this.fVisibility, {
       duration: 1,
       value: 0,
       ease: 'expo.in',

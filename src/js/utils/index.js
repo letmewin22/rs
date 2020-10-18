@@ -1,2 +1,2 @@
 export {preloadImages} from './preload'
-export {lerp} from './lerp'
+export {lerp} from './math'

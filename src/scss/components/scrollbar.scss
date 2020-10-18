@@ -3,7 +3,7 @@
   right: 0;
   bottom: 2px;
   z-index: 10000000 !important;
-  height: 100vh;
+  height: var(--vh);
   width: 12px;
   user-select: none;
   overflow: hidden;
@@ -18,9 +18,9 @@
   &.hidden {
     display: none;
   }
-  @include media('<=1024px') {
-    display: none;
-  }
+  // @include media('<=1024px') {
+  //   display: none;
+  // }
 }
 
 .scrollbar__thumb {
