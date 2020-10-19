@@ -6,6 +6,7 @@ import ScrollBar from './Scrollbar'
 import {run} from './run'
 import {resize} from '@/utils/Resize'
 import mutationObserver from '../../utils/mutationObserver'
+import {raf} from '../../utils/RAF'
 // import {isFixed} from '@/utils/isFixed'
 
 export default class SmoothScroll {
@@ -53,7 +54,7 @@ export default class SmoothScroll {
     mutationObserver(this.$el, this.resize)
 
     new ScrollBar()
-    window.raf.on(this.scroll)
+    raf.on(this.scroll)
   }
 
   scroll() {

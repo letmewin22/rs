@@ -100,4 +100,11 @@ export default class Figure {
       value: 0
     })
   }
+
+  destroy() {
+    this.scene.remove(this.mesh)
+    this.geometry.dispose()
+    this.material.dispose()
+    this.image.dispose()
+  }
 }

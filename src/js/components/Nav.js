@@ -27,31 +27,32 @@ export default class Nav {
     this.$navBtn.addEventListener('click', this.toggle)
 
     this.$navItems.forEach((item) => {
-      item.addEventListener('click', this.toggle)
+      item.addEventListener('click', () => {
+        this.close(true)
+      })
     })
 
     this.$logo.addEventListener('click', this.close)
   }
 
   toggle() {
-    this.isOpen ? this.close() : this.open()
+    this.isOpen ? this.close(true) : this.open()
   }
   open() {
     document.querySelector('.js-nav-open').style.display = 'none'
     document.querySelector('.js-nav-close').style.display = 'block'
-
+    this.$logo.setAttribute('data-transition', 'nav')
     this.$nav.classList.add('e-open')
     document.body.classList.add('e-fixed')
     ChangeView.out(this.openAnim.bind(this))
     this.isOpen = true
   }
-  close() {
+  close(isAnimating) {
     document.querySelector('.js-nav-open').style.display = 'block'
     document.querySelector('.js-nav-close').style.display = 'none'
-
     this.$nav.classList.remove('e-open')
     this.isOpen = false
-    this.closeAnim()
+    this.closeAnim(isAnimating)
   }
 
   openAnim() {
@@ -76,7 +77,7 @@ export default class Nav {
     //   ease: 'expo.out'
     // }, 0.5)
   }
-  closeAnim() {
+  closeAnim(isAnimating = false) {
     const tl = gsap.timeline()
     const items = [...this.$nav.querySelectorAll('.char')].reverse()
     tl.to(this.$navS, {duration: 0.5, opacity: 0})
@@ -88,8 +89,9 @@ export default class Nav {
       ease: 'expo.in',
       stagger: 0.016,
       onComplete: () => {
+        this.$logo.removeAttribute('data-transition', 'nav')
         document.body.classList.remove('e-fixed')
-        ChangeView.in()
+        isAnimating && ChangeView.in()
       }
     }, 0.2)
     tl.to(this.$nav, {duration: 0.01, visibility: 'hidden'})

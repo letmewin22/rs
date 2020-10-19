@@ -1,5 +1,6 @@
 import {state} from '../state'
 import {isFixed} from './isFixed'
+import {raf} from './RAF'
 
 export default class NavbarPos {
   constructor() {
@@ -10,7 +11,7 @@ export default class NavbarPos {
 
   init() {
     this.scrollPos = 0
-    window.raf.on(this.scrollNav.bind(this))
+    raf.on(this.scrollNav.bind(this))
   }
 
   mouseHandler(e) {
@@ -46,6 +47,6 @@ export default class NavbarPos {
 
   destroy() {
     this.scrollPos = 0
-    window.raf.off(this.scrollNav.bind(this))
+    raf.off(this.scrollNav.bind(this))
   }
 }

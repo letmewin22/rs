@@ -1,9 +1,11 @@
 import gsap from 'gsap'
 import * as THREE from 'three'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
-import {state} from '../state'
+import {state} from '@/state'
+import {resize} from '@/utils/Resize'
 
 import Figure from './Figure'
+import {raf} from '../utils/RAF'
 
 export default class Scene {
   constructor($selector, $imgs = []) {
@@ -21,11 +23,16 @@ export default class Scene {
     this.figures = []
     this.fVisibility = []
 
-    this.resize = this.resize.bind(this)
-    window.addEventListener('resize', this.resize)
-
     this.init()
-    window.raf.on(this.animate.bind(this))
+    this.bounds()
+    raf.on(this.animate)
+    resize.on(this.resize)
+  }
+
+  bounds() {
+    ['animate', 'resize'].forEach(fn => {
+      this[fn] = this[fn].bind(this)
+    })
   }
 
   init() {
@@ -118,5 +125,15 @@ export default class Scene {
       ease: 'expo.in',
       stagger: 0.01,
     })
+  }
+
+  destroy() {
+    this.figures.forEach(figure => {
+      figure.destroy()
+    })
+
+    raf.off(this.animate)
+    resize.off(this.resize)
+    this.$container.removeChild(this.renderer.domElement)
   }
 }

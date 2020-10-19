@@ -4,6 +4,7 @@ import {setState, state} from '@/state'
 import {run} from './run'
 import {clamp} from '@/utils/math'
 import {resize} from '@/utils/Resize'
+import {raf} from '../../utils/RAF'
 
 export default class ScrollBar {
   constructor(el) {
@@ -47,7 +48,6 @@ export default class ScrollBar {
   }
 
   setHeight() {
-    console.log('test')
     const wh = window.innerHeight
 
     if (this.el.scrollHeight === wh) this.height = 0
@@ -144,7 +144,7 @@ export default class ScrollBar {
     screen.width > 960 &&
     this.scrollbar.addEventListener('click', progressUpdate)
 
-    window.raf.on(this.scroll.bind(this))
+    raf.on(this.scroll.bind(this))
   }
 
   controlsEvent() {
@@ -171,6 +171,6 @@ export default class ScrollBar {
           el.classList.add('hidden')
           el.parentNode.removeChild(el)
         })
-    window.raf.off(this.scroll.bind(this))
+    raf.off(this.scroll.bind(this))
   }
 }

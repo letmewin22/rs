@@ -1,5 +1,6 @@
 import Highway from '@dogstudio/highway'
 import strip from '@/components/strip'
+import Scene from '@/Gl/Scene'
 
 class Home extends Highway.Renderer {
 
@@ -14,6 +15,13 @@ class Home extends Highway.Renderer {
 
     strip('strip--white', 'strip__wrapper', 20)
     strip('strip--blue', 'strip__wrapper', 24, 'right')
+
+    const imgs = document.querySelectorAll('.js-webgl-image')
+    window.scene = new Scene('#gl', imgs)
+  }
+  onLeave() {
+    window.scene.destroy()
+    window.scene = undefined
   }
 }
 // Don`t forget to export your renderer

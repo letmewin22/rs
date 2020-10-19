@@ -26,7 +26,7 @@ class Resize {
   }
 
   off(cb) {
-    this.cbArray = this.cbArray.filter((e) => e.toString() !== cb.toString())
+    this.cbArray = this.cbArray.filter(e => e !== cb)
   }
 
   debounce(func, wait = 100) {

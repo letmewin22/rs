@@ -1,4 +1,5 @@
 import noop from './noop'
+import {raf} from './RAF'
 
 export const intersectionOvserver = (el, cb) => {
 
@@ -15,7 +16,7 @@ export const intersectionOvserver = (el, cb) => {
   }
 
   return {
-    on: () => window.raf.on(intersectionOvserver.bind(null, el, cb)),
-    off: () => window.raf.off(intersectionOvserver.bind(null, el, cb))
+    on: () => raf.on(intersectionOvserver.bind(null, el, cb)),
+    off: () => raf.off(intersectionOvserver.bind(null, el, cb))
   }
 }

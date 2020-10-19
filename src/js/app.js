@@ -2,10 +2,10 @@ import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
 import {Home} from './core/renderers'
-import {Basic} from './core/transitions'
+import {Basic, FromNav} from './core/transitions'
 import Hooks from './core/Hooks'
 
-import RAF from './utils/RAF'
+import {raf} from './utils/RAF'
 import cssWebP from '@/libs/testWebP'
 
 import Button from './components/Button'
@@ -24,7 +24,6 @@ import FormSubmit from './form/FormSubmit'
 import SmoothScroll from './components/SmoothScroll/SmoothScroll'
 import bgWebP from './utils/bgWebP'
 
-window.raf = new RAF()
 
 process.env.NODE_ENV === 'production' && cssWebP()
 
@@ -34,7 +33,10 @@ const H = new Highway.Core({
     home: Home,
   },
   transitions: {
-    default: Basic
+    default: Basic,
+    contextual: {
+      nav: FromNav
+    }
   }
 })
 
@@ -45,7 +47,7 @@ new Theme()
 
 const navbarPos = new NavbarPos()
 navbarPos.init()
-window.raf.on(themeBtn)
+raf.on(themeBtn)
 
 new Nav()
 

@@ -2,7 +2,6 @@ import imagesLoaded from 'imagesloaded'
 import gsap from 'gsap'
 import splitting from 'splitting'
 import ChangeView from './ChangeView'
-import Scene from '../Gl/Scene'
 
 export default class Loader {
   constructor(cb) {
@@ -115,8 +114,6 @@ export default class Loader {
         document.body.classList.remove('e-fixed')
         document.body.style.cursor = 'auto'
         document.querySelector('.site-wrapper').style.opacity = '1'
-        const imgs = document.querySelectorAll('.js-webgl-image')
-        window.scene = new Scene('#gl', imgs)
       }
     })
     tl.delay(0.2)

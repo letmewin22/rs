@@ -3,21 +3,23 @@ import ChangeView from '@/components/ChangeView'
 import gsap from 'gsap'
 
 // Fade
-class Basic extends Highway.Transition {
+class FromNav extends Highway.Transition {
   in({to, from, done}) {
     // Reset Scroll
     window.scrollTo(0, 0)
     // Remove Old View
     from.remove()
-    gsap.fromTo(to, {opacity: 0}, {opacity: 1, duration: 0.1})
-    ChangeView.in(done)
+
+    gsap.set(to, {opacity: 0})
+    setTimeout(() => {
+      gsap.fromTo(to, {opacity: 0}, {opacity: 1, duration: 0.1})
+      ChangeView.in(done)
+    }, 1200)
     // Animation
   }
-
   out({done}) {
-    ChangeView.out(done)
-    // done()
+    done()
   }
 }
 
-export default Basic
+export default FromNav

@@ -8,7 +8,14 @@ export default class ChangeView {
   static prepare(cb) {
     cb = typeof cb !== undefined ? cb : noop
 
-    const lines = document.querySelectorAll('.js-in-view .js-l')
+    const hidden = [...document.querySelectorAll('.js-i-hidden')]
+    let lines
+
+    if (hidden.length) {
+      lines = document.querySelectorAll('.js-i-hidden .js-l')
+    } else {
+      lines = document.querySelectorAll('.js-in-view .js-l')
+    }
 
     lines.length && lines.forEach((el) => {
       !el.classList.contains('splitting') &&

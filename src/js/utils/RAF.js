@@ -1,4 +1,4 @@
-export default class RAF {
+class RAF {
   constructor() {
     this.cbArray = []
     this.animation()
@@ -9,12 +9,18 @@ export default class RAF {
   }
 
   off(cb) {
-    this.cbArray = this.cbArray.filter(e => e.toString() !== cb.toString())
-    console.log(cb)
+    this.cbArray = this.cbArray.filter(e => e !== cb)
   }
 
   animation() {
     this.cbArray.forEach(cb => cb())
     requestAnimationFrame(this.animation.bind(this))
   }
+}
+
+const RAFInstance = new RAF()
+
+export const raf = {
+  on: (cb) => RAFInstance.on(cb),
+  off: (cb) => RAFInstance.off(cb),
 }
