@@ -4,7 +4,9 @@ import {setState, state} from '@/state'
 import {clamp, lerp} from '@/utils/math'
 import ScrollBar from './Scrollbar'
 import {run} from './run'
-import {isFixed} from '@/utils/isFixed'
+import {resize} from '@/utils/Resize'
+import mutationObserver from '../../utils/mutationObserver'
+// import {isFixed} from '@/utils/isFixed'
 
 export default class SmoothScroll {
   constructor($el) {
@@ -32,7 +34,6 @@ export default class SmoothScroll {
   virtualScroll() {
 
     const vs = new VirtualScroll(this.opts)
-
     vs.on((e) => {
       if (state.target === undefined) {
         this.targetY += e.deltaY
@@ -48,8 +49,9 @@ export default class SmoothScroll {
   init() {
     this.virtualScroll()
     this.bind()
-    this.resize()
-    window.addEventListener('resize', this.resize)
+    resize.on(this.resize)
+    mutationObserver(this.$el, this.resize)
+
     new ScrollBar()
     window.raf.on(this.scroll)
   }
@@ -76,5 +78,7 @@ export default class SmoothScroll {
     this.height = this.$el.getBoundingClientRect().height
     this.max = (this.height - window.innerHeight) * -1
   }
+
+  destroy() {}
 }
 

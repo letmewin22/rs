@@ -104,7 +104,6 @@ export default class Scene {
   }
 
   show() {
-    console.log(this.fVisibility)
     gsap.to(this.fVisibility, {
       duration: 1,
       value: 1,

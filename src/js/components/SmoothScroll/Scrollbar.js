@@ -3,6 +3,7 @@ import mutationObserver from '@/utils/mutationObserver'
 import {setState, state} from '@/state'
 import {run} from './run'
 import {clamp} from '@/utils/math'
+import {resize} from '@/utils/Resize'
 
 export default class ScrollBar {
   constructor(el) {
@@ -38,7 +39,7 @@ export default class ScrollBar {
     this.thumb = this.scrollbar.querySelector('.scrollbar__thumb')
     this.setHeight()
 
-    window.addEventListener('resize', this.setHeight.bind(this))
+    resize.on(this.setHeight.bind(this))
     mutationObserver(this.el, this.setHeight.bind(this))
 
     this.detectInactivity()
@@ -46,7 +47,7 @@ export default class ScrollBar {
   }
 
   setHeight() {
-
+    console.log('test')
     const wh = window.innerHeight
 
     if (this.el.scrollHeight === wh) this.height = 0
@@ -114,6 +115,7 @@ export default class ScrollBar {
 
     const touchstart = () => {
       this.el.parentNode.addEventListener('touchmove', progressUpdate)
+      this.thumb.classList.add('active')
     }
 
     this.scrollbar.addEventListener('mousedown', mousedown)
@@ -127,6 +129,7 @@ export default class ScrollBar {
     }
 
     const touchend = () => {
+      this.thumb.classList.remove('active')
       this.el.parentNode.removeEventListener('touchmove', progressUpdate, {
         passive: false,
       })

@@ -25,7 +25,7 @@ export default class Figure {
 
   createMesh() {
 
-    this.image = this.loader.load(this.$img.getAttribute('src'))
+    this.image = this.loader.load(this.$img.getAttribute('data-bg'))
     this.$img.classList.add('js-hidden')
 
     this.sizes = new THREE.Vector2(0, 0)

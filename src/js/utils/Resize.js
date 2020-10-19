@@ -1,25 +1,52 @@
-export default class Resize {
+class Resize {
+  constructor() {
+    this.cbArray = []
+    this.init()
+  }
 
-  constructor(cb) {
-
-    this.cb = cb ?? function() {}
+  bounds() {
+    ['resizeHandler', 'debounce'].forEach(fn => {
+      this[fn] = this[fn].bind(this)
+    })
   }
 
   init() {
-
-    this.cb()
-
-    this.resizeHandler = this.resizeHandler.bind(this)
-
-    window.addEventListener('resize', this.resizeHandler)
+    this.bounds()
+    this.debounced = this.debounce(this.resizeHandler, 60)
+    window.addEventListener('resize', this.debounced)
   }
 
   resizeHandler() {
-    this.cb()
+    this.cbArray.forEach((cb) => cb())
+  }
+
+  on(cb) {
+    cb()
+    this.cbArray.push(cb)
+  }
+
+  off(cb) {
+    this.cbArray = this.cbArray.filter((e) => e.toString() !== cb.toString())
+  }
+
+  debounce(func, wait = 100) {
+    let timeout
+    return function(...args) {
+      clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        func.apply(null, ...args)
+      }, wait)
+    }
   }
 
   destroy() {
     window.removeEventListener('resize', this.resizeHandler)
-    this.cb = function() {}
   }
+}
+
+const resizeInstance = new Resize()
+
+export const resize = {
+  on: (cb) => resizeInstance.on(cb),
+  off: (cb) => resizeInstance.off(cb)
 }

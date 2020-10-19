@@ -7,6 +7,7 @@ export default class Nav {
   constructor() {
     this.$nav = document.querySelector('.js-nav')
     this.$navBtn = document.querySelector('.js-nav-btn')
+    this.$logo = document.querySelector('.navbar__logo')
     this.$navItems = this.$nav.querySelectorAll('.js-nav-item')
     this.$navImg = this.$nav.querySelector('.nav__right img')
     this.$navS = this.$nav.querySelector('.nav__separator')
@@ -22,12 +23,16 @@ export default class Nav {
     })
 
     this.toggle = this.toggle.bind(this)
+    this.close = this.close.bind(this)
     this.$navBtn.addEventListener('click', this.toggle)
 
     this.$navItems.forEach((item) => {
       item.addEventListener('click', this.toggle)
     })
+
+    this.$logo.addEventListener('click', this.close)
   }
+
   toggle() {
     this.isOpen ? this.close() : this.open()
   }

@@ -4,22 +4,24 @@
 
 {% import "data/data.html" as items %}
 {% block content %}
-  <header data-scene data-speed="1" class="home-header">
+  <header data-scene data-speed="1" class="home-header js-i-hidden">
     <div class="container home-header__container">
       <h1 class="h1 home-header__h1 h1-withcols">
         <span class="container nm">
           <span class="cols">
-          <span class="mob-img-c"></span>
+            <span class="mob-img-c"></span>
             <span
             class="h1-withcols__line h1-withcols__line--first-line cols__col js-l"
             >I am Roman Stets,</span
           >
             <span class="h1-withcols__img inline-img js-i" data-move="mob-img-c,1,960">
-              <img class="inline-img__img inline-img__img--1" data-pli src="./img/home/header.gif" alt="cat-gif"/>
-              <img class="inline-img__img inline-img__img--2" data-pli src="./img/home/header2.gif" alt="cat-gif"/>
+              <video webkit-playsinline="" playsinline="" muted autoplay loop="true" class="inline-img__img inline-img__img--1">
+                <source src="./video/home/header.webm" type="video/webm">
+                <source src="./video/home/header.mp4" type="video/mp4">
+              </video>
               <span class="inline-img__text-wrapper">
-              <span class="inline-img__text inline-img__text--1">don’t hover this shit</span>
-              <span class="inline-img__text inline-img__text--2">I told you</span>
+                <span class="inline-img__text inline-img__text--1">don’t hover this shit</span>
+                <span class="inline-img__text inline-img__text--2">I told you</span>
               </span>
             </span>
             <span
@@ -127,7 +129,11 @@
           <span class="container nm">
             <span class="cols">
               <span class="h2-withcols__img js-i">
-                <img data-pli src="./img/home/join.gif" alt="boy-gif"/>
+                <video webkit-playsinline="" playsinline="" autoplay muted loop="true">
+                <source src="./video/home/join.webm" type="video/webm">
+                <source src="./video/home/join.mp4" type="video/mp4">
+              </video>
+                {# <img data-pli src="./img/home/join.gif" alt="boy-gif"/> #}
               </span>
               <span class="h2-withcols__line cols__col cols__col-s-4 js-l"
               >I join the</span
@@ -167,26 +173,26 @@
         <div class="container nm">
           <div class="cols cases-section__items">
             <div class="cases-section__separator cols__col cols__col-s-4 cols__col-end-4 js-i a-i"></div>
-            <a href="#" class="cases-section__item cases-section__item--1 cols__col cols__col-end-3 a-i">
-              <img class="js-webgl-image" data-pli src="./img/posters/1.jpg" alt="portfolio-img">
+            <a aria-label="case-link" href="#" class="cases-section__item cases-section__item--1 cols__col cols__col-end-3 a-i">
+              <div class="img js-webgl-image" data-pli data-bg="./img/posters/1.jpg"></div>
             </a>
-            <a href="#" class="cases-section__item cases-section__item--2 cols__col cols__col-s-4 cols__col-end-4 a-i">
-              <img class="js-webgl-image" data-pli src="./img/posters/2.jpg" alt="portfolio-img">
+            <a aria-label="case-link" href="#" class="cases-section__item cases-section__item--2 cols__col cols__col-s-4 cols__col-end-4 a-i">
+              <div class="img js-webgl-image" data-pli data-bg="./img/posters/2.jpg" ></div>
             </a>
-            <a href="#" class="cases-section__item cases-section__item--3 cols__col cols__col-s-5 cols__col-end-6 a-i">
-              <img class="js-webgl-image" data-pli src="./img/posters/6.jpg" alt="portfolio-img">
+            <a aria-label="case-link" href="#" class="cases-section__item cases-section__item--3 cols__col cols__col-s-5 cols__col-end-6 a-i">
+              <div class="img js-webgl-image" data-pli data-bg="./img/posters/6.jpg"></div>
             </a>
           </div>
           <div class="cols cases-section__items">
             {{ mixins.link('more projects', 'cases-section__btn cols__col cols__col-s-4 js-i') }}
-            <a href="#" class="cases-section__item cases-section__item--1 cols__col cols__col-end-3 a-i m-hide">
-              <img class="js-webgl-image" data-pli src="./img/posters/5.jpg" alt="portfolio-img">
+            <a aria-label="case-link" href="#" class="cases-section__item cases-section__item--1 cols__col cols__col-end-3 a-i m-hide">
+              <div class="img js-webgl-image" data-pli data-bg="./img/posters/5.jpg"></div>
             </a>
-            <a href="#" class="cases-section__item cases-section__item--2 cols__col cols__col-s-4 cols__col-end-4 a-i m-hide">
-              <img class="js-webgl-image" data-pli src="./img/posters/4.jpg" alt="portfolio-img">
+            <a aria-label="case-link" href="#" class="cases-section__item cases-section__item--2 cols__col cols__col-s-4 cols__col-end-4 a-i m-hide">
+              <div class="img js-webgl-image" data-pli data-bg="./img/posters/4.jpg"></div>
             </a>
-            <a href="#" class="cases-section__item cases-section__item--3 cols__col cols__col-s-5 cols__col-end-6 a-i m-hide">
-              <img class="js-webgl-image" data-pli src="./img/posters/8.jpg" alt="portfolio-img">
+            <a aria-label="case-link" href="#" class="cases-section__item cases-section__item--3 cols__col cols__col-s-5 cols__col-end-6 a-i m-hide">
+              <div class="img js-webgl-image" data-pli data-bg="./img/posters/8.jpg"></div>
             </a>
           </div>
         </div>
@@ -232,5 +238,5 @@
       </div>
     </div>
   </footer>
-{# <div id="gl"></div> #}
+  {# <div id="gl"></div> #}
 {% endblock %}

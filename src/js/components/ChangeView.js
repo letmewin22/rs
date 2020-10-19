@@ -20,9 +20,18 @@ export default class ChangeView {
   static in(cb) {
 
     this.prepare(cb)
+    const hidden = [...document.querySelectorAll('.js-i-hidden')]
+    let chars
+    let i
 
-    const chars = document.querySelectorAll('.js-in-view .char')
-    const i = document.querySelectorAll('.js-in-view .js-i')
+    if (hidden.length) {
+      chars = document.querySelectorAll('.js-i-hidden .char')
+      i = document.querySelectorAll('.js-i-hidden .js-i')
+      hidden.forEach(el => el.classList.remove('js-i-hidden'))
+    } else {
+      chars = document.querySelectorAll('.js-in-view .char')
+      i = document.querySelectorAll('.js-in-view .js-i')
+    }
 
     const tl = gsap.timeline({onComplete: cb})
 
@@ -74,6 +83,10 @@ export default class ChangeView {
   static out(cb) {
 
     this.prepare(cb)
+
+    document.querySelectorAll('.js-in-view').forEach(el => {
+      el.classList.add('js-i-hidden')
+    })
 
     const chars = [...document.querySelectorAll('.js-in-view .char')].reverse()
     const i = document.querySelectorAll('.js-in-view .js-i')

@@ -16,7 +16,8 @@ function createConfig(env) {
     //   // app: ['@babel/polyfill', './src/js/app.js']
     // }, //If you need support IE11
     output: {
-      filename: 'app.js'
+      filename: 'app.js',
+      path: path.resolve(__dirname, 'build/js')
     },
     resolve: {
       extensions: ['.js'],
@@ -57,9 +58,25 @@ function createConfig(env) {
       'eval-cheap-module-source-map' :
       false,
     optimization: {
-      minimize: isProduction
+      minimize: isProduction,
+      // splitChunks: {
+      //   // include all types of chunks
+      //   chunks: 'all',
+      //   minSize: 1,
+      //   cacheGroups: {
+      //     vendor: {
+      //       test: /[\\/]node_modules[\\/](three)[\\/]/,
+      //       name: 'three.vendor',
+      //       chunks: 'all',
+      //       minSize: 1
+      //     }
+      //   }
+      // }
     },
     plugins: [
+      new webpackReal.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }),
       new webpackReal.LoaderOptionsPlugin({
         options: {
           eslint: {

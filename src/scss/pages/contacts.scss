@@ -1,0 +1,27 @@
+.contacts-header {
+  min-height: var(--vh);
+  display: flex;
+  align-items: center;
+}
+
+.contacts-header__container {
+  // margin-top: 10%;
+  h2 {
+    line-height: 1.2em;
+  }
+}
+
+.contacts-header__btn {
+  position: absolute;
+  top: -5vw;
+}
+
+.contacts-header__cols {
+  padding-top: 50px;
+}
+
+.contacts-header__item {
+  text-transform: uppercase;
+  margin-top: 20px;
+  line-height: 1em;
+}

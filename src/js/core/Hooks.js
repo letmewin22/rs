@@ -32,4 +32,9 @@ export default class Hooks {
     this.useLoad(cb)
     this.useNavigateEnd(cb)
   }
+
+  useBothStart(cb) {
+    this.useLoad(cb)
+    this.useNavigateIn(cb)
+  }
 }
