@@ -1,5 +1,6 @@
 import {state} from '../state'
 import {isFixed} from './isFixed'
+import {raf} from './RAF'
 
 const themeBtn = () => {
   const b = document.getElementById('scroll-container').getBoundingClientRect()
@@ -10,5 +11,7 @@ const themeBtn = () => {
     document.querySelector('.theme-btn').classList.remove('disabled')
   }
 }
+
+raf.on(themeBtn)
 
 export default themeBtn

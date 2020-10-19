@@ -49,9 +49,8 @@ export default class ScrollBar {
 
   setHeight() {
     const wh = window.innerHeight
-
-    if (this.el.scrollHeight === wh) this.height = 0
     this.height = wh * (wh / this.el.scrollHeight)
+    if (this.el.scrollHeight === wh) this.height = 0
 
     this.thumb.style.height = this.height + 'px'
   }

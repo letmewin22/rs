@@ -9,6 +9,7 @@ export default class Loader {
     this.cb = cb
 
     this.countImages = this.pli.length
+    this.loadedLength = 0
 
     this.loader = document.querySelector('.loader')
     this.overlay = this.loader.querySelector('.loader__overlay')
@@ -20,7 +21,7 @@ export default class Loader {
     this.$p = document.querySelector('.js-p')
     this.$ui = document.querySelectorAll('.js-ui-load')
 
-    this.num = {num: 0}
+    this.num = {val: 0}
     this.state = false
     this.init()
 
@@ -45,13 +46,11 @@ export default class Loader {
       this.imgLoad.on('progress', (instance, image) => this.onProgress(image))
       this.imgLoad.on('fail', () => {
         setTimeout(() => {
-          const res = this.circle + (this.countImages * this.step)
-          this.counter(100, res)
+          this.counter(100, this.circle*2, 1)
         }, 650)
       })
     } else {
-      const res = this.circle + (this.countImages * this.step)
-      this.counter(100, res)
+      this.counter(100, this.circle*2, 1)
     }
   }
 
@@ -70,39 +69,44 @@ export default class Loader {
     }
   }
 
-  counter(count, offset) {
+  counter(c, o, d) {
+    const count = c ?? Number(100 *(this.loadedLength / this.countImages))
+    const offset = o ?? this.circle + (this.loadedLength * this.step)
+
     return new Promise((resolve) => {
       gsap.to(this.num, {
-        duration: 0.3,
-        num: count,
-        ease: 'none',
+        duration: d ?? 0.5,
+        val: count,
+        ease: 'power1.out',
         onUpdate: () => {
-          this.percentHTML.innerHTML = this.num.num.toFixed(0) + '%'
-          this.progressHTML.style.strokeDashoffset = offset
-          gsap.to(this.progressHTML,
-            {duration: 0.3, strokeDashoffset: offset, ease: 'none'})
+          const finalOffset = this.circle + (offset *(this.num.val / 100) / 2)
+          this.percentHTML.innerHTML = Math.round(this.num.val) + '%'
+          this.progressHTML.style.strokeDashoffset = finalOffset
         },
         onComplete: () => {
-          resolve()
-          this.num.num === 100 && this.afterLoad()
-        },
+          if (count !== 100) {
+            resolve()
+          } else {
+            this.afterLoad()
+          }
+        }
       })
     })
   }
 
   onProgress(image) {
+
     if (image.isLoaded) {
+
       image.element ?
         image.element.classList.add('loaded') :
         image.img.classList.add('loaded')
-      const countLoadedImages =
+
+      this.loadedLength =
       document.querySelectorAll('[data-pli].loaded').length
 
-      this.width = 100 * (countLoadedImages / this.countImages)
-      const offset = this.circle + (countLoadedImages * this.step)
-
-      this.counter(+this.width, offset).then(() => {
-        this.counter(+this.width, offset)
+      this.counter().then(() => {
+        this.counter()
       })
     }
   }

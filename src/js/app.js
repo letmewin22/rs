@@ -1,3 +1,4 @@
+import './libs/ie-detect'
 import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
@@ -5,25 +6,24 @@ import {Home} from './core/renderers'
 import {Basic, FromNav} from './core/transitions'
 import Hooks from './core/Hooks'
 
-import {raf} from './utils/RAF'
+import moveEl from './libs/moveEl'
 import cssWebP from '@/libs/testWebP'
 
 import Button from './components/Button'
 import Theme from './components/Theme'
+import Nav from './components/Nav'
+import FormPopUp from './components/FormPopUp'
+import Loader from './components/Loader'
+import SmoothScroll from './components/SmoothScroll/SmoothScroll'
 
 import NavbarPos from './utils/navbarPos'
 import themeBtn from './utils/themeBtn'
-import Nav from './components/Nav'
-import {intersectionOvserver} from './utils/intersectionOvserver'
-import FormPopUp from './components/FormPopUp'
-import moveEl from './libs/moveEl'
 import {resize} from './utils/Resize'
 import {winH} from './utils/winH'
-import Loader from './components/Loader'
-import FormSubmit from './form/FormSubmit'
-import SmoothScroll from './components/SmoothScroll/SmoothScroll'
+import {intersectionOvserver} from './utils/intersectionOvserver'
 import bgWebP from './utils/bgWebP'
 
+import FormSubmit from './form/FormSubmit'
 
 process.env.NODE_ENV === 'production' && cssWebP()
 
@@ -47,13 +47,15 @@ new Theme()
 
 const navbarPos = new NavbarPos()
 navbarPos.init()
-raf.on(themeBtn)
+themeBtn()
 
 new Nav()
 
 const formpoup = new FormPopUp()
 formpoup.init()
 
+let smoothScroll
+const links = document.querySelectorAll('nav a')
 
 hooks.useBothStart(() => {
   bgWebP()
@@ -72,11 +74,20 @@ hooks.useBothStart(() => {
   btns.forEach((btn) => {
     new Button(btn)
   })
+  smoothScroll && smoothScroll.reset()
+
 })
 
 hooks.useLoad(() => {
   new Loader()
-  new SmoothScroll('#scroll-container')
+  smoothScroll = new SmoothScroll('#scroll-container')
+})
+
+hooks.useBoth(() => {
+  links.forEach(link => {
+    link.classList.remove('is-active')
+    link.href === location.href && link.classList.add('is-active')
+  })
 })
 
 

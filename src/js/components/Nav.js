@@ -28,7 +28,8 @@ export default class Nav {
 
     this.$navItems.forEach((item) => {
       item.addEventListener('click', () => {
-        this.close(true)
+        const isAnimating = !!item.querySelector('a.is-active')
+        this.close(isAnimating)
       })
     })
 
