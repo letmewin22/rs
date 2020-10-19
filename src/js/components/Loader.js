@@ -97,7 +97,6 @@ export default class Loader {
   onProgress(image) {
 
     if (image.isLoaded) {
-
       image.element ?
         image.element.classList.add('loaded') :
         image.img.classList.add('loaded')

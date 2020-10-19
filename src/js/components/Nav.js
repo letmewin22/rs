@@ -33,7 +33,7 @@ export default class Nav {
       })
     })
 
-    this.$logo.addEventListener('click', this.close)
+    this.$logo.addEventListener('click', () => this.isOpen && this.close(true))
   }
 
   toggle() {

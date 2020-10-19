@@ -290,7 +290,9 @@ video::-webkit-media-controls {
 
 .join-section__cols {
   margin-top: -15vw;
-  @media screen and (max-height: 680px) and (orientation: landscape) {
+  @media screen and (max-height: 680px) 
+  and (orientation: landscape) 
+  and (min-width: 960px) {
     margin-top: -13.8vw;
   }
   @include media('<=#{$br2}') {
