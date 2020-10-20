@@ -40,7 +40,7 @@ class Resize {
   }
 
   destroy() {
-    window.removeEventListener('resize', this.resizeHandler)
+    window.removeEventListener('resize', this.debounced)
   }
 }
 

@@ -57,14 +57,14 @@
     "gulp-webp-html": "^1.0.2",
     "gulp-webpcss": "^1.1.1",
     "require-dir": "^1.2.0",
-    "vinyl-source-stream": "^2.0.0",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.0.2",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-glsl-loader": "^1.0.1",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-stream": "^5.2.1"
+    "webpack-stream": "^5.2.1",
+    "yargs": "^13.2.4"
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
@@ -73,7 +73,6 @@
     "imagesloaded": "^4.1.4",
     "splitting": "^1.0.6",
     "three": "^0.119.1",
-    "virtual-scroll": "^1.5.2",
-    "yargs": "^13.2.4"
+    "virtual-scroll": "^1.5.2"
   }
 }
