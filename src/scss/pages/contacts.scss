@@ -2,22 +2,41 @@
   min-height: var(--vh);
   display: flex;
   align-items: center;
+  @include media('<=#{$br2}') {
+    align-items: flex-start;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
 }
 
 .contacts-header__container {
   // margin-top: 10%;
   h2 {
     line-height: 1.2em;
+    @include media('<=#{$br2}') {
+      width: 90%;
+    }
   }
 }
 
 .contacts-header__btn {
   position: absolute;
   top: -5vw;
+  @include media('<=#{$br2}') {
+    order: 7;
+    margin: 44px auto 0;
+    // margin-top: 44px;
+    position: static;
+    top: 0;
+  }
 }
 
 .contacts-header__cols {
   padding-top: 50px;
+  @include media('<=#{$br2}') {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .contacts-header__item {

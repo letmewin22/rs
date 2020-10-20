@@ -2,12 +2,12 @@ import './libs/ie-detect'
 import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
-import {Home} from './core/renderers'
+import {Home, About} from './core/renderers'
 import {Basic, FromNav} from './core/transitions'
 import Hooks from './core/Hooks'
 
 import moveEl from './libs/moveEl'
-import cssWebP from '@/libs/testWebP'
+import cssWebP from './libs/testWebP'
 
 import Button from './components/Button'
 import Theme from './components/Theme'
@@ -24,6 +24,7 @@ import {intersectionOvserver} from './utils/intersectionOvserver'
 import bgWebP from './utils/bgWebP'
 
 import FormSubmit from './form/FormSubmit'
+import {setState, state} from './state'
 
 process.env.NODE_ENV === 'production' && cssWebP()
 
@@ -31,6 +32,7 @@ process.env.NODE_ENV === 'production' && cssWebP()
 const H = new Highway.Core({
   renderers: {
     home: Home,
+    about: About
   },
   transitions: {
     default: Basic,
@@ -42,20 +44,16 @@ const H = new Highway.Core({
 
 const hooks = new Hooks(H)
 
-resize.on(winH)
-new Theme()
 
-const navbarPos = new NavbarPos()
-navbarPos.init()
-themeBtn()
+hooks.useNavigateOut(() => {
+  setState(state, state.isLoaded = false)
+})
 
-new Nav()
-
-const formpoup = new FormPopUp()
-formpoup.init()
+hooks.useNavigateEnd(() => {
+  setState(state, state.isLoaded = true)
+})
 
 let smoothScroll
-const links = document.querySelectorAll('nav a')
 
 hooks.useBothStart(() => {
   bgWebP()
@@ -78,10 +76,25 @@ hooks.useBothStart(() => {
 
 })
 
+
 hooks.useLoad(() => {
   new Loader()
+
+  resize.on(winH)
+  new Theme()
+
+  const navbarPos = new NavbarPos()
+  navbarPos.init()
+  themeBtn()
+
+  new Nav()
+
+  const formpoup = new FormPopUp()
+  formpoup.init()
   smoothScroll = new SmoothScroll('#scroll-container')
 })
+
+const links = document.querySelectorAll('nav a')
 
 hooks.useBoth(() => {
   links.forEach(link => {

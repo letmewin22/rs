@@ -1,11 +1,16 @@
 import {state} from '../state'
+import {getRoute} from './getRoute'
 import {isFixed} from './isFixed'
 import {raf} from './RAF'
 
 const themeBtn = () => {
-  const b = document.getElementById('scroll-container').getBoundingClientRect()
+  const scroller = document.getElementById('scroll-container')
+  const bounds = scroller.getBoundingClientRect()
 
-  if (state.scrolled + window.innerHeight >= b.height * 0.94 && !isFixed()) {
+  const a = state.scrolled + window.innerHeight
+  const b = bounds.height * 0.94
+
+  if (a >= b && !isFixed() && getRoute() !== 'contacts') {
     document.querySelector('.theme-btn').classList.add('disabled')
   } else {
     document.querySelector('.theme-btn').classList.remove('disabled')

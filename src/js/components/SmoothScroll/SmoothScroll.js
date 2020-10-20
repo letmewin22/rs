@@ -5,8 +5,8 @@ import {clamp, lerp} from '@/utils/math'
 import ScrollBar from './Scrollbar'
 import {run} from './run'
 import {resize} from '@/utils/Resize'
-import mutationObserver from '../../utils/mutationObserver'
-import {raf} from '../../utils/RAF'
+import mutationObserver from '@/utils/mutationObserver'
+import {raf} from '@/utils/RAF'
 import {isFixed} from '@/utils/isFixed'
 
 export default class SmoothScroll {
@@ -20,7 +20,7 @@ export default class SmoothScroll {
       touchMultiplier: 2.4,
       firefoxMultiplier: 30,
       preventTouch: true,
-      passive: false,
+      // passive: false,
       el: document.querySelector('#scroll-container')
     }
 

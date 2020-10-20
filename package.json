@@ -73,6 +73,7 @@
     "imagesloaded": "^4.1.4",
     "splitting": "^1.0.6",
     "three": "^0.119.1",
-    "virtual-scroll": "^1.5.2"
+    "virtual-scroll": "^1.5.2",
+    "yargs": "^13.2.4"
   }
 }

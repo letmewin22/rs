@@ -17,6 +17,7 @@ const audio = require('./gulp/tasks/audio').bind(null, browsersync)
 const svgSprites = require('./gulp/tasks/svgSprite')
 const otfConvert = require('./gulp/tasks/otfConvert')
 const fontsInclude = require('./gulp/tasks/fontsInclude')
+const cp = require('./gulp/tasks/cp')
 
 
 function wpBuild(done) {
@@ -85,6 +86,7 @@ exports.js = js
 exports.css = css
 exports.html = html
 exports.fi = fontsInclude
+exports.cp = cp
 exports.clean = clean
 exports.tophp = tophp
 exports.build = build

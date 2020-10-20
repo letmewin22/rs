@@ -1,4 +1,6 @@
-const state = {}
+const state = {
+  isLoaded: false
+}
 
 const setState = (oldState, newState) => {
   return {...oldState, ...newState}

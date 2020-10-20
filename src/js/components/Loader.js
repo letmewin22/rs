@@ -2,11 +2,13 @@ import imagesLoaded from 'imagesloaded'
 import gsap from 'gsap'
 import splitting from 'splitting'
 import ChangeView from './ChangeView'
+import {setState, state} from '../state'
+import noop from '../utils/noop'
 
 export default class Loader {
   constructor(cb) {
     this.pli = document.querySelectorAll('[data-pli]')
-    this.cb = cb
+    this.cb = cb ?? noop
 
     this.countImages = this.pli.length
     this.loadedLength = 0
@@ -117,6 +119,8 @@ export default class Loader {
         document.body.classList.remove('e-fixed')
         document.body.style.cursor = 'auto'
         document.querySelector('.site-wrapper').style.opacity = '1'
+        this.cb()
+        setState(state, state.isLoaded = true)
       }
     })
     tl.delay(0.2)

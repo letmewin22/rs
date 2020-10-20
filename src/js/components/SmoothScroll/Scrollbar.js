@@ -20,8 +20,8 @@ export default class ScrollBar {
 
     this.inactiveDelay = 2
     this.timer = 0
-    this.height = this.el.getBoundingClientRect().height
-    this.max = (this.height - window.innerHeight) * -1
+    this.elHeight = this.el.getBoundingClientRect().height
+    this.max = (this.elHeight - window.innerHeight) * -1
 
     this.active = () => {
       this.timer = 0
@@ -50,6 +50,9 @@ export default class ScrollBar {
   setHeight() {
     const wh = window.innerHeight
     this.height = wh * (wh / this.el.scrollHeight)
+    this.elHeight = this.el.getBoundingClientRect().height
+
+    this.max = (this.elHeight - window.innerHeight) * -1
     if (this.el.scrollHeight === wh) this.height = 0
 
     this.thumb.style.height = this.height + 'px'
@@ -83,7 +86,6 @@ export default class ScrollBar {
         const b = e.target.getBoundingClientRect()
         o = e.targetTouches[0].pageY - b.top
         target = clamp(-this.el.scrollHeight * (o / h), 0, this.max)
-
         gsap.to(state, {
           duration: 0.01,
           target,
