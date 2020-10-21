@@ -35,13 +35,10 @@ export default class NavbarPos {
 
       document.addEventListener('mousemove', this.mouseFunc)
 
-    } else if (this.scrollPos === 0) {
+    } else if (!this.scrollPos) {
       document.querySelector('.navbar').classList.add('remove-bg')
     }
 
-    // this.scrollPos = document
-    //   .getElementById('scroller')
-    //   .getBoundingClientRect().top
     this.scrollPos = -state.scrolled
   }
 

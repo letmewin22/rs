@@ -1,0 +1,86 @@
+{% set title = "about" %}
+{% set route = "about" %}
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+  <header class="about-header">
+    <div class="container about__container">
+      <div class=""></div>
+      <h1 class="about-header__h1 h2 h2-withcols  a-h">
+        <span class="container nm">
+          <span class="cols">
+            <span class="h2-withcols__line cols__col js-l">A copywriter</span>
+            <span class="h2-withcols__line cols__col cols__col-s-4 js-l it">is a partner,</span>
+            <span class="h2-withcols__line cols__col cols__col-s-2 js-l">not a contractor</span>
+            <span class="about-header__text cols__col cols__col-s-5 js-i">This is my approach to business; an axiom that I follow every day. A client comes to me as a partner to solve a problem together. It doesn't matter how complicated it is. Together we are strong.</span>
+          </span>
+        </span>
+      </h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="section partner-section">
+      <div class="container section__container">
+        <h2 class="h2 h2-withcols partner-section__h2">
+          <span class="container nm">
+            <span class="cols">
+              <span class="partner-section__before-text cols__col js-i">Partner</span>
+              <span class="h2-withcols__line cols__col cols__col-s-2 js-l">
+              I take responsibility
+              </span>
+              <span class="h2-withcols__line cols__col cols__col-s-4 js-l it">for myself</span>
+            </span>
+          </span>
+        </h2>
+        <div class="container nm">
+          <div class="cols partner-section__cols">
+            <p class="partner-section__p cols__col cols__col-s-4 cols__col-end-5 js-i ">
+            A partner is a person who shares your responsibility and concerns for the business. Just like you, he cannot sleep until he finds the answer to the question: "How can I do better than the competition?"
+          </p>
+            <p class="partner-section__p cols__col cols__col-s-5 cols__col-end-5 js-i">
+            You trust your partner. He is a friend and companion, not an executor or mediator. You can safely tell him that you have a problem, but it is not yet clear how to solve it.
+          </p>
+          <div class="partner-section__img-wrapper cols__col cols__col-end-3 js-i">
+            <div class="img partner-section__img" data-pli data-bg="./img/about/Roman_Stets.jpg"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section text-types">
+      <div class="container section__container last">
+        <div class="section__line js-i"></div>
+        <h2 class="h2 h2-withcols a-h">
+          <span class="container nm">
+            <span class="cols">
+              <span class="h2-withcols__img text-types__img js-i">
+                <video webkit-playsinline="" playsinline="" autoplay muted loop="true">
+                  <source src="./video/about/about1.webm" type="video/webm">
+                  <source src="./video/about/about1.mp4" type="video/mp4">
+                </video>
+              </span>
+              <span class="h2-withcols__line cols__col cols__col-s-4 js-l">What Texts</span>
+              <span class="h2-withcols__line cols__col js-l it">do I write?</span>
+            </span>
+          </span>
+        </h2>
+        <div class="container nm">
+          <div class="cols text-types__cols">
+            <p class="text-types__text cols__col cols__col-end-3 js-i">
+            I will help you write any text to solve a business problem:
+            </p>
+            <ul class="text-types__list cols__col cols__col-s-4">
+              <li class="text-types__li js-i">text for a landing page or a new site</li>
+              <li class="text-types__li js-i">a useful tutorial article with SEO optimization</li>
+              <li class="text-types__li js-i">text for a presentation, marketing kit or video clip</li>
+              <li class="text-types__li js-i">post on the social network</li>
+            </ul>
+            {{ mixins.btn('talk about project', 'text-types__btn cols__col js-i js-fo') }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}

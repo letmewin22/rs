@@ -24,6 +24,7 @@ export default class Nav {
 
     this.toggle = this.toggle.bind(this)
     this.close = this.close.bind(this)
+    this.onPopState = this.onPopState.bind(this)
     this.$navBtn.addEventListener('click', this.toggle)
 
     this.$navItems.forEach((item) => {
@@ -34,11 +35,21 @@ export default class Nav {
     })
 
     this.$logo.addEventListener('click', () => this.isOpen && this.close(true))
+
+    window.addEventListener('popstate', this.onPopState, false)
   }
 
   toggle() {
     this.isOpen ? this.close(true) : this.open()
   }
+
+  onPopState() {
+    if (this.isOpen) {
+      document.querySelector('[data-router-view]').style.opacity = 0
+      this.close(true)
+    }
+  }
+
   open() {
     document.querySelector('.js-nav-open').style.display = 'none'
     document.querySelector('.js-nav-close').style.display = 'block'

@@ -47,10 +47,14 @@ const hooks = new Hooks(H)
 
 hooks.useNavigateOut(() => {
   setState(state, state.isLoaded = false)
+  document.body.style.pointerEvents = 'none'
+  document.documentElement.style.cursor = 'wait'
 })
 
 hooks.useNavigateEnd(() => {
   setState(state, state.isLoaded = true)
+  document.body.style.pointerEvents = 'auto'
+  document.documentElement.style.cursor = 'auto'
 })
 
 let smoothScroll
@@ -78,7 +82,9 @@ hooks.useBothStart(() => {
 
 
 hooks.useLoad(() => {
-  new Loader()
+  new Loader(() => {
+    smoothScroll = new SmoothScroll('#scroll-container')
+  })
 
   resize.on(winH)
   new Theme()
@@ -91,7 +97,6 @@ hooks.useLoad(() => {
 
   const formpoup = new FormPopUp()
   formpoup.init()
-  smoothScroll = new SmoothScroll('#scroll-container')
 })
 
 const links = document.querySelectorAll('nav a')
@@ -105,5 +110,3 @@ hooks.useBoth(() => {
 
 
 new FormSubmit(document.querySelector('.form'))
-
-

@@ -1,6 +1,5 @@
 import gsap from 'gsap'
 import * as THREE from 'three'
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 import {state} from '@/state'
 import {resize} from '@/utils/Resize'
 
@@ -50,8 +49,8 @@ export default class Scene {
     this.renderer.setPixelRatio(window.devicePixelRatio)
     this.renderer.setClearColor(0xd3d3d3, 0)
 
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement)
-    this.controls.enableZoom = false
+    // this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+    // this.controls.enableZoom = false
 
     this.$container.appendChild(this.renderer.domElement)
 

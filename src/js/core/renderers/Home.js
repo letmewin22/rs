@@ -24,7 +24,7 @@ class Home extends Highway.Renderer {
 
 
   }
-  onLeave() {
+  onLeaveCompleted() {
     window.scene.destroy()
     window.scene = undefined
   }

@@ -1,12 +1,9 @@
 import Highway from '@dogstudio/highway'
 
-class About extends Highway.Renderer {
+export default class About extends Highway.Renderer {
 
   onEnterCompleted() {
-
+    console.log('Hello from About')
   }
-  onLeave() {
-  }
+  onLeave() {}
 }
-// Don`t forget to export your renderer
-export default About

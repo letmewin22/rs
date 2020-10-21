@@ -22,12 +22,23 @@ export default class FormPopUp {
 
     this.open = this.open.bind(this)
     this.close = this.close.bind(this)
+    this.onPopState = this.onPopState.bind(this)
     this.openHandler = this.openHandler.bind(this)
     document.body.addEventListener('click', this.openHandler)
     // this.$openBtn.forEach(btn => btn.addEventListener('click', this.open))
     this.$closeBtn.addEventListener('click', this.close)
 
+    window.addEventListener('popstate', this.onPopState, false)
+
   }
+
+  onPopState() {
+    if (this.isOpen) {
+      document.querySelector('[data-router-view]').style.opacity = 0
+      this.close(true)
+    }
+  }
+
   open() {
     document.querySelector('.navbar').style.display = 'none'
     this.$form.classList.add('e-open')
