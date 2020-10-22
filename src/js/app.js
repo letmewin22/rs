@@ -19,7 +19,7 @@ import SmoothScroll from './components/SmoothScroll/SmoothScroll'
 import NavbarPos from './utils/navbarPos'
 import themeBtn from './utils/themeBtn'
 import {resize} from './utils/Resize'
-import {winH} from './utils/winH'
+import {winSizes} from './utils/winSizes'
 import {intersectionOvserver} from './utils/intersectionOvserver'
 import bgWebP from './utils/bgWebP'
 
@@ -86,7 +86,7 @@ hooks.useLoad(() => {
     smoothScroll = new SmoothScroll('#scroll-container')
   })
 
-  resize.on(winH)
+  resize.on(winSizes)
   new Theme()
 
   const navbarPos = new NavbarPos()

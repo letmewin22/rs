@@ -41,16 +41,16 @@
             <p class="partner-section__p cols__col cols__col-s-5 cols__col-end-5 js-i">
             You trust your partner. He is a friend and companion, not an executor or mediator. You can safely tell him that you have a problem, but it is not yet clear how to solve it.
           </p>
-          <div class="partner-section__img-wrapper cols__col cols__col-end-3 js-i">
-            <div class="img partner-section__img" data-pli data-bg="./img/about/Roman_Stets.jpg"></div>
+            <div class="partner-section__img-wrapper cols__col cols__col-end-3 js-i">
+              <div class="img partner-section__img" data-pli data-bg="./img/about/Roman_Stets.jpg"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
     <section class="section text-types">
-      <div class="container section__container last">
-        <div class="section__line js-i"></div>
+      <div class="container section__container">
+        <div class="section__line js-hr"></div>
         <h2 class="h2 h2-withcols a-h">
           <span class="container nm">
             <span class="cols">
@@ -71,16 +71,71 @@
             I will help you write any text to solve a business problem:
             </p>
             <ul class="text-types__list cols__col cols__col-s-4">
-              <li class="text-types__li js-i">text for a landing page or a new site</li>
-              <li class="text-types__li js-i">a useful tutorial article with SEO optimization</li>
-              <li class="text-types__li js-i">text for a presentation, marketing kit or video clip</li>
-              <li class="text-types__li js-i">post on the social network</li>
+              <li class="text-types__li js-i">
+                <div class="text-types__li-hr js-hr"></div>
+              text for a landing page or a new site
+              </li>
+              <li class="text-types__li js-i">
+                <div class="text-types__li-hr js-hr"></div>
+              a useful tutorial article with SEO optimization
+              </li>
+              <li class="text-types__li js-i">
+                <div class="text-types__li-hr js-hr"></div>
+              text for a presentation, marketing kit or video clip
+              </li>
+              <li class="text-types__li js-i">
+              <div class="text-types__li-hr js-hr"></div>
+              post on the social network
+              <div class="text-types__li-hr js-hr"></div>
+              </li>
             </ul>
             {{ mixins.btn('talk about project', 'text-types__btn cols__col js-i js-fo') }}
           </div>
         </div>
       </div>
     </section>
+    <section class="section direction-section">
+      <div class="container section__container last">
+        <h2 class="h2 h2-withcols a-h">
+          <span class="container nm">
+            <span class="cols">
+              <span class="h2-withcols__line cols__col js-l">Remember that I am</span>
+              <span class="h2-withcols__line cols__col cols__col-s-4 it js-l">not just</span>
+              <span class="h2-withcols__line cols__col cols__col-s-2 js-l">a copywriter?</span>
+            </span>
+          </span>
+        </h2>
+        <p class="direction-section__text js-i">Coming up with ideas, developing concepts and helping to convey meaning through design:</p>
+        <ul class="direction-section__list">
+          <li class="direction-section__li">
+            <div class="direction-section__li-hr js-hr"></div>
+            <div class="direction-section__li-vr js-vr"></div>
+            <div class="direction-section__li-h js-i">Create sites</div>
+            <div class="direction-section__img-wrapper cols__col cols__col-end-3 js-i">
+              <div class="img direction-section__img" data-pli data-bg="./img/about/d1.jpg"></div>
+            </div>
+            <p class="direction-section__li-text js-i">I develop sites and web services with my team</p>
+          </li>
+          <li class="direction-section__li">
+            <div class="direction-section__li-hr js-hr"></div>
+            <div class="direction-section__li-vr js-vr"></div>
+            <div class="direction-section__li-h js-i">Management</div>
+            <div class="direction-section__img-wrapper cols__col cols__col-end-3 js-i">
+              <div class="img direction-section__img" data-pli data-bg="./img/about/d2.jpg"></div>
+            </div>
+            <p class="direction-section__li-text js-i">I set tasks for designers to visualize ideas</p>
+          </li>
+          <li class="direction-section__li">
+            <div class="direction-section__li-hr js-hr"></div>
+            <div class="direction-section__li-h js-i">Creativity</div>
+            <div class="direction-section__img-wrapper cols__col cols__col-end-3 js-i">
+              <div class="img direction-section__img" data-pli data-bg="./img/about/d3.jpg"></div>
+            </div>
+            <p class="direction-section__li-text js-i">I come up with ideas for presentations, slogans, titles, videos</p>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
-
+  {% include "partials/components/_footer.html" %}
 {% endblock %}

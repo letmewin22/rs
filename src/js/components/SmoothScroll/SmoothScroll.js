@@ -61,9 +61,8 @@ export default class SmoothScroll {
   }
 
   scroll() {
-    if (this.currentY.toFixed(0) !== this.targetY.toFixed(0)) {
+    if (Math.floor(this.currentY) !== Math.floor(this.targetY)) {
       setState(state, state.scrolling = true)
-
     } else {
       setState(state, state.scrolling = false)
 

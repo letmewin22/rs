@@ -22,10 +22,20 @@
 @function size($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
   $maxWidth: $maxWidth - $minWidth;
-  @return calc(#{$mobSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth}))
+  @return calc(#{$mobSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth}));
 }
 
 @function vw($px) {
   $inVW: $px / 1920 * 100;
   @return #{$inVW}vw;
+}
+
+@function font-vw($px) {
+  $inVW:  $px / 19.2;
+  @return #{$inVW}vw;
+}
+
+@function toimg($width, $height) {
+  $resolution: ($height / $width) * 100;
+  @return #{$resolution+'%'};
 }
