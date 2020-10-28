@@ -15,6 +15,7 @@ import Nav from './components/Nav'
 import FormPopUp from './components/FormPopUp'
 import Loader from './components/Loader'
 import SmoothScroll from './components/SmoothScroll/SmoothScroll'
+import {Cursor} from './components/Cursor'
 
 import NavbarPos from './utils/navbarPos'
 import themeBtn from './utils/themeBtn'
@@ -25,6 +26,15 @@ import bgWebP from './utils/bgWebP'
 
 import FormSubmit from './form/FormSubmit'
 import {setState, state} from './state'
+
+/**
+* @todo
+ 1. Адаптивные изображения
+ 2. Кастомный курсор
+ 3. Анимации на gl-картинках по мышке
+ 4. Параллакс картинок на эбауте
+ 5. 404 страница
+* */
 
 process.env.NODE_ENV === 'production' && cssWebP()
 
@@ -84,19 +94,20 @@ hooks.useBothStart(() => {
 hooks.useLoad(() => {
   new Loader(() => {
     smoothScroll = new SmoothScroll('#scroll-container')
+    new Cursor()
+
+    const navbarPos = new NavbarPos()
+    navbarPos.init()
+    themeBtn()
+
+    new Nav()
+
+    const formpoup = new FormPopUp()
+    formpoup.init()
   })
 
   resize.on(winSizes)
   new Theme()
-
-  const navbarPos = new NavbarPos()
-  navbarPos.init()
-  themeBtn()
-
-  new Nav()
-
-  const formpoup = new FormPopUp()
-  formpoup.init()
 })
 
 const links = document.querySelectorAll('nav a')
@@ -110,3 +121,5 @@ hooks.useBoth(() => {
 
 
 new FormSubmit(document.querySelector('.form'))
+
+

@@ -1,5 +1,5 @@
 {% macro btn(text, selector, type) %}
-<button {% if type %}type={{type}}{% endif %} class="btn {{selector}} js-sticky">
+<button {% if type %}type={{type}}{% endif %} class="btn {{selector}} js-sticky hide-cursor">
   <span data-power="60, 60" class="btn__circle js-sticky-item">
     <span class="btn__circle-overlay"></span>
   </span>
@@ -10,7 +10,7 @@
 {% endmacro %}
 
 {% macro link(text, selector, href = '#') %}
-<a href="{{href|safe}}" class="btn {{selector}} js-sticky">
+<a href="{{href|safe}}" class="btn {{selector}} js-sticky hide-cursor">
   <div data-power="60, 60" class="btn__circle js-sticky-item">
     <div class="btn__circle-overlay"></div>
   </div>

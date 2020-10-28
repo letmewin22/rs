@@ -36,11 +36,15 @@ export default class SmoothScroll {
   virtualScroll() {
 
     const vs = new VirtualScroll(this.opts)
+
     vs.on((e) => {
+
       if (!isFixed()) {
+
         if (state.target === undefined) {
           this.targetY += e.deltaY
           setState(state, state.target = e.deltaY)
+
         } else {
           setState(state, state.target += e.deltaY)
           state.target = clamp(state.target, 0, this.max)
