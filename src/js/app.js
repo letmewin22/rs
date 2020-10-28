@@ -34,6 +34,7 @@ import {setState, state} from './state'
  3. Анимации на gl-картинках по мышке
  4. Параллакс картинок на эбауте
  5. 404 страница
+ 6. Параллакс на первом экране
 * */
 
 process.env.NODE_ENV === 'production' && cssWebP()

@@ -1,6 +1,6 @@
 import Highway from '@dogstudio/highway'
 import strip from '@/components/strip'
-import Scene from '@/Gl/Scene'
+import Scene from '@/Gl/Images/Scene'
 import {onLoaded} from '../../utils/onLoaded'
 
 class Home extends Highway.Renderer {

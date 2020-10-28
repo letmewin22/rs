@@ -4,7 +4,7 @@ import {state} from '@/state'
 import {resize} from '@/utils/Resize'
 
 import Figure from './Figure'
-import {raf} from '../utils/RAF'
+import {raf} from '@/utils/RAF'
 
 export default class Scene {
   constructor($selector, $imgs = []) {
