@@ -19,15 +19,15 @@ export class Cursor {
   }
 
   bind() {
-    ['onMouseMove', 'animate'].forEach(fn => {
+    ['onMouseMove', 'animate', 'focus', 'blur'].forEach(fn => {
       this[fn] = this[fn].bind(this)
     })
   }
 
   init() {
-
     this.bind()
-    window.addEventListener('mousemove', this.onMouseMove)
+    document.addEventListener('mouseenter', this.focus)
+    document.addEventListener('mouseleave', this.blur)
     raf.on(this.animate)
   }
 
@@ -37,11 +37,29 @@ export class Cursor {
 
     const target = e.target
     const parent = target.closest('.hide-cursor')
-    if (target.classList.contains('.hide-cursor') || parent) {
+    if (target.classList.contains('hide-cursor') || parent) {
+      this.toggleView(false)
+    } else {
+      this.toggleView(true)
+    }
+  }
+
+  toggleView(isView) {
+    if (!isView) {
       this.$cursor.classList.add('hide')
     } else {
       this.$cursor.classList.remove('hide')
     }
+  }
+
+  focus() {
+    this.toggleView(true)
+    window.addEventListener('mousemove', this.onMouseMove)
+  }
+
+  blur() {
+    window.removeEventListener('mousemove', this.onMouseMove)
+    this.toggleView(false)
   }
 
   animate() {
@@ -55,6 +73,8 @@ export class Cursor {
 
   destroy() {
     window.removeEventListener('mousemove', this.onMouseMove)
+    document.removeEventListener('mouseenter', this.focus)
+    document.removeEventListener('mouseleave', this.blur)
     raf.off(this.animate)
   }
 }

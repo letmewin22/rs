@@ -2,6 +2,7 @@ import Highway from '@dogstudio/highway'
 import strip from '@/components/strip'
 import Scene from '@/Gl/Torus/Scene'
 import {onLoaded} from '@/utils/onLoaded'
+import {Parallax} from '../../components/Parallax'
 
 export default class About extends Highway.Renderer {
 
@@ -11,10 +12,12 @@ export default class About extends Highway.Renderer {
 
     onLoaded(() => {
       window.scene = new Scene('#gl-torus')
+      this.parallax = new Parallax()
     })
   }
   onLeaveCompleted() {
     window.scene.destroy()
     window.scene = undefined
+    this.parallax.destroy()
   }
 }

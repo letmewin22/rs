@@ -13,7 +13,7 @@ export class Figure {
   }
 
   init() {
-    this.datGui()
+    // this.datGui()
     this.createMesh()
   }
 
@@ -98,6 +98,6 @@ export class Figure {
     this.scene.remove(this.mesh2)
     this.geometry.dispose()
     this.material.dispose()
-    this.gui.destroy()
+    // this.gui.destroy()
   }
 }

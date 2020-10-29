@@ -64,6 +64,9 @@ export default class Scene {
 
     this.scene.add(this.light)
 
+    this.light.shadow.mapSize = new THREE.Vector2(5, 10)
+    this.light.shadow.needsUpdate = true
+
     this.figure = new Figure(this.scene, {
       mouse: this.mouse,
       visibility: this.visibility

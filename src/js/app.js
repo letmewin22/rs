@@ -30,11 +30,8 @@ import {setState, state} from './state'
 /**
 * @todo
  1. Адаптивные изображения
- 2. Кастомный курсор
- 3. Анимации на gl-картинках по мышке
- 4. Параллакс картинок на эбауте
- 5. 404 страница
- 6. Параллакс на первом экране
+ 2. Анимации на gl-картинках по мышке
+ 3. 404 страница
 * */
 
 process.env.NODE_ENV === 'production' && cssWebP()
@@ -88,7 +85,6 @@ hooks.useBothStart(() => {
     new Button(btn)
   })
   smoothScroll && smoothScroll.reset()
-
 })
 
 
@@ -122,5 +118,3 @@ hooks.useBoth(() => {
 
 
 new FormSubmit(document.querySelector('.form'))
-
-

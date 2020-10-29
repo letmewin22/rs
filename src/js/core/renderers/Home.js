@@ -2,6 +2,7 @@ import Highway from '@dogstudio/highway'
 import strip from '@/components/strip'
 import Scene from '@/Gl/Images/Scene'
 import {onLoaded} from '../../utils/onLoaded'
+import {Parallax} from '../../components/Parallax'
 
 class Home extends Highway.Renderer {
 
@@ -20,6 +21,7 @@ class Home extends Highway.Renderer {
     onLoaded(() => {
       const imgs = document.querySelectorAll('.js-webgl-image')
       window.scene = new Scene('#gl', imgs)
+      this.parallax = new Parallax()
     })
 
 
@@ -27,6 +29,7 @@ class Home extends Highway.Renderer {
   onLeaveCompleted() {
     window.scene.destroy()
     window.scene = undefined
+    this.parallax.destroy()
   }
 }
 // Don`t forget to export your renderer

@@ -85,9 +85,17 @@
   max-width: vw(340);
 }
 
+.partner-section__img-parallax {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .partner-section__img-wrapper {
   margin-top: vw(-197);
   position: relative;
+  overflow: hidden;
   &::after {
     content: url('../img/about/arrow.svg');
     font-size: 0.6vw;
@@ -102,6 +110,8 @@
 .partner-section__img {
   height: 0;
   padding-bottom: 90.2%;
+  transform: scale(1.08);
+  width: 100%;
   @include cover();
 }
 

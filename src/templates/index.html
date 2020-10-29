@@ -4,7 +4,7 @@
 
 {% import "data/data.html" as items %}
 {% block content %}
-  <header data-scene data-speed="1" class="home-header js-i-hidden">
+  <header  data-section-parallax="0.2" class="home-header js-i-hidden">
     <div class="container home-header__container">
       <h1 class="h1 home-header__h1 h1-withcols">
         <span class="container nm">
@@ -63,7 +63,8 @@
             </span>
           </span>
         </h2>
-        {{ mixins.link('more about me', 'positioning-section__btn js-i a-i') }}
+        {{ mixins.link('more about me', 'positioning-section__btn js-i a-i', href = "./about.html",
+            data = 'data-parallax="0.2"') }}
         <div class="container nm">
           <div class="cols positioning-section__cols">
             <p
@@ -151,7 +152,8 @@
         </div>
         <div class="container nm">
           <div class="cols join-section__btn-cols">
-            {{ mixins.btn('talk about project', 'join-section__btn cols__col cols__col-s-4 js-i js-fo a-i') }}
+            {{ mixins.btn('talk about project', 'join-section__btn cols__col cols__col-s-4 js-i js-fo a-i', 
+            data = 'data-parallax="0.2"') }}
           </div>
         </div>
       </div>
@@ -177,7 +179,8 @@
             </a>
           </div>
           <div class="cols cases-section__items">
-            {{ mixins.link('more projects', 'cases-section__btn cols__col cols__col-s-4 js-i') }}
+            {{ mixins.link('more projects', 'cases-section__btn cols__col cols__col-s-4 js-i', 
+            data = 'data-parallax="0.2"') }}
             <a aria-label="case-link" href="#" class="cases-section__item cases-section__item--1 cols__col cols__col-end-3 a-i m-hide">
               <div class="img js-webgl-image hide-cursor" data-pli data-bg="./img/posters/5.jpg"></div>
             </a>

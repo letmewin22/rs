@@ -3,9 +3,8 @@
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
-  <header class="about-header">
+  <header data-section-parallax="0.2" class="about-header">
     <div class="container about__container">
-      <div class=""></div>
       <h1 class="about-header__h1 h2 h2-withcols  a-h">
         <span class="container nm">
           <span class="cols">
@@ -17,7 +16,7 @@
         </span>
       </h1>
     </div>
-    <div id="gl-torus"></div>
+    <div data-section-parallax="-0.2" id="gl-torus"></div>
   </header>
 
   <main>
@@ -43,7 +42,9 @@
             You trust your partner. He is a friend and companion, not an executor or mediator. You can safely tell him that you have a problem, but it is not yet clear how to solve it.
           </p>
             <div class="partner-section__img-wrapper cols__col cols__col-end-3 js-i">
-              <div class="img partner-section__img" data-pli data-bg="./img/about/Roman_Stets.jpg"></div>
+              <div data-img-parallax='0.045' class="partner-section__img-parallax">
+                <div class="img partner-section__img" data-pli data-bg="./img/about/Roman_Stets.jpg"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -85,12 +86,13 @@
               text for a presentation, marketing kit or video clip
               </li>
               <li class="text-types__li js-i">
-              <div class="text-types__li-hr js-hr"></div>
+                <div class="text-types__li-hr js-hr"></div>
               post on the social network
               <div class="text-types__li-hr js-hr"></div>
               </li>
             </ul>
-            {{ mixins.btn('talk about project', 'text-types__btn cols__col js-i js-fo') }}
+            {{ mixins.btn('talk about project', 'text-types__btn cols__col js-i js-fo', 
+            data = 'data-parallax="0.2"') }}
           </div>
         </div>
       </div>
