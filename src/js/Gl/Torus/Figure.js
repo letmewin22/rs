@@ -6,6 +6,7 @@ export class Figure {
     this.scene = scene
     this.opts = opts
     this.result = 0
+    this.time = 0
     this.clamp = (num, a, b) => {
       return Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b))
     }
@@ -78,11 +79,12 @@ export class Figure {
   }
 
   animate() {
+    this.time++
     this.material.opacity = this.opts.visibility.value
     this.group.position.y = 0 - 0.2*(1-this.opts.visibility.value)
     this.result += (this.opts.mouse.destX - this.scene.rotation.x) * 0.001
     this.result = this.clamp(this.result, 0.45, 0.48)
-
+    // this.group.rotation.y = this.time / 5000
     this.mesh1.scale.x = 1 + (this.opts.mouse.destX - this.mesh1.scale.x) * 0.04
     this.mesh1.scale.y = 1 + (this.opts.mouse.destX - this.mesh1.scale.y) * 0.04
 

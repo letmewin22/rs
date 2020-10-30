@@ -1,8 +1,8 @@
 import Highway from '@dogstudio/highway'
 import strip from '@/components/strip'
 import Scene from '@/Gl/Images/Scene'
-import {onLoaded} from '../../utils/onLoaded'
-import {Parallax} from '../../components/Parallax'
+import {onLoaded} from '@/utils/onLoaded'
+import {Parallax} from '@/components/Parallax'
 
 class Home extends Highway.Renderer {
 
@@ -11,8 +11,7 @@ class Home extends Highway.Renderer {
       document.querySelector('.h1-withcols__img').innerHTML += `
         <img width="600" height="600" 
         class="inline-img__img inline-img__img--2" 
-        data-pli src="./img/home/header2.gif" alt="cat-gif"/>
-        `
+        data-pli src="./img/home/header2.gif" alt="cat-gif"/>`
     }
 
     strip('strip--white', 'strip__wrapper', 20)

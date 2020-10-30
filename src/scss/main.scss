@@ -134,3 +134,30 @@ button {
 //   position: absolute;
 //   top: 0;
 // }
+
+[data-visible=hide] {
+  .js-i {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .js-hr {
+    opacity: 0;
+    width: 0;
+  }
+  .js-vr {
+    opacity: 0;
+    height: 0;
+  }
+  .h1, .h2 {
+    opacity: 0
+  }
+  .js-l {
+    .char {
+      transform: translateY(110%) rotateX(60);
+      @include media('<=960px') {
+        opacity: 0;
+      }
+    }
+  }
+
+}

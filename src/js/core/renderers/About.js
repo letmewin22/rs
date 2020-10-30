@@ -2,7 +2,7 @@ import Highway from '@dogstudio/highway'
 import strip from '@/components/strip'
 import Scene from '@/Gl/Torus/Scene'
 import {onLoaded} from '@/utils/onLoaded'
-import {Parallax} from '../../components/Parallax'
+import {Parallax} from '@/components/Parallax'
 
 export default class About extends Highway.Renderer {
 

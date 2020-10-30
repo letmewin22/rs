@@ -105,10 +105,29 @@ export default class Scene {
   }
 
   show() {
+    this.figure.group.rotation.y = -10
+    this.figure.group.scale.y = 0
+    this.figure.group.scale.x = 0
     gsap.to(this.visibility, {
       duration: 1,
+      delay: 0.1,
       value: 1,
       ease: 'expo.out',
+      stagger: 0.016,
+    })
+    gsap.to(this.figure.group.rotation, {
+      duration: 2,
+      delay: 0.1,
+      y: 0,
+      ease: 'power2.out',
+      stagger: 0.016,
+    })
+    gsap.to(this.figure.group.scale, {
+      duration: 2,
+      delay: 0.1,
+      y: 1,
+      x: 1,
+      ease: 'power2.out',
       stagger: 0.016,
     })
   }

@@ -74,6 +74,16 @@ export default class ChangeView {
       height: 0,
     })
 
+    chars.length && chars[0].closest('.h2') && tl.to(chars[0].closest('.h2'), {
+      duration: 0.1,
+      opacity: 1
+    })
+
+    chars.length && chars[0].closest('.h1') && tl.to(chars[0].closest('.h1'), {
+      duration: 0.1,
+      opacity: 1
+    })
+
     chars.length && tl.to(chars, {
       duration: 1,
       y: '0%',
