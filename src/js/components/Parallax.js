@@ -1,6 +1,6 @@
 import {raf} from '@/utils/RAF'
-import {state} from '../state'
-import {resize} from '../utils/Resize'
+import {state} from '@/state'
+import {resize} from '@/utils/Resize'
 
 export class Parallax {
 
@@ -26,12 +26,12 @@ export class Parallax {
   }
 
 
-  move(el, distance) {
+  move(el, distance, scale = 1) {
     const target = el
     const parent = target.closest('.js-in-view')
     if (target.classList.contains('js-in-view') || parent) {
-      const t = `matrix3d(1, 0, 0, 0,
-        0, 1, 0, 0,
+      const t = `matrix3d(${scale}, 0, 0, 0,
+        0, ${scale}, 0, 0,
         0, 0, 1, 0,
         0, ${distance}, 0, 1)`
       el.style.transform = t
@@ -53,7 +53,7 @@ export class Parallax {
       const coef = +$el.dataset.imgParallax
       const start = (this.imgSizes[i] - this.imgSizes[i]*(1+coef))
       const end = state.scrolled * coef
-      this.move($el, start + end)
+      this.move($el, start + end, $el.dataset.scale)
     })
   }
 

@@ -33,7 +33,7 @@ export class Cursor {
 
   onMouseMove(e) {
     this.mouse.x = e.clientX - (this.cursorBounds.width / 2)
-    this.mouse.y = e.clientY - (this.cursorBounds.width / 2)
+    this.mouse.y = e.clientY - (this.cursorBounds.height / 2)
 
     const target = e.target
     const parent = target.closest('.hide-cursor')
