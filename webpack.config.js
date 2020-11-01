@@ -83,8 +83,7 @@ function createConfig(env) {
             formatter: require('eslint-formatter-pretty')
           }
         }
-      }),
-      new webpackReal.NoEmitOnErrorsPlugin()
+      })
     ]
   }
 

@@ -16,7 +16,6 @@ export class Parallax {
   init() {
     this.bounds()
     resize.on(this.resize)
-    raf.on(this.animate)
   }
 
   bounds() {
@@ -78,7 +77,7 @@ export class Parallax {
     this.getSize(this.$els, this.sizes)
     this.imgSizes = []
     this.getSize(this.$imgs, this.imgSizes)
-    console.log(this.sizes)
+    window.innerWidth > 960 ? raf.on(this.animate) : raf.off(this.animate)
   }
 
   animate() {

@@ -53,13 +53,18 @@ export class Cursor {
   }
 
   focus() {
-    this.toggleView(true)
-    window.addEventListener('mousemove', this.onMouseMove)
+    if (window.innerWidth > 960) {
+      this.toggleView(true)
+      window.addEventListener('mousemove', this.onMouseMove)
+    }
+
   }
 
   blur() {
-    window.removeEventListener('mousemove', this.onMouseMove)
-    this.toggleView(false)
+    if (window.innerWidth > 960) {
+      window.removeEventListener('mousemove', this.onMouseMove)
+      this.toggleView(false)
+    }
   }
 
   animate() {

@@ -35,6 +35,9 @@
   font-size: font-vw(72);
   @include h;
   line-height: 1em;
+  @include media('<=#{$br2}') {
+    font-size: 28px;
+  }
 }
 
 
