@@ -9,6 +9,12 @@ export default class Figure {
   constructor(scene, $img) {
     this.scene = scene
     this.$img = $img
+    this.mouse = {
+      x: 0,
+      y: 0,
+      destX: 0,
+      destY: 0
+    }
 
     this.time = 0
 
@@ -39,7 +45,8 @@ export default class Figure {
       uTime: {value: 0},
       uDistortion: {value: 0},
       uCenter: {value: 0},
-      uVisibility: {value: 1}
+      uVisibility: {value: 1},
+      uMouse: {value: new THREE.Vector2(0, 0)}
     }
 
     this.material = new THREE.ShaderMaterial({
@@ -79,6 +86,10 @@ export default class Figure {
     this.time++
     const m = this.mesh.material.uniforms
     m.uTime.value = this.time
+    // this.mouse.destX = this.mouse.x / window.innerWidth
+    // this.mouse.destY = this.mouse.y / window.innerHeight
+    // this.mesh.material.uniforms.uMouse.x = this.mouse.destX * 0.5
+    // this.mesh.material.uniforms.uMouse.y = this.mouse.destY * 0.5
   }
 
   resize() {

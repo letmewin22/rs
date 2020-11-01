@@ -15,7 +15,8 @@ void main()	{
 
 	originTexture.a = uVisibility;
 	multiplyTexture.a = uVisibility;
-	// multiplyTexture.gr = originTexture.gb * roundblend * 0.05;
 
-	gl_FragColor = originTexture + multiplyTexture;
+	vec4 finalTexture = originTexture + multiplyTexture;
+
+	gl_FragColor = finalTexture;
 }

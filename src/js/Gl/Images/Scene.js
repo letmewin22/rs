@@ -26,10 +26,11 @@ export default class Scene {
     this.bounds()
     raf.on(this.animate)
     resize.on(this.resize)
+    // window.addEventListener('mousemove', this.onMouseMove)
   }
 
   bounds() {
-    ['animate', 'resize'].forEach(fn => {
+    ['animate', 'resize', 'onMouseMove'].forEach(fn => {
       this[fn] = this[fn].bind(this)
     })
   }
@@ -107,6 +108,13 @@ export default class Scene {
     })
     this.updatePos(state.scrolled)
     this.renderer.render(this.scene, this.camera)
+  }
+
+  onMouseMove(e) {
+    this.figures.forEach(figure => {
+      figure.mouse.x = e.clientX
+      figure.mouse.y = e.clientY
+    })
   }
 
   show() {
