@@ -7,7 +7,6 @@ const sourceFolder = foldersName.sourceFolder
 const production = util.env.production || util.env.prod || false
 
 const config = {
-  
   env: 'development',
   production: production,
   templates: sourceFolder + '/templates',

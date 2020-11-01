@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 class EntrypointsPlugin {
   constructor(options) {
     this.options = Object.assign(
@@ -14,7 +16,8 @@ class EntrypointsPlugin {
     compiler.hooks.emit.tap('entrypoints', (compilation) => {
       const data = {}
       const filter = this.options.filter
-      const publicPath = compilation.compiler.options.output.publicPath || ''
+    //   const publicPath = compilation.compiler.options.output.publicPath || ''
+      const path = './gulp/entrypoints.json'
       for (const [key, value] of compilation.entrypoints.entries()) {
         const chunks = value.chunks.map((data) => {
           const chunk = {
@@ -27,7 +30,7 @@ class EntrypointsPlugin {
         const files = [].concat(
           ...chunks
             .filter((c) => c != null)
-            .map((c) => c.files.map((f) => publicPath + f)),
+            .map((c) => c.files.map((f) => f)),
         )
         const js = files.filter((f) => /.js/.test(f) && !/.js.map/.test(f))
         const css = files.filter((f) => /.css/.test(f) && !/.css.map/.test(f))
@@ -35,17 +38,15 @@ class EntrypointsPlugin {
         if (js.length) entrypoint['js'] = js
         if (css.length) entrypoint['css'] = css
         data[key] = entrypoint
-        console.log(entrypoint)
       }
       const json = JSON.stringify(
         data,
         this.options.replacer,
         this.options.space,
       )
-      compilation.assets[this.options.filename] = {
-        source: () => json,
-        size: () => json.length,
-      }
+
+      fs.appendFile(path, '', () => {})
+      fs.writeFile(path, json, () => {})
     })
   }
 }

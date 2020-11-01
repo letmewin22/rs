@@ -6,14 +6,14 @@ const {src, dest} = require('gulp')
 const webphtml = require('gulp-webp-html')
 const gulpif = require('gulp-if')
 const inject = require('gulp-inject-string')
-const jsFiles = require('../../build/js/entrypoints.json')
+const entrypoints = require('../entrypoints.json')
+
 
 function html(bs) {
-  const outputJs = jsFiles.app.js.map(el => {
+  const outputJs = entrypoints.app.js.map(el => {
     return `\n<script src="./js/${el}"></script>`
   })
-  console.log(outputJs)
-  const replaceJS = 'app.' + config.hash + '.js'
+
   const replaceCss = 'app.' + config.hash + '.css'
 
   nunjucksRender.nunjucks.configure({

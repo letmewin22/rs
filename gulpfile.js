@@ -59,7 +59,7 @@ const build = gulp.series(
   clean,
   wpBuild,
   gulp.parallel(js, css, images, fonts, video, audio),
-  html
+  html,
 )
 
 const tophp = gulp.series(
