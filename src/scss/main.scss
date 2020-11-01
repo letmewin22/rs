@@ -26,6 +26,7 @@ body {
   overflow: hidden !important;
   background-color: $lg;
   position: relative;
+  @include smooth-font;
   transition: background 1s ease, opacity 0.5s ease;
   @include media('<=#{$br2}') {
     font-size: size(24, 18);

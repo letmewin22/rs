@@ -4,7 +4,7 @@ import {raf} from '../utils/RAF'
 
 export class Cursor {
   constructor() {
-    this.$cursor = createNewElement('div', 'cursor-follower')
+    this.$cursor = createNewElement('div', ['cursor-follower', 'hide'])
     document.body.appendChild(this.$cursor)
     this.cursorBounds = this.$cursor.getBoundingClientRect()
 

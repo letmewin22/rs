@@ -31,6 +31,12 @@
   @include h2;
 }
 
+.h3 {
+  font-size: font-vw(72);
+  @include h;
+  line-height: 1em;
+}
+
 
 
 .it {

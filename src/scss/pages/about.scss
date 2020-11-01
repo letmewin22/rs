@@ -144,12 +144,6 @@
   width: calc(100% / 3);
 }
 
-.direction-section__li-h {
-  font-size: font-vw(72);
-  @include h;
-  line-height: 1em;
-}
-
 
 .direction-section__li-text {
   margin-top: size(40, 20);
@@ -173,4 +167,134 @@
   right: 0;
   height: 100%;
   width: 1px;
+}
+
+.cooperation__text {
+  p {
+    max-width: vw(594);
+    margin-top: vw(40);
+  }
+}
+
+.cooperation__items {
+  margin-top: vw(110);
+}
+
+.cooperation__li {
+  + .cooperation__li {
+    margin-top: size(128, 40);
+  } 
+}
+.cooperation__li-num {
+  @include h;
+  font-size: font-vw(48);
+  display: block;
+  margin-bottom: vw(28);
+}
+.cooperation__li-hr, .xp__li-hr {
+  width: 100%;
+  height: 1px;
+  background-color: var(--secondary);
+  transition: background-color .5s ease;
+}
+.cooperation__li-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+.cooperation__li-text {
+  text-transform: uppercase;
+  max-width: vw(594);
+}
+
+.skills__items {
+  margin-top: vw(64);
+  display: grid;
+  grid-template-columns: repeat(4, 23.85417vw);
+}
+
+.skills__li {
+  width: vw(458);
+  height: vw(458);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid var(--secondary);
+  border-radius: 50%;
+  transition: border-color .5s ease;
+  &--1 {
+    border-color: transparent;
+    background: var(--acc);
+    color: white;
+    position: relative;
+    transition: background .5s ease;
+    span {
+      display: block;
+      position: absolute;
+      text-align: end;
+      left: vw(262);
+      top: 10vw;
+      font-size: font-vw(14);
+    }
+  }
+  &--5, &--6 {
+    margin-left: vw(229);
+    margin-top: vw(-62);
+  }
+}
+
+.xp__items {
+  margin-top: size(100, 40);
+}
+
+.xp__li {
+  position: relative;
+  + .xp__li {
+    margin-top: size(100, 60);
+  }
+}
+
+.xp__li-h {
+  text-transform: uppercase;
+  margin-bottom: size(18, 6);
+}
+
+.xp__li--1 {
+  .xp__li-timeline-item {
+    left: vw(837);
+  }
+}
+
+.xp__li--2 {
+  .xp__li-timeline-item {
+    left: vw(1282);
+  }
+}
+
+.xp__li--3 {
+  .xp__li-timeline-item {
+    left: 0;
+  }
+}
+
+.xp__li-timeline-item {
+  position: absolute;
+  top: vw(45);
+  display: flex;
+  flex-direction: column;
+  &--end {
+    left: auto;
+    right: 0;
+    align-items: flex-end;
+  }
+}
+
+
+.xp__li-timeline-item-dot {
+  width: vw(20);
+  height: vw(20);
+  background: var(--acc);
+  border-radius: 50%;
 }

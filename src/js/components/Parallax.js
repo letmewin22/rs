@@ -78,6 +78,7 @@ export class Parallax {
     this.getSize(this.$els, this.sizes)
     this.imgSizes = []
     this.getSize(this.$imgs, this.imgSizes)
+    console.log(this.sizes)
   }
 
   animate() {

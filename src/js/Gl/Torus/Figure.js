@@ -19,7 +19,7 @@ export class Figure {
   }
 
   createMesh() {
-    this.geometry = new THREE.TorusGeometry(0.3, 0.045, 100, 100)
+    this.geometry = new THREE.TorusGeometry(0.3, 0.045, 70, 70)
 
     this.material = new THREE.MeshStandardMaterial({
       color: 0x2963ff,

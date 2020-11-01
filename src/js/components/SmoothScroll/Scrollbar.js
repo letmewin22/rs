@@ -18,7 +18,7 @@ export default class ScrollBar {
 
     this.scrollbar.innerHTML = '<span class="scrollbar__thumb"></span>'
 
-    this.inactiveDelay = 2
+    this.inactiveDelay = 1
     this.timer = 0
     this.elHeight = this.el.getBoundingClientRect().height
     this.max = (this.elHeight - window.innerHeight) * -1

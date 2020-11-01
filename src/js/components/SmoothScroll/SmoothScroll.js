@@ -18,7 +18,7 @@ export default class SmoothScroll {
 
     this.opts = {
       touchMultiplier: 2.4,
-      firefoxMultiplier: 30,
+      firefoxMultiplier: 40,
       preventTouch: true,
       // passive: false,
       el: document.querySelector('#scroll-container')
@@ -65,12 +65,12 @@ export default class SmoothScroll {
   }
 
   scroll() {
-    if (Math.floor(this.currentY) !== Math.floor(this.targetY)) {
+    if (Math.abs(Math.round(this.targetY) - Math.round(this.currentY)) >= 1) {
       setState(state, state.scrolling = true)
     } else {
       setState(state, state.scrolling = false)
-
     }
+
     if (state.scrolling) {
       this.targetY = state.target
       this.currentY = lerp(this.currentY, this.targetY, this.ease)
