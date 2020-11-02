@@ -1,6 +1,5 @@
 import Highway from '@dogstudio/highway'
 import strip from '@/components/strip'
-import Scene from '@/Gl/Images/Scene'
 import {onLoaded} from '@/utils/onLoaded'
 import {Parallax} from '@/components/Parallax'
 
@@ -18,8 +17,16 @@ class Home extends Highway.Renderer {
     strip('strip--blue', 'strip__wrapper', 24, 'right')
 
     onLoaded(() => {
-      const imgs = document.querySelectorAll('.js-webgl-image')
-      window.scene = new Scene('#gl', imgs)
+
+      import(
+        /* webpackChunkName: "gl-images" */
+        '@/Gl/Images/Scene.js'
+      ).then((module) => {
+        const Scene = module.default
+        const imgs = document.querySelectorAll('.js-webgl-image')
+        window.scene = new Scene('#gl', imgs)
+      })
+
       this.parallax = new Parallax()
     })
 

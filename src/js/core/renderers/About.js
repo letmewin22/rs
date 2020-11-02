@@ -1,6 +1,5 @@
 import Highway from '@dogstudio/highway'
 import strip from '@/components/strip'
-import Scene from '@/Gl/Torus/Scene'
 import {onLoaded} from '@/utils/onLoaded'
 import {Parallax} from '@/components/Parallax'
 
@@ -11,7 +10,14 @@ export default class About extends Highway.Renderer {
     strip('strip--blue', 'strip__wrapper', 24, 'right')
 
     onLoaded(() => {
-      window.scene = new Scene('#gl-torus')
+      import(
+        /* webpackChunkName: "gl-torus" */
+        '@/Gl/Torus/Scene.js'
+      ).then((module) => {
+        const Scene = module.default
+        window.scene = new Scene('#gl-torus')
+      })
+
       this.parallax = new Parallax()
     })
   }

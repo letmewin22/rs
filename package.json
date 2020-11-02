@@ -28,6 +28,7 @@
     "babel-loader": "^8.1.0",
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
+    "emotion-webpack-entrypoints-plugin": "^1.0.0",
     "eslint": "^7.12.1",
     "eslint-config-google": "^0.14.0",
     "eslint-formatter-pretty": "^3.0.1",

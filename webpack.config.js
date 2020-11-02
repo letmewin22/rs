@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const gulpConfig = require('./gulp/config')
-const EntrypointsPlugin = require('./EntrypointsPlugin/EntrypointsPlugin')
+const EntrypointsPlugin = require('emotion-webpack-entrypoints-plugin')
 // const BundleAnalyzerPlugin =
 // require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -24,7 +24,8 @@ function createConfig(env) {
     }, // If you need support IE11
     output: {
       filename,
-      path: path.resolve(__dirname, 'build/js')
+      path: path.resolve(__dirname, 'build/js/'),
+      publicPath: './js/'
     },
     resolve: {
       extensions: ['.js'],
@@ -71,14 +72,14 @@ function createConfig(env) {
         // include all types of chunks
         chunks: 'all',
         minSize: 1,
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/](three)[\\/]/,
-            name: 'three.vendor',
-            chunks: 'all',
-            minSize: 1
-          }
-        }
+        // cacheGroups: {
+        //   vendor: {
+        //     test: /[\\/]node_modules[\\/](three)[\\/]/,
+        //     name: 'three.vendor',
+        //     chunks: 'all',
+        //     minSize: 1
+        //   }
+        // }
       }
     },
     plugins: [
@@ -86,8 +87,6 @@ function createConfig(env) {
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }),
       new EntrypointsPlugin({
-        filename: 'entrypoints.json',
-        space: 2,
         dir: path.resolve(__dirname, 'build/')
       })
     ]

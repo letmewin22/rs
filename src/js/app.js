@@ -14,7 +14,7 @@ import Theme from './components/Theme'
 import Nav from './components/Nav'
 import FormPopUp from './components/FormPopUp'
 import Loader from './components/Loader'
-import SmoothScroll from './components/SmoothScroll/SmoothScroll'
+// import SmoothScroll from './components/SmoothScroll/SmoothScroll'
 import {Cursor} from './components/Cursor'
 
 import NavbarPos from './utils/navbarPos'
@@ -36,31 +36,29 @@ import {setState, state} from './state'
 
 process.env.NODE_ENV === 'production' && cssWebP()
 
-
 const H = new Highway.Core({
   renderers: {
     home: Home,
-    about: About
+    about: About,
   },
   transitions: {
     default: Basic,
     contextual: {
-      nav: FromNav
-    }
-  }
+      nav: FromNav,
+    },
+  },
 })
 
 const hooks = new Hooks(H)
 
-
 hooks.useNavigateOut(() => {
-  setState(state, state.isLoaded = false)
+  setState(state, (state.isLoaded = false))
   document.body.style.pointerEvents = 'none'
   document.documentElement.style.cursor = 'wait'
 })
 
 hooks.useNavigateEnd(() => {
-  setState(state, state.isLoaded = true)
+  setState(state, (state.isLoaded = true))
   document.body.style.pointerEvents = 'auto'
   document.documentElement.style.cursor = 'auto'
 })
@@ -87,10 +85,16 @@ hooks.useBothStart(() => {
   smoothScroll && smoothScroll.reset()
 })
 
-
 hooks.useLoad(() => {
   new Loader(() => {
-    smoothScroll = new SmoothScroll('#scroll-container')
+    import(
+      /* webpackChunkName: "smooth-scroll" */
+      './components/SmoothScroll/SmoothScroll'
+    ).then((module) => {
+      const SmoothScroll = module.default
+      smoothScroll = new SmoothScroll('#scroll-container')
+    })
+
     new Cursor()
 
     const navbarPos = new NavbarPos()
@@ -110,11 +114,10 @@ hooks.useLoad(() => {
 const links = document.querySelectorAll('nav a')
 
 hooks.useBoth(() => {
-  links.forEach(link => {
+  links.forEach((link) => {
     link.classList.remove('is-active')
     link.href === location.href && link.classList.add('is-active')
   })
 })
-
 
 new FormSubmit(document.querySelector('.form'))
