@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const gulpConfig = require('./gulp/config')
-const EntrypointsPlugin = require('./EntrypointsPlugin')
+const EntrypointsPlugin = require('./EntrypointsPlugin/EntrypointsPlugin')
 // const BundleAnalyzerPlugin =
 // require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -87,7 +87,8 @@ function createConfig(env) {
       }),
       new EntrypointsPlugin({
         filename: 'entrypoints.json',
-        space: 2
+        space: 2,
+        dir: path.resolve(__dirname, 'build/')
       })
     ]
   }

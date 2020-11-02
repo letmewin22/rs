@@ -1,4 +1,4 @@
-const fs = require('fs')
+const addScriptsToHtml = require('./addScriptsToHtml')
 
 class EntrypointsPlugin {
   constructor(options) {
@@ -8,6 +8,7 @@ class EntrypointsPlugin {
         replacer: null,
         space: null,
         filter: null,
+        dir: null
       },
       options,
     )
@@ -16,8 +17,6 @@ class EntrypointsPlugin {
     compiler.hooks.emit.tap('entrypoints', (compilation) => {
       const data = {}
       const filter = this.options.filter
-    //   const publicPath = compilation.compiler.options.output.publicPath || ''
-      const path = './gulp/entrypoints.json'
       for (const [key, value] of compilation.entrypoints.entries()) {
         const chunks = value.chunks.map((data) => {
           const chunk = {
@@ -39,14 +38,13 @@ class EntrypointsPlugin {
         if (css.length) entrypoint['css'] = css
         data[key] = entrypoint
       }
-      const json = JSON.stringify(
-        data,
-        this.options.replacer,
-        this.options.space,
-      )
+      // const json = JSON.stringify(
+      //   data,
+      //   this.options.replacer,
+      //   this.options.space,
+      // )
 
-      fs.appendFile(path, '', () => {})
-      fs.writeFile(path, json, () => {})
+      addScriptsToHtml(data, this.options.dir)
     })
   }
 }

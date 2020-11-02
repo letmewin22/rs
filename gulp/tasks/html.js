@@ -6,13 +6,8 @@ const {src, dest} = require('gulp')
 const webphtml = require('gulp-webp-html')
 const gulpif = require('gulp-if')
 const inject = require('gulp-inject-string')
-const entrypoints = require('../entrypoints.json')
-
 
 function html(bs) {
-  const outputJs = entrypoints.app.js.map(el => {
-    return `\n<script src="./js/${el}"></script>`
-  })
 
   const replaceCss = 'app.' + config.hash + '.css'
 
@@ -32,8 +27,6 @@ function html(bs) {
       path: [config.src.templates]
     }))
     .pipe(gulpif(config.production, webphtml()))
-    // @ts-ignore
-    .pipe(inject.after('<!-- BEGIN scripts -->', outputJs.join(' ')))
     // @ts-ignore
     .pipe(gulpif(config.production, inject.replace('app.css', replaceCss)))
     .pipe(prettify({
