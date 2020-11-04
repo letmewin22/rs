@@ -41,14 +41,24 @@ export class Figure {
     this.mesh2.rotation.x = 1.07
     this.scene.position.x = -0.225
 
-    // this.scene.add(this.mesh1)
-    // this.scene.add(this.mesh2)
 
     this.group = new THREE.Group()
     this.group.add( this.mesh1 )
     this.group.add( this.mesh2 )
 
-    this.scene.add( this.group )
+    this.wrapper = new THREE.Group()
+    this.wrapper.add(this.group)
+
+    this.scene.add( this.wrapper )
+
+  }
+
+  fluidSize(pc, mob) {
+
+    const addSize = pc - mob
+    const maxWidth = 1920 - 375
+
+    return mob + addSize * ((window.innerWidth - 375) / maxWidth)
   }
 
   datGui() {
@@ -76,6 +86,13 @@ export class Figure {
       this.material.flatShading = this.settings.flatShading
       this.material.needsUpdate = true
     })
+  }
+
+  resize() {
+    this.wrapper.scale.x = this.fluidSize(1, 0.5)
+    this.wrapper.scale.y = this.fluidSize(1, 0.5)
+
+    this.wrapper.position.x = this.fluidSize(0, 0.1)
   }
 
   animate() {

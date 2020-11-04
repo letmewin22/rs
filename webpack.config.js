@@ -87,7 +87,7 @@ function createConfig(env) {
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }),
       new EntrypointsPlugin({
-        dir: path.resolve(__dirname, 'build/')
+        dir: path.resolve(__dirname, 'src/templates/layouts')
       })
     ]
   }

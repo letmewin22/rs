@@ -58,8 +58,9 @@ function cleanPHP() {
 const build = gulp.series(
   clean,
   wpBuild,
-  gulp.parallel(html, css, images, fonts, video, audio),
-  js
+  gulp.parallel(css, images, fonts, video, audio),
+  js,
+  html
 )
 
 const tophp = gulp.series(
@@ -70,8 +71,9 @@ const tophp = gulp.series(
 
 const dev = gulp.series(
   clean,
-  gulp.parallel(html, css, images, fonts, video, audio),
-  js
+  gulp.parallel(css, images, fonts, video, audio),
+  js,
+  html
 )
 
 const watch = gulp.series(

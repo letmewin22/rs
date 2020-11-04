@@ -87,6 +87,8 @@ export default class Scene {
 
     this.renderer.setSize(this.sizes.w, this.sizes.h)
     this.renderer.setPixelRatio(window.devicePixelRatio)
+
+    this.figure.resize()
   }
 
   animate() {

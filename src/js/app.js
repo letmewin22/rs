@@ -14,7 +14,6 @@ import Theme from './components/Theme'
 import Nav from './components/Nav'
 import FormPopUp from './components/FormPopUp'
 import Loader from './components/Loader'
-// import SmoothScroll from './components/SmoothScroll/SmoothScroll'
 import {Cursor} from './components/Cursor'
 
 import NavbarPos from './utils/navbarPos'

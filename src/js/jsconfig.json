@@ -4,8 +4,9 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"]
+      "@": ["./"]
     }
   },
+  "baseUrl": "./",
   "exclude": ["node_modules", "build"]
 }

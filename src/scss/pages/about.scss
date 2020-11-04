@@ -5,6 +5,12 @@
   position: relative;
 }
 
+.about-header__container {
+  @include media('<=#{$br4}') {
+    transform: translateY(17vh);
+  }
+}
+
 #gl-torus {
   position: absolute;
   top: 0;
@@ -12,6 +18,9 @@
   bottom: 0;
   right: 0;
   z-index: -1;
+  @include media('<=#{$br4}') {
+    transform: translateY(-10vh);
+  }
 }
 
 .dg.ac {

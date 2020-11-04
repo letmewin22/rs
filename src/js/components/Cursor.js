@@ -19,15 +19,15 @@ export class Cursor {
   }
 
   bind() {
-    ['onMouseMove', 'animate', 'focus', 'blur'].forEach(fn => {
+    ['onMouseMove', 'animate', 'onMouseEnter', 'onMouseLeave'].forEach(fn => {
       this[fn] = this[fn].bind(this)
     })
   }
 
   init() {
     this.bind()
-    document.addEventListener('mouseenter', this.focus)
-    document.addEventListener('mouseleave', this.blur)
+    document.addEventListener('mouseenter', this.onMouseEnter)
+    document.addEventListener('mouseleave', this.onMouseLeave)
     raf.on(this.animate)
   }
 
@@ -52,7 +52,7 @@ export class Cursor {
     }
   }
 
-  focus() {
+  onMouseEnter() {
     if (window.innerWidth > 960) {
       this.toggleView(true)
       window.addEventListener('mousemove', this.onMouseMove)
@@ -60,7 +60,7 @@ export class Cursor {
 
   }
 
-  blur() {
+  onMouseLeave() {
     if (window.innerWidth > 960) {
       window.removeEventListener('mousemove', this.onMouseMove)
       this.toggleView(false)
