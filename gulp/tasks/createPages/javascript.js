@@ -9,8 +9,7 @@ function javascript(name, capName, cb) {
 
   const appjs = `${foldersName.sourceFolder}/js/app.js`
   const appjsContent = fs.readFileSync(appjs, 'utf8')
-
-  const regex = /renderers: {(\s.{1,}){1,}},/gm
+  const regex = /renderers: {(\w|\W){0,}},(\w|\W){0,}transitions/gm
   const regex2 = /(import {Home).{1,}/gm
   const regex3 = /\s.{1,}},/gm
 
@@ -28,7 +27,7 @@ function javascript(name, capName, cb) {
   }
 
   const matched = appjsContent.match(regex)[0]
-  .replace(regex3, `,
+    .replace(regex3, `,
     ${name}: ${capName}
   },`)
 

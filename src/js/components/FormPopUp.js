@@ -2,6 +2,7 @@ import splitting from 'splitting'
 import gsap from 'gsap'
 
 import ChangeView from './ChangeView'
+import {state} from '@/state'
 
 export default class FormPopUp {
   constructor() {
@@ -11,6 +12,7 @@ export default class FormPopUp {
     this.$formItems = document.querySelectorAll('.js-form-item')
     this.$inputs = document.querySelectorAll('.form__input-container')
     this.$btn = document.querySelectorAll('.form__btn')
+    this.$navbar = document.querySelector('.navbar')
 
     this.isOpen = false
   }
@@ -40,14 +42,14 @@ export default class FormPopUp {
   }
 
   open() {
-    document.querySelector('.navbar').style.display = 'none'
+    this.$navbar.style.display = 'none'
     this.$form.classList.add('e-open')
     document.body.classList.add('e-fixed')
     ChangeView.out(this.openAnim.bind(this))
     this.isOpen = true
+    state.popup = true
   }
   close() {
-    document.querySelector('.navbar').style.display = 'block'
     this.$form.classList.remove('e-open')
     this.isOpen = false
     this.closeAnim()
@@ -89,6 +91,8 @@ export default class FormPopUp {
       stagger: 0.016,
       onComplete: () => {
         document.body.classList.remove('e-fixed')
+        state.popup = false
+        setTimeout(() => this.$navbar.style.display = 'block', 500)
         ChangeView.in()
       }
     }, 0.2)

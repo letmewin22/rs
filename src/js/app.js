@@ -3,7 +3,7 @@ import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
 import {Home, About} from '@core/renderers'
-import {Basic, FromNav} from '@core/transitions'
+import {Basic, FromNav, ToAbout} from '@core/transitions'
 import Hooks from '@core/Hooks'
 
 import moveEl from './libs/moveEl'
@@ -26,6 +26,7 @@ import bgWebP from './utils/bgWebP'
 import FormSubmit from './form/FormSubmit'
 import {setState, state} from './state'
 
+
 /**
 * @todo
  1. Адаптивные изображения
@@ -38,10 +39,11 @@ process.env.NODE_ENV === 'production' && cssWebP()
 const H = new Highway.Core({
   renderers: {
     home: Home,
-    about: About,
+    about: About
   },
   transitions: {
     default: Basic,
+    // about: ToAbout,
     contextual: {
       nav: FromNav,
     },

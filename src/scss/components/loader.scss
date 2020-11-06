@@ -80,6 +80,10 @@
     position: static;
     margin-top: 20px;
     flex: 1 0 40%;
+    color: var(--secondary);
+    svg path {
+      stroke: var(--secondary);
+    }
   }
 }
 

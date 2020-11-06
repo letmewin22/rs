@@ -2,6 +2,7 @@ import gsap from 'gsap'
 import {createNewElement} from '@/utils/createNewElement'
 import splitting from 'splitting'
 import FormPopUp from '@/components/FormPopUp'
+import {resize} from '@/utils/Resize'
 
 export const animation = (el) => {
   const form = el
@@ -35,6 +36,11 @@ export const animation = (el) => {
   const formpoup = new FormPopUp()
   const tl = gsap.timeline()
 
+  let duration = 0
+  resize.on(() => {
+    duration = window.innerWidth > window.innerHeight ? 1 : 2
+  })
+
   chars.length &&
     tl.set(chars, {
       y: '110%',
@@ -43,7 +49,7 @@ export const animation = (el) => {
     })
 
   tl.to(tnx, {duration: 0.01, visibility: 'visible'})
-  tl.to(tnxBg, {duration: 1, scale: 16, ease: 'power3.out'})
+  tl.to(tnxBg, {duration, scale: 16, ease: 'power3.out'})
 
   chars.length &&
     tl.to(
@@ -69,7 +75,7 @@ export const animation = (el) => {
         stagger: 0.012,
       })
     tl.to(tnxBg, {
-      duration: 1,
+      duration,
       scale: 1,
       opacity: 0,
       ease: 'power3.out',

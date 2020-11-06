@@ -72,6 +72,11 @@ export default class ScrollBar {
     }
   }
 
+  get isTouchable() {
+    return 'ontouchstart' in document.documentElement ||
+    (window.DocumentTouch && document instanceof window.DocumentTouch)
+  }
+
   events() {
     const progressUpdate = (e) => {
       const h = this.scrollbar.offsetHeight
@@ -80,33 +85,26 @@ export default class ScrollBar {
 
       setState(state, state.scrollbar = true)
 
-      if ('ontouchstart' in document.documentElement ||
-        (window.DocumentTouch && document instanceof window.DocumentTouch)) {
-        const b = e.target.getBoundingClientRect()
-        o = e.targetTouches[0].pageY - b.top
+      const changePos = (o) => {
         target = clamp(-this.el.scrollHeight * (o / h), 0, this.max)
-        gsap.to(state, {
-          duration: 0.01,
-          target,
-          ease: 'none',
-          overwrite: 5,
-          onComplete: () => {
-            setState(state, state.scrollbar = false)
-          }
-        })
-      } else {
-        o = e.clientY
-        target = clamp(-this.el.scrollHeight * (o / h), 0, this.max)
-
         gsap.to(state, {
           duration: 0.1,
           target,
-          overwrite: 5,
           ease: 'none',
+          overwrite: 5,
           onComplete: () => {
             setState(state, state.scrollbar = false)
           }
         })
+      }
+
+      if (this.isTouchable) {
+        const b = e.target.getBoundingClientRect()
+        o = e.targetTouches[0].pageY - b.top
+        changePos(o)
+      } else {
+        o = e.clientY
+        changePos(o)
       }
     }
 

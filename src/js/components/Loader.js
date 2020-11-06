@@ -2,8 +2,8 @@ import imagesLoaded from 'imagesloaded'
 import gsap from 'gsap'
 import splitting from 'splitting'
 import ChangeView from './ChangeView'
-import {setState, state} from '../state'
-import noop from '../utils/noop'
+import {setState, state} from '@/state'
+import noop from '@/utils/noop'
 
 export default class Loader {
   constructor(cb) {
@@ -45,7 +45,7 @@ export default class Loader {
         background: true,
       })
 
-      this.imgLoad.on('progress', (instance, image) => this.onProgress(image))
+      this.imgLoad.on('progress', (_, image) => this.onProgress(image))
       this.imgLoad.on('fail', () => {
         setTimeout(() => {
           this.counter(100, this.circle*2, 1)

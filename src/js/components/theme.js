@@ -1,4 +1,5 @@
 import {createNewElement} from '@/utils/createNewElement'
+import {resize} from '@/utils/Resize'
 import gsap from 'gsap'
 
 export default class Theme {
@@ -60,8 +61,13 @@ export default class Theme {
     this.setTheme()
     document.body.appendChild(overlay)
 
+    let duration = 0
+    resize.on(() => {
+      duration = window.innerWidth > window.innerHeight ? 2 : 4
+    })
+
     gsap.to(overlay, {
-      duration: 2,
+      duration,
       scale: 200,
       ease: 'power3.out',
       onComplete: () => {

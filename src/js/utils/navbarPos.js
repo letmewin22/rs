@@ -21,21 +21,22 @@ export default class NavbarPos {
   }
 
   scrollNav() {
-    // const b = document.getElementById('scroller').getBoundingClientRect()
     const b = {
-      top: -state.scrolled
+      top: -state.scrolled,
     }
+    const flScrollPos = Math.floor(Math.abs(this.scrollPos))
+
     if (b.top > this.scrollPos || isFixed()) {
       document.body.classList.remove('nav-hidden')
       document.removeEventListener('mousemove', this.mouseFunc)
 
-    } else if (b.top < this.scrollPos && this.scrollPos <= 0) {
+    } else if (b.top < this.scrollPos && this.scrollPos <= 0 || !state.popup) {
       document.body.classList.add('nav-hidden')
       document.querySelector('.navbar').classList.remove('remove-bg')
 
       document.addEventListener('mousemove', this.mouseFunc)
 
-    } else if (!this.scrollPos) {
+    } else if (!flScrollPos) {
       document.querySelector('.navbar').classList.add('remove-bg')
     }
 

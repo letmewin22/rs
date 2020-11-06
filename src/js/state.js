@@ -1,7 +1,8 @@
 const state = {
   isLoaded: false,
   scollbar: false,
-  target: 0
+  target: 0,
+  popup: true
 }
 
 const setState = (oldState, newState) => {
