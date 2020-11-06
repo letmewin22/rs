@@ -36,7 +36,14 @@
     "arrow-parens": "off",
     "comma-dangle": "off",
     "require-jsdoc": "off",
-    "no-extend-native": "off"
+    "no-extend-native": "off",
+    "max-len": ["error", { 
+      "code": 80,
+      "ignoreComments": true, 
+      "ignoreUrls": true, 
+      "ignoreRegExpLiterals": true,
+      "ignoreTemplateLiterals": true
+    }]
   },
 
   "extends": ["eslint:recommended", "google"]

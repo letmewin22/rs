@@ -30,7 +30,8 @@ function createConfig(env) {
     resolve: {
       extensions: ['.js'],
       alias: {
-        '@': path.resolve(__dirname, 'src/js')
+        '@': path.resolve(__dirname, 'src/js'),
+        '@core': path.resolve(__dirname, 'src/js/core')
       }
     },
     module: {

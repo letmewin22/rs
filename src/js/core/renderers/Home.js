@@ -18,14 +18,16 @@ class Home extends Highway.Renderer {
 
     onLoaded(() => {
 
-      import(
+      setTimeout(() => {
+        import(
         /* webpackChunkName: "gl-images" */
-        '@/Gl/Images/Scene.js'
-      ).then((module) => {
-        const Scene = module.default
-        const imgs = document.querySelectorAll('.js-webgl-image')
-        window.scene = new Scene('#gl', imgs)
-      })
+          '@/Gl/Images/Scene.js'
+        ).then((module) => {
+          const Scene = module.default
+          const imgs = document.querySelectorAll('.js-webgl-image')
+          window.scene = new Scene('#gl', imgs)
+        })
+      }, 1600)
 
       this.parallax = new Parallax()
     })

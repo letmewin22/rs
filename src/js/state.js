@@ -1,5 +1,7 @@
 const state = {
-  isLoaded: false
+  isLoaded: false,
+  scollbar: false,
+  target: 0
 }
 
 const setState = (oldState, newState) => {

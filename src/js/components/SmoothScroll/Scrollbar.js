@@ -4,7 +4,7 @@ import {setState, state} from '@/state'
 import {run} from './run'
 import {clamp} from '@/utils/math'
 import {resize} from '@/utils/Resize'
-import {raf} from '../../utils/RAF'
+import {raf} from '@/utils/RAF'
 
 export default class ScrollBar {
   constructor(el) {
@@ -64,10 +64,10 @@ export default class ScrollBar {
 
       this.thumb.classList.add('scrolling')
       const scrollPos = state.scrolled
-      const percent =(100 * scrollPos) / (this.el.scrollHeight - ch)
+      const percent = 100 * scrollPos / (this.el.scrollHeight - ch)
 
-      this.thumb.style.top = percent + '%'
-      this.thumb.style.transform = `translateY(-${percent}%)`
+      this.thumb.style.top = percent.toFixed(2) + '%'
+      this.thumb.style.transform = `translateY(-${percent.toFixed(2)}%)`
 
       this.active()
     }
@@ -79,7 +79,7 @@ export default class ScrollBar {
       let target
       let o
 
-      setState(state, state.scrolling = true)
+      setState(state, state.scrollbar = true)
 
       if ('ontouchstart' in document.documentElement ||
         (window.DocumentTouch && document instanceof window.DocumentTouch)) {
@@ -90,9 +90,9 @@ export default class ScrollBar {
           duration: 0.01,
           target,
           ease: 'none',
-          onUpdate: () => {
-            run(this.el, target)
-            state.target = +state.target
+          overwrite: 5,
+          onComplete: () => {
+            setState(state, state.scrollbar = false)
           }
         })
       } else {
@@ -100,11 +100,12 @@ export default class ScrollBar {
         target = clamp(-this.el.scrollHeight * (o / h), 0, this.max)
 
         gsap.to(state, {
-          duration: 0.3,
+          duration: 0.1,
           target,
+          overwrite: 5,
           ease: 'none',
-          onUpdate: () => {
-            run(this.el, target)
+          onComplete: () => {
+            setState(state, state.scrollbar = false)
           }
         })
       }
@@ -126,10 +127,12 @@ export default class ScrollBar {
     })
 
     const mouseUp = () => {
+      setState(state, state.scrollbar = false)
       this.el.parentNode.removeEventListener('mousemove', progressUpdate)
     }
 
     const touchend = () => {
+      setState(state, state.scrollbar = false)
       this.thumb.classList.remove('active')
       this.el.parentNode.removeEventListener('touchmove', progressUpdate, {
         passive: false,

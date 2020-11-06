@@ -4,9 +4,14 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./",
     "paths": {
-      "@": ["./"]
+      "@/*": ["./*"],
+      "@core/*": ["./core/*"]
     }
   },
+  "filesGlob": [
+    "**/*.js",
+    "!node_modules/**/*"
+  ],
   "baseUrl": "./",
   "exclude": ["node_modules", "build"]
 }

@@ -65,7 +65,9 @@ export default class SmoothScroll {
   }
 
   scroll() {
-    if (Math.abs(Math.round(this.targetY) - Math.round(this.currentY)) >= 1) {
+    const s = state.scrollbar
+    const dif = Math.abs(Math.round(this.targetY) - Math.round(this.currentY))
+    if (dif >= 1 || s) {
       setState(state, state.scrolling = true)
     } else {
       setState(state, state.scrolling = false)
@@ -76,7 +78,6 @@ export default class SmoothScroll {
       this.currentY = lerp(this.currentY, this.targetY, this.ease)
       this.currentY = Math.round(this.currentY*100)/100
       run(this.$el, this.currentY)
-      setState(state, state.scrolling = true)
     }
 
   }

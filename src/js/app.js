@@ -2,9 +2,9 @@ import './libs/ie-detect'
 import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
-import {Home, About} from './core/renderers'
-import {Basic, FromNav} from './core/transitions'
-import Hooks from './core/Hooks'
+import {Home, About} from '@core/renderers'
+import {Basic, FromNav} from '@core/transitions'
+import Hooks from '@core/Hooks'
 
 import moveEl from './libs/moveEl'
 import cssWebP from './libs/testWebP'
@@ -114,8 +114,8 @@ const links = document.querySelectorAll('nav a')
 
 hooks.useBoth(() => {
   links.forEach((link) => {
-    link.classList.remove('is-active')
-    link.href === location.href && link.classList.add('is-active')
+    link.parentNode.classList.remove('is-active')
+    link.href === location.href && link.parentNode.classList.add('is-active')
   })
 })
 

@@ -53,8 +53,14 @@ export default class ChangeView {
       rotationX: 60
     }
 
+    const charsTo = {
+      y: '0%',
+      rotationX: 0,
+    }
+
     if (screen.width <= 960) {
       set.opacity = '0'
+      charsTo.opacity = 1
     }
 
     chars.length && tl.set(chars, set)
@@ -84,24 +90,13 @@ export default class ChangeView {
       opacity: 1
     })
 
-    chars.length && tl.to(chars, {
+    chars.length && tl.to(chars, Object.assign({
       duration: 1,
-      y: '0%',
-      rotationX: 0,
       ease: 'expo.out',
       stagger: 0.016,
-    })
+    }, charsTo))
 
     window.scene && window.scene.show()
-
-    if (screen.width <= 960) {
-      chars.length && tl.to(chars, {
-        duration: 1,
-        opacity: 1,
-        ease: 'expo.out',
-        stagger: 0.016,
-      }, 0)
-    }
 
     i.length && tl.to(i,
       {
@@ -151,8 +146,14 @@ export default class ChangeView {
       rotationX: 0
     }
 
+    const charsTo = {
+      y: '110%',
+      rotationX: 60,
+    }
+
     if (screen.width <= 960) {
       set.opacity = '1'
+      charsTo.opacity = 0
     }
 
     chars.length && tl.set(chars, set)
@@ -173,21 +174,12 @@ export default class ChangeView {
       height: '100%',
     })
 
-    chars.length && tl.to(chars, {
+    chars.length && tl.to(chars, Object.assign({
       duration: 0.6,
-      y: '110%',
-      rotationX: 60,
       ease: 'expo.in',
       stagger: 0.016,
-    })
+    }, charsTo))
 
-    if (screen.width <= 960) {
-      chars.length && tl.to(chars, {
-        duration: 0.6,
-        opacity: 0,
-        stagger: 0.016,
-      }, 0)
-    }
 
     i.length && tl.to(i,
       {

@@ -119,7 +119,6 @@ export default class Loader {
         document.body.classList.remove('e-fixed')
         document.body.style.cursor = 'auto'
         document.querySelector('.site-wrapper').style.opacity = '1'
-        this.cb()
         setState(state, state.isLoaded = true)
       }
     })
@@ -152,7 +151,10 @@ export default class Loader {
       opacity: 0,
       y: 40,
       ease: 'expo.in',
-      onComplete: () => ChangeView.in()
+      onComplete: () => ChangeView.in(() => {
+        this.cb()
+        setState(state, state.isLoaded = true)
+      })
     }, 0.8)
     tl.to(this.$ui, {
       duration: 1,

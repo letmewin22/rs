@@ -47,7 +47,7 @@
   white-space: nowrap;
   color: var(--secondary);
   transition: color .4s ease;
-  &:hover {
+  &:hover, &.is-active {
     color: $accent;
   }
   &--2 {
@@ -64,6 +64,9 @@
   }
   @include media('<=#{$br2}') {
     font-size: size(100, 42);
+  }
+  &.is-active {
+    pointer-events: none;
   }
 }
 
