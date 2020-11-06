@@ -1,7 +1,6 @@
 import gsap from 'gsap'
 import mutationObserver from '@/utils/mutationObserver'
 import {setState, state} from '@/state'
-import {run} from './run'
 import {clamp} from '@/utils/math'
 import {resize} from '@/utils/Resize'
 import {raf} from '@/utils/RAF'
