@@ -119,7 +119,6 @@ export default class Loader {
         document.body.classList.remove('e-fixed')
         document.body.style.cursor = 'auto'
         document.querySelector('.site-wrapper').style.opacity = '1'
-        setState(state, state.isLoaded = true)
       }
     })
     tl.delay(0.2)

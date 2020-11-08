@@ -5,7 +5,7 @@ export default class Button {
   constructor($el) {
     this.$btn = $el
 
-    this.init()
+    window.innerWidth > 960 ? this.init() : this.destroy()
   }
 
   init() {
@@ -60,7 +60,8 @@ export default class Button {
   }
 
   destroy() {
-    this.area.removeEventListener('mousemove', this.mouseHandler)
+    this.area && this.area.removeEventListener('mousemove', this.mouseHandler)
+    this.area &&
     this.area.removeEventListener('mouseleave', this.mouseleaveHandler)
   }
 }

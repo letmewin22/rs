@@ -35,7 +35,7 @@ class Home extends Highway.Renderer {
 
   }
   onLeaveCompleted() {
-    window.scene.destroy()
+    window.scene && window.scene.destroy()
     window.scene = undefined
     this.parallax.destroy()
   }

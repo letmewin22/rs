@@ -121,7 +121,7 @@ export default class Scene {
       duration: 2,
       delay: 0.1,
       y: 0,
-      ease: 'power2.out',
+      ease: 'sine.out',
       stagger: 0.016,
     })
     gsap.to(this.figure.group.scale, {
@@ -129,7 +129,7 @@ export default class Scene {
       delay: 0.1,
       y: 1,
       x: 1,
-      ease: 'power2.out',
+      ease: 'sine.out',
       stagger: 0.016,
     })
   }

@@ -3,7 +3,7 @@ import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
 import {Home, About} from '@core/renderers'
-import {Basic, FromNav, ToAbout} from '@core/transitions'
+import {Basic, FromNav} from '@core/transitions'
 import Hooks from '@core/Hooks'
 
 import moveEl from './libs/moveEl'
@@ -43,7 +43,6 @@ const H = new Highway.Core({
   },
   transitions: {
     default: Basic,
-    // about: ToAbout,
     contextual: {
       nav: FromNav,
     },
@@ -53,15 +52,15 @@ const H = new Highway.Core({
 const hooks = new Hooks(H)
 
 hooks.useNavigateOut(() => {
-  setState(state, (state.isLoaded = false))
-  document.body.style.pointerEvents = 'none'
-  document.documentElement.style.cursor = 'wait'
+  // setState(state, (state.isLoaded = false))
+  // document.body.style.pointerEvents = 'none'
+  // document.documentElement.style.cursor = 'wait'
 })
 
 hooks.useNavigateEnd(() => {
-  setState(state, (state.isLoaded = true))
-  document.body.style.pointerEvents = 'auto'
-  document.documentElement.style.cursor = 'auto'
+  // setState(state, (state.isLoaded = true))
+  // document.body.style.pointerEvents = 'auto'
+  // document.documentElement.style.cursor = 'auto'
 })
 
 let smoothScroll
@@ -106,6 +105,7 @@ hooks.useLoad(() => {
 
     const formpoup = new FormPopUp()
     formpoup.init()
+    new FormSubmit(document.querySelector('.form'))
   })
 
   resize.on(winSizes)
@@ -120,5 +120,3 @@ hooks.useBoth(() => {
     link.href === location.href && link.parentNode.classList.add('is-active')
   })
 })
-
-new FormSubmit(document.querySelector('.form'))
