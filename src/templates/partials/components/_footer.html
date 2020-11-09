@@ -1,23 +1,6 @@
   <footer data-scene data-speed="1" class="footer home__footer">
     <div class="container footer__container nm">
-      <div class="strips js-i">
-        <div class="strip strip--white">
-          <div class="strip__wrapper">
-            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
-            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
-            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
-            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
-          </div>
-        </div>
-        <div class="strip strip--blue">
-          <div class="strip__wrapper">
-            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
-            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
-            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
-            <div class="strip__item">&nbsp;/ Get in <span class="it">touch</span></div>
-          </div>
-        </div>
-      </div>
+      {{mixins.strips('&nbsp;/ Get in <span class="it">touch</span>', 'blue')}}
       {{ mixins.btn('send a request', 'footer__btn js-i js-fo') }}
     </div>
 

@@ -2,7 +2,7 @@ import './libs/ie-detect'
 import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
-import {Home, About} from '@core/renderers'
+import {Home, About, Case} from '@core/renderers'
 import {Basic, FromNav} from '@core/transitions'
 import Hooks from '@core/Hooks'
 
@@ -39,7 +39,8 @@ process.env.NODE_ENV === 'production' && cssWebP()
 const H = new Highway.Core({
   renderers: {
     home: Home,
-    about: About
+    about: About,
+    case: Case
   },
   transitions: {
     default: Basic,
@@ -52,15 +53,15 @@ const H = new Highway.Core({
 const hooks = new Hooks(H)
 
 hooks.useNavigateOut(() => {
-  // setState(state, (state.isLoaded = false))
-  // document.body.style.pointerEvents = 'none'
-  // document.documentElement.style.cursor = 'wait'
+  setState(state, (state.isLoaded = false))
+  document.body.style.pointerEvents = 'none'
+  document.documentElement.style.cursor = 'wait'
 })
 
 hooks.useNavigateEnd(() => {
-  // setState(state, (state.isLoaded = true))
-  // document.body.style.pointerEvents = 'auto'
-  // document.documentElement.style.cursor = 'auto'
+  setState(state, (state.isLoaded = true))
+  document.body.style.pointerEvents = 'auto'
+  document.documentElement.style.cursor = 'auto'
 })
 
 let smoothScroll

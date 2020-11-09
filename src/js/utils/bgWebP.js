@@ -6,7 +6,7 @@ const bgWebP = () => {
     const url = el.getAttribute('data-bg')
 
     if (document.body.classList.contains('webp')) {
-      const webpUrl = url.replace(/(\.jpg|\.png)/gm, 'webp')
+      const webpUrl = url.replace(/(\.jpg|\.png)/gm, '.webp')
       el.style.backgroundImage = `url(${webpUrl})`
       el.setAttribute('data-bg', webpUrl)
     } else {

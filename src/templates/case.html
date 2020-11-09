@@ -1,0 +1,23 @@
+{% set title = "case" %}
+{% set route = "case" %}
+{% extends "layouts/_layout.html" %}
+
+
+{% block content %}
+
+  <header class="case-header">
+    {{mixins.strips('&nbsp;/ Emotion <span class="it">agency</span>', 'blue', 'case-header__strips')}}
+      <div class="container case-header__container">
+        <div class="cols case-header__cols">
+          <div class="case-header__img-wrapper cols__col cols__col-end-3">
+            <div class="img js-webgl-image hide-cursor" data-pli data-bg="./img/posters/8.jpg"></div>
+          </div>
+          <p class="case-header__text cols__col cols__col-s-4">Texts for the website of a creative agency</p>
+          <div class="case-header__btn-wrapper cols__col cols__col-s-5">
+          {{ mixins.link('view the result', 'case-header__btn js-i js-fo', '#') }}
+          </div>
+        </div>
+      </div>
+  </header>
+
+{% endblock %}

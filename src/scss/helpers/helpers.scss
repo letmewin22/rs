@@ -30,6 +30,11 @@
   @return #{$inVW}vw;
 }
 
+@function vh($px) {
+  $inVH: $px / 1080 * 100;
+  @return #{$inVH}vh;
+}
+
 @function font-vw($px) {
   $inVW:  $px / 19.2;
   @return #{$inVW}vw;

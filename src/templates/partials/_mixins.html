@@ -1,21 +1,40 @@
 {% macro btn(text, selector, type, data) %}
-<button {{data|safe}} {% if type %}type={{type}}{% endif %} class="btn {{selector}} js-sticky hide-cursor">
-  <span data-power="60, 60" class="btn__circle js-sticky-item">
-    <span class="btn__circle-overlay"></span>
-  </span>
-  <span data-power="80, 7" class="btn__text js-sticky-item"
+  <button {{data|safe}} {% if type %}type={{type}}{% endif %} class="btn {{selector}} js-sticky hide-cursor">
+    <span data-power="60, 60" class="btn__circle js-sticky-item">
+      <span class="btn__circle-overlay"></span>
+    </span>
+    <span data-power="80, 7" class="btn__text js-sticky-item"
     >{{text|safe}}</span
   >
-</button>
+  </button>
 {% endmacro %}
 
 {% macro link(text, selector, href = '#', data) %}
-<a {{data|safe}} href="{{href|safe}}" class="btn {{selector}} js-sticky hide-cursor">
-  <div data-power="60, 60" class="btn__circle js-sticky-item">
-    <div class="btn__circle-overlay"></div>
-  </div>
-  <span data-power="80, 7" class="btn__text js-sticky-item"
+  <a {{data|safe}} href="{{href|safe}}" class="btn {{selector}} js-sticky hide-cursor">
+    <div data-power="60, 60" class="btn__circle js-sticky-item">
+      <div class="btn__circle-overlay"></div>
+    </div>
+    <span data-power="80, 7" class="btn__text js-sticky-item"
     >{{text|safe}}</span
   >
-</a>
+  </a>
+{% endmacro %}
+
+{% macro strips(text, color = 'blue', classes = '') %}
+  <div class="strips js-i {{classes}}">
+    <div class="strip strip--1 strip--white">
+      <div class="strip__wrapper">
+      {% for i in range(0, 4) -%}
+        <div class="strip__item">{{text|safe}}</div>
+      {% endfor %}
+      </div>
+    </div>
+    <div class="strip strip--2 strip--{{color}}">
+      <div class="strip__wrapper">
+      {% for i in range(0, 4) -%}
+        <div class="strip__item">{{text|safe}}</div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
 {% endmacro %}

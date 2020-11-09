@@ -15,14 +15,19 @@
     color: $black;
     transform: rotate(-7deg);
   }
-  &--blue {
+  &--2 {
     background-color: #E0E0E0;
-    color: $accent;
     position: absolute;
     z-index: -1;
     top: 50%;
     transform: translateY(-50%) rotate(8deg);
     justify-content: flex-end;
+  }
+  &--blue {
+    color: $accent;
+  }
+  &--purple {
+    color: #AB32D6;
   }
   @include media('<=#{$br2}') {
     padding-top: 24px;
