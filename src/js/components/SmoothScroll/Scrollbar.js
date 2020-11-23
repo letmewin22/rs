@@ -7,13 +7,12 @@ import {raf} from '@/utils/RAF'
 
 export default class ScrollBar {
   constructor(el) {
-
     this.el = el || document.getElementById('scroll-container')
 
     this.scrollbar = document.createElement('div')
-    el ?
-      this.scrollbar.classList.add('scrollbar', 'block-scrollbar') :
-      this.scrollbar.classList.add('scrollbar')
+    el
+      ? this.scrollbar.classList.add('scrollbar', 'block-scrollbar')
+      : this.scrollbar.classList.add('scrollbar')
 
     this.scrollbar.innerHTML = '<span class="scrollbar__thumb"></span>'
 
@@ -30,7 +29,6 @@ export default class ScrollBar {
   }
 
   init() {
-
     !this.el.parentNode.querySelector('.scrollbar') &&
       this.el.parentNode.appendChild(this.scrollbar)
 
@@ -63,7 +61,7 @@ export default class ScrollBar {
 
       this.thumb.classList.add('scrolling')
       const scrollPos = state.scrolled
-      const percent = 100 * scrollPos / (this.el.scrollHeight - ch)
+      const percent = (100 * scrollPos) / (this.el.scrollHeight - ch)
 
       this.thumb.style.top = percent.toFixed(2) + '%'
       this.thumb.style.transform = `translateY(-${percent.toFixed(2)}%)`
@@ -73,8 +71,10 @@ export default class ScrollBar {
   }
 
   get isTouchable() {
-    return 'ontouchstart' in document.documentElement ||
-    (window.DocumentTouch && document instanceof window.DocumentTouch)
+    return (
+      'ontouchstart' in document.documentElement ||
+      (window.DocumentTouch && document instanceof window.DocumentTouch)
+    )
   }
 
   events() {
@@ -83,7 +83,7 @@ export default class ScrollBar {
       let target
       let o
 
-      setState(state, state.scrollbar = true)
+      setState(state, (state.scrollbar = true))
 
       const changePos = (o) => {
         target = clamp(-this.el.scrollHeight * (o / h), 0, this.max)
@@ -93,8 +93,8 @@ export default class ScrollBar {
           ease: 'none',
           overwrite: 5,
           onComplete: () => {
-            setState(state, state.scrollbar = false)
-          }
+            setState(state, (state.scrollbar = false))
+          },
         })
       }
 
@@ -120,16 +120,16 @@ export default class ScrollBar {
     this.scrollbar.addEventListener('mousedown', mousedown)
 
     this.scrollbar.addEventListener('touchstart', touchstart, {
-      passive: false
+      passive: false,
     })
 
     const mouseUp = () => {
-      setState(state, state.scrollbar = false)
+      setState(state, (state.scrollbar = false))
       this.el.parentNode.removeEventListener('mousemove', progressUpdate)
     }
 
     const touchend = () => {
-      setState(state, state.scrollbar = false)
+      setState(state, (state.scrollbar = false))
       this.thumb.classList.remove('active')
       this.el.parentNode.removeEventListener('touchmove', progressUpdate, {
         passive: false,
@@ -139,11 +139,10 @@ export default class ScrollBar {
     this.el.parentNode.addEventListener('mouseup', mouseUp)
     document.body.addEventListener('mouseleave', mouseUp)
 
-
     this.el.parentNode.addEventListener('touchend', touchend, {passive: false})
 
     screen.width > 960 &&
-    this.scrollbar.addEventListener('click', progressUpdate)
+      this.scrollbar.addEventListener('click', progressUpdate)
 
     raf.on(this.scroll.bind(this))
   }
@@ -168,10 +167,10 @@ export default class ScrollBar {
 
   destroy() {
     document.querySelectorAll('.scrollbar').length > 0 &&
-        document.querySelectorAll('.scrollbar').forEach((el) => {
-          el.classList.add('hidden')
-          el.parentNode.removeChild(el)
-        })
+      document.querySelectorAll('.scrollbar').forEach((el) => {
+        el.classList.add('hidden')
+        el.parentNode.removeChild(el)
+      })
     raf.off(this.scroll.bind(this))
   }
 }

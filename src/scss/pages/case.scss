@@ -1,36 +1,66 @@
 .case-header {
-  height: var(--vh);
+  position: relative;
+  @include media('>=#{$br2}') {
+    height: var(--vh);
+  }
+  @include media('<=#{$br2}') {
+    padding-top: 90px;
+  }
 }
 .case-header__container {
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  @include media('<=#{$br2}') {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 }
 .case-header__text {
-  max-width: vw(265);
+  @include media('>=#{$br2}') {
+    max-width: vw(265);
+  }
+  @include media('<=#{$br2}') {
+    margin: 0 auto;
+    margin-top: 24px;
+    max-width: 80%;
+  }
 }
 
 .case-header__strips {
   position: absolute;
-  top: 38%;
-  transform: translateY(-50%);
+  @include media('>=#{$br2}') {
+    top: 38%;
+    transform: translateY(-50%);
+  }
+  @include media('<=#{$br2}') {
+    bottom: 60px;
+  }
 }
 
 .case-header__cols {
-  margin-top: vw(580);
+  @include media('>=#{$br2}') {
+    margin-top: vw(580);
+  }
+  @include media('<=#{$br2}') {
+    text-align: center;
+  }
 }
 
 .case-header__btn-wrapper {
   position: relative;
-  top: vw(-45);
+  @include media('>=#{$br2}') {
+    top: vw(-45);
+  }
+  @include media('<=#{$br2}') {
+    margin: 0 auto;
+    width: fit-content;
+    margin-top: 30px;
+  }
 }
 
 .case-header__img-wrapper {
-  position: absolute;
   width: vh(594);
-  top: 50%;
-  transform: translateY(-50%);
   .img {
     max-width: 100%;
     background-color: #fff;
@@ -38,4 +68,40 @@
     padding-bottom: toimg(594, 849);
     height: 0;
   }
+  @include media('>=#{$br2}') {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @include media('<=#{$br2}') {
+    position: relative;
+    margin: 0 auto;
+  }
+  @include media('<=#{$br3}') {
+    width: 80%;
+  }
+}
+
+.e-magic-section {
+  height: 150vh;
+}
+
+.e-magic-section__container {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-text {
+  width: vw(537);
+  margin-top: size(48, 24);
+  @include media('<=#{$br2}') {
+    width: size(537, 335);
+  }
+}
+
+[data-e-magic] {
+  position: relative;
 }

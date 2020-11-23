@@ -9,11 +9,7 @@ class Basic extends Highway.Transition {
     window.scrollTo(0, 0)
     // Remove Old View
     from.remove()
-    gsap.fromTo(to,
-      {opacity: 0},
-      {opacity: 1, duration: 0.1, onComplete: () => {
-        ChangeView.in(done)
-      }})
+    gsap.fromTo(to, {opacity: 0}, {opacity: 1, duration: 0.1, onComplete: done})
 
     // Animation
   }

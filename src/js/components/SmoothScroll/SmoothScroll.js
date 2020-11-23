@@ -16,7 +16,7 @@ export default class SmoothScroll {
     this.currentY = 0
 
     let ease = 0
-    resize.on(() => ease = window.innerWidth > 960 ? 0.08 : 0.1)
+    resize.on(() => (ease = window.innerWidth > 960 ? 0.08 : 0.1))
     this.ease = ease
 
     this.opts = {
@@ -24,32 +24,28 @@ export default class SmoothScroll {
       firefoxMultiplier: 40,
       preventTouch: true,
       // passive: false,
-      el: document.querySelector('#scroll-container')
+      el: document.querySelector('#scroll-container'),
     }
 
     this.init()
   }
 
   bind() {
-    ['scroll', 'resize'].forEach(fn => {
+    ['scroll', 'resize'].forEach((fn) => {
       this[fn] = this[fn].bind(this)
     })
   }
 
   virtualScroll() {
-
     const vs = new VirtualScroll(this.opts)
 
     vs.on((e) => {
-
       if (!isFixed()) {
-
         if (state.target === undefined) {
           this.targetY += e.deltaY
-          setState(state, state.target = e.deltaY)
-
+          setState(state, (state.target = e.deltaY))
         } else {
-          setState(state, state.target += e.deltaY)
+          setState(state, (state.target += e.deltaY))
           state.target = clamp(state.target, 0, this.max)
           this.targetY = state.target
         }
@@ -71,18 +67,17 @@ export default class SmoothScroll {
     const s = state.scrollbar
     const dif = Math.abs(Math.round(this.targetY) - Math.round(this.currentY))
     if (dif >= 1 || s) {
-      setState(state, state.scrolling = true)
+      setState(state, (state.scrolling = true))
     } else {
-      setState(state, state.scrolling = false)
+      setState(state, (state.scrolling = false))
     }
 
     if (state.scrolling) {
       this.targetY = state.target
       this.currentY = lerp(this.currentY, this.targetY, this.ease)
-      this.currentY = Math.round(this.currentY*100)/100
+      this.currentY = Math.round(this.currentY * 100) / 100
       run(this.$el, this.currentY)
     }
-
   }
 
   resize() {
@@ -91,7 +86,7 @@ export default class SmoothScroll {
   }
 
   reset() {
-    setState(state, state.target = 0)
+    setState(state, (state.target = 0))
     this.targetY = 0
     this.currentY = 0
     run(this.$el, 0)
@@ -99,4 +94,3 @@ export default class SmoothScroll {
 
   destroy() {}
 }
-

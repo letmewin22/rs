@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import * as dat from 'dat.gui'
+// import * as dat from 'dat.gui'
 
 export class Figure {
   constructor(scene, opts) {
@@ -29,7 +29,7 @@ export class Figure {
       depthTest: true,
       depthWrite: true,
       transparent: true,
-      opacity: this.opts.visibility.value
+      opacity: this.opts.visibility.value,
     })
 
     this.material.needsUpdate = true
@@ -41,20 +41,17 @@ export class Figure {
     this.mesh2.rotation.x = 1.07
     this.scene.position.x = -0.225
 
-
     this.group = new THREE.Group()
-    this.group.add( this.mesh1 )
-    this.group.add( this.mesh2 )
+    this.group.add(this.mesh1)
+    this.group.add(this.mesh2)
 
     this.wrapper = new THREE.Group()
     this.wrapper.add(this.group)
 
-    this.scene.add( this.wrapper )
-
+    this.scene.add(this.wrapper)
   }
 
   fluidSize(pc, mob) {
-
     const addSize = pc - mob
     const maxWidth = 1920 - 375
 
@@ -71,7 +68,7 @@ export class Figure {
       flatShading: false,
     }
 
-    this.gui = new dat.GUI()
+    // this.gui = new dat.GUI()
 
     this.gui.addColor(this.settings, 'color').onChange(() => {
       this.material.color = new THREE.Color(this.settings.color)
@@ -98,7 +95,7 @@ export class Figure {
   animate() {
     this.time++
     this.material.opacity = this.opts.visibility.value
-    this.group.position.y = 0 - 0.2*(1-this.opts.visibility.value)
+    this.group.position.y = 0 - 0.2 * (1 - this.opts.visibility.value)
     this.result += (this.opts.mouse.destX - this.scene.rotation.x) * 0.001
     this.result = this.clamp(this.result, 0.45, 0.48)
     // this.group.rotation.y = this.time / 5000

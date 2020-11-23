@@ -1,7 +1,6 @@
 import imagesLoaded from 'imagesloaded'
 import gsap from 'gsap'
 import splitting from 'splitting'
-import ChangeView from './ChangeView'
 import {setState, state} from '@/state'
 import noop from '@/utils/noop'
 
@@ -26,7 +25,6 @@ export default class Loader {
     this.num = {val: 0}
     this.state = false
     this.init()
-
   }
 
   init() {
@@ -48,18 +46,18 @@ export default class Loader {
       this.imgLoad.on('progress', (_, image) => this.onProgress(image))
       this.imgLoad.on('fail', () => {
         setTimeout(() => {
-          this.counter(100, this.circle*2, 1)
+          this.counter(100, this.circle * 2, 1)
         }, 650)
       })
     } else {
-      this.counter(100, this.circle*2, 1)
+      this.counter(100, this.circle * 2, 1)
     }
   }
 
   afterLoad() {
     if (!this.state) {
       this.state = true
-      this.$text.forEach(el => {
+      this.$text.forEach((el) => {
         el.style.overflow = 'hidden'
         splitting({target: el, by: 'chars'})
       })
@@ -72,8 +70,8 @@ export default class Loader {
   }
 
   counter(c, o, d) {
-    const count = c ?? Number(100 *(this.loadedLength / this.countImages))
-    const offset = o ?? this.circle + (this.loadedLength * this.step)
+    const count = c ?? Number(100 * (this.loadedLength / this.countImages))
+    const offset = o ?? this.circle + this.loadedLength * this.step
 
     return new Promise((resolve) => {
       gsap.to(this.num, {
@@ -81,7 +79,7 @@ export default class Loader {
         val: count,
         ease: 'power1.out',
         onUpdate: () => {
-          const finalOffset = this.circle + (offset *(this.num.val / 100) / 2)
+          const finalOffset = this.circle + (offset * (this.num.val / 100)) / 2
           this.percentHTML.innerHTML = Math.round(this.num.val) + '%'
           this.progressHTML.style.strokeDashoffset = finalOffset
         },
@@ -91,20 +89,18 @@ export default class Loader {
           } else {
             this.afterLoad()
           }
-        }
+        },
       })
     })
   }
 
   onProgress(image) {
-
     if (image.isLoaded) {
-      image.element ?
-        image.element.classList.add('loaded') :
-        image.img.classList.add('loaded')
+      image.element
+        ? image.element.classList.add('loaded')
+        : image.img.classList.add('loaded')
 
-      this.loadedLength =
-      document.querySelectorAll('[data-pli].loaded').length
+      this.loadedLength = document.querySelectorAll('[data-pli].loaded').length
 
       this.counter().then(() => {
         this.counter()
@@ -119,45 +115,63 @@ export default class Loader {
         document.body.classList.remove('e-fixed')
         document.body.style.cursor = 'auto'
         document.querySelector('.site-wrapper').style.opacity = '1'
-      }
+      },
     })
     tl.delay(0.2)
-    tl.to(this.percentHTML,
+    tl.to(
+      this.percentHTML,
       {
         opacity: 0,
         y: '50%',
         duration: 0.5,
         ease: 'expo.in',
-      }, 0.61)
+      },
+      0.61,
+    )
 
-    tl.to(this.progressHTML,
+    tl.to(
+      this.progressHTML,
       {
-        strokeDashoffset: this.circle*3,
+        strokeDashoffset: this.circle * 3,
         duration: 1.5,
-        ease: 'power4.inOut'
-      }, 0.31)
+        ease: 'power4.inOut',
+      },
+      0.31,
+    )
 
-    tl.to(this.$chars, {
-      duration: 0.6,
-      y: '110%',
-      rotationX: '60deg',
-      ease: 'expo.in',
-      stagger: 0.016
-    }, 0.8)
+    tl.to(
+      this.$chars,
+      {
+        duration: 0.6,
+        y: '110%',
+        rotationX: '60deg',
+        ease: 'expo.in',
+        stagger: 0.016,
+      },
+      0.8,
+    )
 
-    tl.to(this.$p, {
-      duration: 1,
-      opacity: 0,
-      y: 40,
-      ease: 'expo.in',
-      onComplete: () => ChangeView.in(() => {
-        this.cb()
-        setState(state, state.isLoaded = true)
-      })
-    }, 0.8)
-    tl.to(this.$ui, {
-      duration: 1,
-      opacity: 1
-    }, 0.8)
+    tl.to(
+      this.$p,
+      {
+        duration: 1,
+        opacity: 0,
+        y: 40,
+        ease: 'expo.in',
+        onComplete: () => {
+          this.cb()
+          setState(state, (state.isLoaded = true))
+        },
+      },
+      0.8,
+    )
+    tl.to(
+      this.$ui,
+      {
+        duration: 1,
+        opacity: 1,
+      },
+      0.8,
+    )
   }
 }

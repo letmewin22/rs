@@ -2,7 +2,7 @@ import './libs/ie-detect'
 import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
-import {Home, About, Case} from '@core/renderers'
+import {Home, About, Case, Contacts} from '@core/renderers'
 import {Basic, FromNav} from '@core/transitions'
 import Hooks from '@core/Hooks'
 
@@ -26,12 +26,12 @@ import bgWebP from './utils/bgWebP'
 import FormSubmit from './form/FormSubmit'
 import {setState, state} from './state'
 
-
 /**
 * @todo
  1. Адаптивные изображения
  2. Анимации на gl-картинках по мышке !?
  3. 404 страница
+ 4. state.popup
 * */
 
 process.env.NODE_ENV === 'production' && cssWebP()
@@ -40,7 +40,8 @@ const H = new Highway.Core({
   renderers: {
     home: Home,
     about: About,
-    case: Case
+    case: Case,
+    contacts: Contacts,
   },
   transitions: {
     default: Basic,

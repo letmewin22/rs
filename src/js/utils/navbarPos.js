@@ -17,6 +17,7 @@ export default class NavbarPos {
   mouseHandler(e) {
     if (e.screenY <= document.querySelector('.navbar').scrollHeight + 100) {
       document.body.classList.remove('nav-hidden')
+      state.popup = true
     } else document.body.classList.add('nav-hidden')
   }
 
@@ -29,15 +30,19 @@ export default class NavbarPos {
     if (b.top > this.scrollPos || isFixed()) {
       document.body.classList.remove('nav-hidden')
       document.removeEventListener('mousemove', this.mouseFunc)
+      state.popup = true
+    }
 
-    } else if (b.top < this.scrollPos && this.scrollPos <= 0 || !state.popup) {
+    if ((b.top < this.scrollPos && this.scrollPos <= 0) || !state.popup) {
       document.body.classList.add('nav-hidden')
       document.querySelector('.navbar').classList.remove('remove-bg')
 
       document.addEventListener('mousemove', this.mouseFunc)
+    }
 
-    } else if (!flScrollPos) {
+    if (!flScrollPos) {
       document.querySelector('.navbar').classList.add('remove-bg')
+      state.popup = true
     }
 
     this.scrollPos = -state.scrolled
