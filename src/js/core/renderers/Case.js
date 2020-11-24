@@ -4,13 +4,18 @@ import {onLoaded} from '@/utils/onLoaded'
 import ChangeView from '@/components/ChangeView'
 import {EMagic} from '@/components/EMagic'
 
+/**
+* @todo
+1. web-gl переходы
+* */
+
 export default class Case extends Highway.Renderer {
   onEnterCompleted() {
     strip('strip--1', 'strip__wrapper', 20)
     strip('strip--2', 'strip__wrapper', 24, 'right')
     onLoaded(() => ChangeView.in())
 
-    document.querySelectorAll('.e-magic-section').forEach((el) => {
+    document.querySelectorAll('[data-scroll]').forEach((el) => {
       new EMagic(el)
     })
   }

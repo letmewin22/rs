@@ -59,14 +59,21 @@
   }
 }
 
-.case-header__img-wrapper {
+@mixin case-img {
   width: vh(594);
   .img {
     max-width: 100%;
     background-color: #fff;
     @include cover;
-    padding-bottom: toimg(594, 849);
     height: 0;
+  }
+}
+
+.case-header__img-wrapper {
+  width: vh(594);
+  @include case-img;
+  .img {
+    padding-bottom: toimg(594, 849);
   }
   @include media('>=#{$br2}') {
     position: absolute;
@@ -78,12 +85,15 @@
     margin: 0 auto;
   }
   @include media('<=#{$br3}') {
-    width: 80%;
+    width: 100%;
   }
 }
 
 .e-magic-section {
-  height: 150vh;
+  height: 180vh;
+  @include media('<=#{$br3}') {
+    height: 120vh;
+  }
 }
 
 .e-magic-section__container {
@@ -102,6 +112,93 @@
   }
 }
 
-[data-e-magic] {
+.next-case__img-wrapper {
+  @include case-img;
+  justify-self: end;
+  width: vw(366);
+  align-self: right;
+  .img {
+    padding-bottom: toimg(366, 519);
+  }
+  @include media('<=#{$br2}') {
+    margin: 0 auto;
+    width: 40%;
+  }
+  @include media('<=#{$br4}') {
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.next-case {
+  height: var(--vh);
+}
+
+.next-case__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+}
+
+.next-case__cols {
   position: relative;
+  margin-top: size(80, 40);
+  margin-bottom: size(80, 40);
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: var(--secondary);
+}
+
+.next-case__separator {
+  width: 1px;
+  height: 26.66vw;
+  margin-top: -1vw;
+  background: var(--secondary);
+  @include bt;
+  transform: rotate(20deg);
+  transform-origin: bottom;
+  position: absolute;
+  @include media('<=#{$br2}') {
+    display: none;
+  }
+}
+
+.next__case-h2-wrapper {
+  position: absolute;
+  top: 18vw;
+  width: fit-content;
+  @include media('<=#{$br2}') {
+    display: none;
+  }
+}
+
+.next__case-h2-num {
+  display: block;
+  font-size: font-vw(24);
+  @include reg;
+  line-height: 1em;
+  position: absolute;
+  right: -2em;
+  top: 0;
+}
+
+.next__case-h2 {
+  @include h;
+  font-size: font-vw(231);
+  line-height: 1em;
+  display: block;
+}
+
+.next-case__btn {
+  @include media('<=#{$br2}') {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
