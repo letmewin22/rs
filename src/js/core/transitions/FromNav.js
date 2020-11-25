@@ -1,7 +1,6 @@
 import Highway from '@dogstudio/highway'
 import gsap from 'gsap'
 
-// Fade
 class FromNav extends Highway.Transition {
   in({to, from, done}) {
     window.scrollTo(0, 0)

@@ -30,8 +30,7 @@
 .case-header__strips {
   position: absolute;
   @include media('>=#{$br2}') {
-    top: 38%;
-    transform: translateY(-50%);
+    top: 29%;
   }
   @include media('<=#{$br2}') {
     bottom: 60px;

@@ -8,13 +8,12 @@ import {raf} from '@/utils/RAF'
 
 export default class Scene {
   constructor($selector, $imgs = []) {
-
     this.$container = document.querySelector($selector)
     this.$imgs = $imgs
 
     this.sizes = {
       w: window.innerWidth,
-      h: window.innerHeight
+      h: window.innerHeight,
     }
 
     this.time = 0
@@ -30,13 +29,12 @@ export default class Scene {
   }
 
   bounds() {
-    ['animate', 'resize', 'onMouseMove'].forEach(fn => {
+    ['animate', 'resize', 'onMouseMove'].forEach((fn) => {
       this[fn] = this[fn].bind(this)
     })
   }
 
   init() {
-
     this.scene = new THREE.Scene()
 
     this.setupCamera()
@@ -55,7 +53,7 @@ export default class Scene {
 
     this.$container.appendChild(this.renderer.domElement)
 
-    this.$imgs.forEach(img => {
+    this.$imgs.forEach((img) => {
       const figureIns = new Figure(this.scene, img)
       this.figures.push(figureIns)
       this.fVisibility.push(figureIns.mesh.material.uniforms.uVisibility)
@@ -63,7 +61,6 @@ export default class Scene {
   }
 
   setupCamera() {
-
     this.perspective = 800
     this.formula = 2 * Math.atan(this.sizes.h / 2 / this.perspective)
     this.fov = (180 * this.formula) / Math.PI
@@ -77,9 +74,7 @@ export default class Scene {
     this.camera.position.set(0, 0, this.perspective)
 
     this.camera.lookAt(0, 0, 0)
-
   }
-
 
   resize() {
     this.sizes = {...this.sizes, w: window.innerWidth, h: window.innerHeight}
@@ -91,11 +86,11 @@ export default class Scene {
     this.renderer.setSize(this.sizes.w, this.sizes.h)
     this.renderer.setPixelRatio(window.devicePixelRatio)
 
-    this.figures.forEach(figure => figure.resize())
+    this.figures.forEach((figure) => figure.resize())
   }
 
   updatePos(pos) {
-    this.figures.forEach(figure => {
+    this.figures.forEach((figure) => {
       figure.getSizes(pos)
       figure.resize()
     })
@@ -103,7 +98,7 @@ export default class Scene {
 
   animate() {
     this.time++
-    this.figures.forEach(figure => {
+    this.figures.forEach((figure) => {
       figure.update()
     })
     this.updatePos(state.scrolled)
@@ -111,21 +106,27 @@ export default class Scene {
   }
 
   onMouseMove(e) {
-    this.figures.forEach(figure => {
+    this.figures.forEach((figure) => {
       figure.mouse.x = e.clientX
       figure.mouse.y = e.clientY
     })
   }
 
   show() {
+    if (state.glTransition) {
+      this.fVisibility.splice(state.glTransitionI, 1)
+    }
     gsap.to(this.fVisibility, {
       duration: 1,
       value: 1,
       ease: 'expo.out',
-      stagger: 0.016
+      stagger: 0.016,
     })
   }
   hide() {
+    if (state.glTransition) {
+      this.fVisibility.splice(state.glTransitionI, 1)
+    }
     gsap.to(this.fVisibility, {
       duration: 1,
       value: 0,
@@ -135,7 +136,7 @@ export default class Scene {
   }
 
   destroy() {
-    this.figures.forEach(figure => {
+    this.figures.forEach((figure) => {
       figure.destroy()
     })
 

@@ -3,7 +3,7 @@ import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
 import {Home, About, Case, Contacts} from '@core/renderers'
-import {Basic, FromNav} from '@core/transitions'
+import {Basic, FromNav, Distort} from '@core/transitions'
 import Hooks from '@core/Hooks'
 
 import moveEl from './libs/moveEl'
@@ -31,7 +31,6 @@ import {setState, state} from './state'
  1. Адаптивные изображения
  2. Анимации на gl-картинках по мышке !?
  3. 404 страница
- 4. state.popup
 * */
 
 process.env.NODE_ENV === 'production' && cssWebP()
@@ -47,6 +46,7 @@ const H = new Highway.Core({
     default: Basic,
     contextual: {
       nav: FromNav,
+      distort: Distort,
     },
   },
 })

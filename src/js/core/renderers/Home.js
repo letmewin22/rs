@@ -31,8 +31,8 @@ class Home extends Highway.Renderer {
     })
   }
   onLeaveCompleted() {
-    window.scene && window.scene.destroy()
-    window.scene = undefined
+    // window.scene && window.scene.destroy()
+    // window.scene = undefined
     this.parallax.destroy()
   }
 }

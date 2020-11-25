@@ -14,7 +14,10 @@
 //   }
 // }
 
-html, body { height: 100% }
+html,
+body {
+  height: 100%;
+}
 
 body {
   @include reg;
@@ -35,7 +38,6 @@ body {
     opacity: 0;
   }
 }
-
 
 .js-in-view {
   transition: color 1s ease;
@@ -66,9 +68,8 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 }
-
 
 .js-l {
   perspective: 1000px;
@@ -81,7 +82,6 @@ button {
       display: inline-block;
     }
   }
-
 }
 
 .e-fixed {
@@ -104,6 +104,11 @@ button {
   opacity: 0;
 }
 
+.js-cloned {
+  max-width: none !important;
+  margin: 0 !important;
+}
+
 // .a-i, .a-h {
 //   opacity: 0;
 //   transform: translateY(80px);
@@ -113,22 +118,21 @@ button {
 //   width: 0%;
 // }
 
-
 #gl {
-	height: 100%;
-	left: 0;
-	position: fixed;
-	top: 0;
-	touch-action: none;
-	width: 100% ;
-	pointer-events: none;
-	background-color: transparent; 
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  touch-action: none;
+  width: 100%;
+  pointer-events: none;
+  background-color: transparent;
   opacity: 1;
   z-index: 0;
-}	
+}
 
 .js-hidden {
-  opacity: 0 
+  opacity: 0;
 }
 
 // .section {
@@ -136,7 +140,7 @@ button {
 //   top: 0;
 // }
 
-[data-visible=hide] {
+[data-visible='hide'] {
   .js-i {
     opacity: 0;
     transform: translateY(40px);
@@ -149,8 +153,9 @@ button {
     opacity: 0;
     height: 0;
   }
-  .h1, .h2 {
-    opacity: 0
+  .h1,
+  .h2 {
+    opacity: 0;
   }
   .js-l {
     .char {
@@ -160,5 +165,4 @@ button {
       }
     }
   }
-
 }
