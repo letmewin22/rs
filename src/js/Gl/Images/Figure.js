@@ -9,20 +9,18 @@ export default class Figure {
   constructor(scene, $img) {
     this.scene = scene
     this.$img = $img
-    this.mouse = {
-      x: 0,
-      y: 0,
-      destX: 0,
-      destY: 0,
-    }
+
+    this.mouse = new THREE.Vector3(0, 0, 0)
 
     this.time = 0
 
     this.mouseEnter = this.mouseEnter.bind(this)
     this.mouseLeave = this.mouseLeave.bind(this)
+    this.mouseMove = this.mouseMove.bind(this)
 
     this.$img.addEventListener('mouseenter', this.mouseEnter)
     this.$img.addEventListener('mouseleave', this.mouseLeave)
+    this.$img.addEventListener('mousemove', this.mouseMove, false)
 
     this.loader = new THREE.TextureLoader()
     this.createMesh()
@@ -44,7 +42,8 @@ export default class Figure {
       uTransition: {value: 0},
       uCenter: {value: 0},
       uVisibility: {value: 1},
-      uMouse: {value: new THREE.Vector2(0, 0)},
+      uScreenWidth: {value: window.innerWidth},
+      uMouse: {value: new THREE.Vector3(0, 0, 0)},
     }
 
     this.material = new THREE.ShaderMaterial({
@@ -82,10 +81,7 @@ export default class Figure {
     this.time++
     const m = this.mesh.material.uniforms
     m.uTime.value = this.time
-    // this.mouse.destX = this.mouse.x / window.innerWidth
-    // this.mouse.destY = this.mouse.y / window.innerHeight
-    // this.mesh.material.uniforms.uMouse.x = this.mouse.destX * 0.5
-    // this.mesh.material.uniforms.uMouse.y = this.mouse.destY * 0.5
+    m.uScreenWidth.value = window.innerWidth
   }
 
   resize() {
@@ -99,11 +95,6 @@ export default class Figure {
       duration: 1.5,
       value: 1,
     })
-    // gsap.to(this.mesh.material.uniforms.uTransition, {
-    //   delay: 1.5,
-    //   duration: 1.5,
-    //   value: 1,
-    // })
   }
 
   mouseLeave() {
@@ -115,8 +106,26 @@ export default class Figure {
     }
   }
 
+  removeHover() {
+    this.$img.removeEventListener('mouseenter', this.mouseEnter)
+    this.$img.removeEventListener('mouseleave', this.mouseLeave)
+  }
+
+  mouseMove(e) {
+    const {width, height} = this.$img.getBoundingClientRect()
+
+    this.mouse.x = (e.offsetX / width) * 2 - 1
+    this.mouse.y = -(e.offsetY / height) * 2 + 1
+    this.material.uniforms.uMouse.value = this.mouse
+  }
+
   destroy() {
+    this.$img.removeEventListener('mouseenter', this.mouseEnter)
+    this.$img.removeEventListener('mouseleave', this.mouseLeave)
+    this.$img.removeEventListener('mousemove', this.mouseMove)
+
     this.scene.remove(this.mesh)
+
     this.geometry.dispose()
     this.material.dispose()
     this.image.dispose()

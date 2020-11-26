@@ -1,7 +1,7 @@
 export const cloneNode = ($el) => {
   const b = $el.getBoundingClientRect()
 
-  $el.parentNode.appendChild($el.cloneNode(true))
+  $el.parentNode.insertBefore($el.cloneNode(true), $el)
 
   document.body.appendChild($el)
 
@@ -14,4 +14,5 @@ export const cloneNode = ($el) => {
     z-index: 1000;
   `
   $el.classList.add('js-cloned')
+  $el.classList.add('js-cloned-reset')
 }

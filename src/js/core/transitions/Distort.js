@@ -1,26 +1,28 @@
+import gsap from 'gsap'
 import ChangeView from '@/components/ChangeView'
 import {state} from '@/state'
 import {cloneNode} from '@/utils/cloneNode'
+import {resize} from '@/utils/Resize'
 import Highway from '@dogstudio/highway'
-import gsap from 'gsap'
 
 export default class Distort extends Highway.Transition {
   in({from, to, done}) {
     from.remove()
 
     const $wrapper = to.querySelector('.case-header__img-wrapper')
-    const $sc = document.querySelector('#scroll-container')
     const $cloned = document.querySelector('.js-cloned')
 
     const glScene = window.scene.figures[state.glTransitionI]
-    const glUniform = glScene.material.uniforms.uDistortion
+    const glUDistortion = glScene.material.uniforms.uDistortion
+    const glUTransition = glScene.material.uniforms.uTransition
 
-    const b = $wrapper.getBoundingClientRect()
+    let b
 
-    $wrapper.style.width = Math.round(+b.width) + 'px'
-    $wrapper.style.height = Math.round(+b.height) + 'px'
+    resize.on(() => {
+      b = $wrapper.getBoundingClientRect()
+    })
 
-    $wrapper.querySelector('.img').style.display = 'none'
+    $wrapper.querySelector('.img').style.visibility = 'hidden'
 
     gsap.to($cloned, {
       duration: 1.5,
@@ -32,11 +34,30 @@ export default class Distort extends Highway.Transition {
       ease: 'power3.inOut',
       onComplete: () => {
         state.glTransition = false
-        $sc.appendChild($cloned)
+        const imgs = document.querySelectorAll('.js-webgl-image')
+        window.scene.$imgs = imgs
+        window.scene.updateImages()
+        $wrapper.parentNode.appendChild($cloned)
+        resize.on(() => {
+          $cloned.style.top = b.top + 'px'
+          $cloned.style.left = b.left + 'px'
+          $cloned.style.width = b.width + 'px'
+          $cloned.style.height = b.height + 'px'
+        })
+        glScene.removeHover()
+        $cloned.classList.remove('js-cloned')
+        $cloned.style.pointerEvents = 'auto'
         done()
       },
     })
-    gsap.to(glUniform, {duration: 2, value: 0})
+    gsap.to(glUDistortion, {duration: 2, value: 0})
+    gsap.to(glUTransition, {duration: 1, value: 1, ease: 'power3.in'})
+    gsap.to(glUTransition, {
+      duration: 1,
+      value: 0,
+      delay: 1,
+      ease: 'power3.out',
+    })
   }
 
   out({done, trigger}) {

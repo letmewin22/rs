@@ -23,16 +23,21 @@ class Home extends Highway.Renderer {
       ).then((module) => {
         const Scene = module.default
         const imgs = document.querySelectorAll('.js-webgl-image')
-        window.scene = new Scene('#gl', imgs)
-        setTimeout(() => ChangeView.in(), 100)
+        setTimeout(() => {
+          window.scene = new Scene('#gl', imgs)
+          setTimeout(() => ChangeView.in(), 100)
+        }, 210)
       })
 
       this.parallax = new Parallax()
     })
   }
   onLeaveCompleted() {
-    // window.scene && window.scene.destroy()
-    // window.scene = undefined
+    if (!document.querySelector('.js-cloned')) {
+      window.scene && window.scene.destroy()
+      window.scene = undefined
+    }
+
     this.parallax.destroy()
   }
 }

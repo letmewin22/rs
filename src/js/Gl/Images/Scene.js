@@ -25,7 +25,6 @@ export default class Scene {
     this.bounds()
     raf.on(this.animate)
     resize.on(this.resize)
-    // window.addEventListener('mousemove', this.onMouseMove)
   }
 
   bounds() {
@@ -57,6 +56,22 @@ export default class Scene {
       const figureIns = new Figure(this.scene, img)
       this.figures.push(figureIns)
       this.fVisibility.push(figureIns.mesh.material.uniforms.uVisibility)
+    })
+  }
+
+  updateImages() {
+    this.fVisibility = []
+    this.figures = this.figures.filter((f) => {
+      if (f.$img.dataset.bg !== this.$imgs[1].dataset.bg) {
+        f.destroy()
+      }
+      return f.$img.dataset.bg === this.$imgs[1].dataset.bg
+    })
+
+    const figureIns = new Figure(this.scene, this.$imgs[0])
+    this.figures.push(figureIns)
+    this.figures.forEach((f) => {
+      this.fVisibility.push(f.mesh.material.uniforms.uVisibility)
     })
   }
 
