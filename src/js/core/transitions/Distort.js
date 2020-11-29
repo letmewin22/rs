@@ -18,12 +18,11 @@ export default class Distort extends Highway.Transition {
 
     let b
 
-    // console.log(glScene)
-
     resize.on(() => {
       b = $wrapper.getBoundingClientRect()
     })
 
+    $wrapper.querySelector('.img').classList.remove('js-webgl-image')
     $wrapper.querySelector('.img').style.visibility = 'hidden'
 
     gsap.to($cloned, {
@@ -37,6 +36,7 @@ export default class Distort extends Highway.Transition {
       onComplete: () => {
         state.glTransition = false
         const imgs = document.querySelectorAll('.js-webgl-image')
+
         window.scene.$imgs = imgs
         window.scene.updateImages()
         $wrapper.parentNode.appendChild($cloned)
@@ -68,7 +68,7 @@ export default class Distort extends Highway.Transition {
       state.glTransitionI = +trigger.dataset.index - 1
     } else {
       const node = trigger.parentNode.querySelector('[data-index]')
-      state.glTransitionI = +node.dataset.index - 1
+      state.glTransitionI = +node.dataset.index
       cloneNode(node)
     }
     state.glTransition = true

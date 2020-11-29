@@ -28,6 +28,7 @@ export default class Case extends Highway.Renderer {
             const Scene = module.default
             const imgs = document.querySelectorAll('.js-webgl-image')
             window.scene = new Scene('#gl', imgs)
+            window.scene.figures[0].removeHover()
             setTimeout(() => ChangeView.in(), 100)
           })
         } else {
