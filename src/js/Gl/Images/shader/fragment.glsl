@@ -1,15 +1,14 @@
 uniform sampler2D uTexture;
 uniform float uDistortion;
 uniform float uVisibility;
-uniform vec3 uMouse;
+uniform float uTransition;
+uniform vec2 uMouse;
+uniform vec2 uRate;
+uniform float uTime;
+uniform float uHover;
 varying vec2 vUv;
-varying vec3 vPosition;
 
 float M_PI = 3.1415926535897932384626433832795;
-
-float map(float value, float min1, float max1, float min2, float max2) {
-  return min2 + (value - min1) * (max2 - min2) / (max1 - min1);
-}
 
 float distort(float uType, vec2 vUv) {
   float roundblend = sin(M_PI*uType);
@@ -20,19 +19,31 @@ float distort(float uType, vec2 vUv) {
 
 void main()	{
 
-	float dist = length(vPosition - uMouse);
-	float prox = 1. - map(dist, 0., 0.15, 0., 1.);
-	prox = clamp(prox, 0., 1.);
+	vec2 newUv = vUv;
 
-	vec2 zoomedUv = mix(vUv, uMouse.xy + vec2(0.5), prox);
+	newUv.y+= sin(newUv.y*20. + uTime*0.02) * 0.02*uTransition;
+	newUv.x+= sin(newUv.x*10. + uTime*0.05) * 0.004*uTransition;
 
-	vec4 originTexture = texture2D(uTexture, vUv);
-	vec4 multiplyTexture = texture2D(uTexture, vUv) * distort(uDistortion, vUv);
+	vec2 mouse = vec2(uMouse.x, ((1. - uMouse.y) - 0.5)*uRate.y + 0.5);
+	float dist = distance(mouse, newUv);
+
+	if (dist < 0.1 && uHover > 0.) {
+		float temp = dist / 0.1;
+		float abs = 1. - temp;
+
+		newUv.x += sin(gl_FragCoord.y * 0.01 + uTime*0.005) * abs * 0.01;
+		newUv.y += sin(gl_FragCoord.x * 0.015 + uTime*0.015) * abs * 0.015;
+	}
+
+	vec4 originTexture = texture2D(uTexture, newUv);
+	vec4 multiplyTexture = texture2D(uTexture, newUv) * distort(uDistortion, newUv);
 
 	originTexture.a = uVisibility;
 	multiplyTexture.a = uVisibility;
 
 	vec4 finalTexture = originTexture + multiplyTexture;
+
+
 
 	gl_FragColor = finalTexture;
 }

@@ -3,6 +3,7 @@ import strip from '@/components/strip'
 import {onLoaded} from '@/utils/onLoaded'
 import ChangeView from '@/components/ChangeView'
 import {EMagic} from '@/components/EMagic'
+import {Parallax} from '@/components/Parallax'
 
 /**
 * @todo
@@ -35,6 +36,7 @@ export default class Case extends Highway.Renderer {
           ChangeView.in()
         }
       }, 210)
+      this.parallax = new Parallax()
     })
   }
   onLeaveCompleted() {
@@ -42,5 +44,6 @@ export default class Case extends Highway.Renderer {
       window.scene && window.scene.destroy()
       window.scene = undefined
     }
+    this.parallax.destroy()
   }
 }

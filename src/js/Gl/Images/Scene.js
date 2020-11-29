@@ -28,7 +28,7 @@ export default class Scene {
   }
 
   bounds() {
-    ['animate', 'resize', 'onMouseMove'].forEach((fn) => {
+    ['animate', 'resize'].forEach((fn) => {
       this[fn] = this[fn].bind(this)
     })
   }
@@ -119,13 +119,6 @@ export default class Scene {
     })
     this.updatePos(state.scrolled)
     this.renderer.render(this.scene, this.camera)
-  }
-
-  onMouseMove(e) {
-    this.figures.forEach((figure) => {
-      figure.mouse.x = e.clientX
-      figure.mouse.y = e.clientY
-    })
   }
 
   show() {

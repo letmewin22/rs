@@ -23,16 +23,16 @@
 
 {% block content %}
   <div style="--accent: {{color|safe}};--accent2: {{color|safe}}; --accent3: {{secColor|safe}}" class="case-layout">
-    <header  data-visible="hide" class="case-header">
+    <header data-visible="hide" class="case-header">
       {{mixins.strips(strip|safe, 'blue', 'case-header__strips')}}
-      <div class="container case-header__container">
+      <div class="container case-header__container" data-section-parallax='0.2'>
         <div class="cols case-header__cols">
           <div class="case-header__img-wrapper cols__col cols__col-end-3">
-            <div class="img js-webgl-image" style="opacity:0" data-pli data-bg="{{img}}"></div>
+            <div class="img js-webgl-image hide-cursor" style="opacity:0" data-pli data-bg="{{img}}"></div>
           </div>
           <p class="case-header__text cols__col cols__col-s-4 js-i">{{description}}</p>
           <div class="case-header__btn-wrapper cols__col cols__col-s-5">
-            {{ mixins.link('view the result', 'case-header__btn js-i', href=item.link, data="target='_blank' rel='noopener noreferrer'") }}
+            {{ mixins.link('view the result', 'case-header__btn js-i', href=item.link, data="target='_blank' rel='noopener noreferrer' data-section-parallax='-0.2'") }}
           </div>
         </div>
       </div>

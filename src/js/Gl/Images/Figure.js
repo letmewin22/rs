@@ -11,22 +11,30 @@ export default class Figure {
     this.$img = $img
     this.$btn = document.querySelector('.next-case__btn')
 
-    this.mouse = new THREE.Vector3(0, 0, 0)
+    this.mouse = new THREE.Vector2(0, 0)
 
     this.time = 0
 
-    this.mouseEnter = this.mouseEnter.bind(this)
-    this.mouseLeave = this.mouseLeave.bind(this)
-    this.mouseMove = this.mouseMove.bind(this)
+    this.bounds()
 
     this.$img.addEventListener('mouseenter', this.mouseEnter)
     this.$img.addEventListener('mouseleave', this.mouseLeave)
+    this.$img.addEventListener('mouseenter', this.hoverOn)
+    this.$img.addEventListener('mouseleave', this.hoverOff)
     this.$btn && this.$btn.addEventListener('mouseenter', this.mouseEnter)
     this.$btn && this.$btn.addEventListener('mouseleave', this.mouseLeave)
     this.$img.addEventListener('mousemove', this.mouseMove, false)
 
     this.loader = new THREE.TextureLoader()
     this.createMesh()
+  }
+
+  bounds() {
+    ['mouseEnter', 'mouseLeave', 'mouseMove', 'hoverOn', 'hoverOff'].forEach(
+      (fn) => {
+        this[fn] = this[fn].bind(this)
+      },
+    )
   }
 
   createMesh() {
@@ -46,7 +54,9 @@ export default class Figure {
       uCenter: {value: 0},
       uVisibility: {value: 0},
       uScreenWidth: {value: window.innerWidth},
-      uMouse: {value: new THREE.Vector3(0, 0, 0)},
+      uMouse: {value: new THREE.Vector2(0, 0)},
+      uRate: {value: new THREE.Vector2(1, 1)},
+      uHover: {value: 0},
     }
 
     this.material = new THREE.ShaderMaterial({
@@ -63,6 +73,9 @@ export default class Figure {
     this.mesh = new THREE.Mesh(this.geometry, this.material)
 
     this.getSizes()
+
+    this.mesh.material.uniforms.uRate.y = this.sizes.y / this.sizes.x
+    this.mesh.material.uniforms.uRate.x = this.sizes.x / this.sizes.y
 
     this.mesh.position.set(this.offset.x, this.offset.y, 0)
     this.mesh.scale.set(this.sizes.x, this.sizes.y, this.sizes.x / 2)
@@ -109,6 +122,14 @@ export default class Figure {
     }
   }
 
+  hoverOn() {
+    this.mesh.material.uniforms.uHover.value = 1
+  }
+
+  hoverOff() {
+    this.mesh.material.uniforms.uHover.value = 0
+  }
+
   removeHover() {
     this.$img.removeEventListener('mouseenter', this.mouseEnter)
     this.$img.removeEventListener('mouseleave', this.mouseLeave)
@@ -117,15 +138,15 @@ export default class Figure {
   }
 
   mouseMove(e) {
-    const {width, height} = this.$img.getBoundingClientRect()
-
-    this.mouse.x = (e.offsetX / width) * 2 - 1
-    this.mouse.y = -(e.offsetY / height) * 2 + 1
+    this.mouse.x = e.offsetX / this.sizes.x
+    this.mouse.y = e.offsetY / this.sizes.y
     this.material.uniforms.uMouse.value = this.mouse
   }
 
   destroy() {
     this.removeHover()
+    this.$img.removeEventListener('mouseenter', this.hoverOn)
+    this.$img.removeEventListener('mouseleave', this.hoverOff)
     this.$img.removeEventListener('mousemove', this.mouseMove)
 
     this.scene.remove(this.mesh)
