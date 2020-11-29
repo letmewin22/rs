@@ -36,18 +36,17 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  transition: background .5s ease;
-
+  transition: background 0.5s ease;
 }
 
 .btn__circle-overlay {
   width: 100%;
   height: 100%;
   display: block;
-  background-color: #315CCB;
-  opacity: .7;
+  background: $accent3;
+  opacity: 0.7;
   border-radius: 40%;
-  transition: transform 1s $easing, background .5s ease;
+  transition: transform 1s $easing, background 0.5s ease;
   transform: translateY(110%);
   z-index: -1;
   @include media('<=#{$br2}') {
@@ -62,12 +61,9 @@
   text-align: center;
 }
 
-
-[data-theme=e-black] {
+[data-theme='e-black'] {
   .btn__circle {
     background: $accent2;
   }
-  .btn__circle-overlay {
-    background: $accent2;
-  }
+  --accent3: linear-gradient(179.9deg, #2e54b7 -9.86%, #a04af7 99.91%);
 }

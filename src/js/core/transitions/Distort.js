@@ -18,6 +18,8 @@ export default class Distort extends Highway.Transition {
 
     let b
 
+    // console.log(glScene)
+
     resize.on(() => {
       b = $wrapper.getBoundingClientRect()
     })
@@ -61,9 +63,15 @@ export default class Distort extends Highway.Transition {
   }
 
   out({done, trigger}) {
-    cloneNode(trigger)
+    if (trigger.dataset.index) {
+      cloneNode(trigger)
+      state.glTransitionI = +trigger.dataset.index - 1
+    } else {
+      const node = trigger.parentNode.querySelector('[data-index]')
+      state.glTransitionI = +node.dataset.index - 1
+      cloneNode(node)
+    }
     state.glTransition = true
-    state.glTransitionI = +trigger.dataset.index - 1
     ChangeView.out(done)
   }
 }

@@ -1,5 +1,6 @@
 {% include "../partials/_head.html" %}
 {% import "partials/_mixins.html" as mixins %}
+{% import "data/data.html" as items %}
 <body class="loading">
   <noscript>
     <div class="js-enable">Please enable JavaScript to view this website.</div>
@@ -10,11 +11,11 @@
   {% include "partials/components/_loader.html" %}
   {% include "partials/components/_form.html" %}
   {% include "partials/components/_form-thankyou.html" %}
-    <div id="scroll-container" class="site-wrapper" data-router-wrapper>
-      <div data-router-view="{% if route %}{{ route }}{% else %}Template{% endif %}">
-        {% block content %}{% endblock %}
-        <!-- END content -->
-      </div>
+  <div id="scroll-container" class="site-wrapper" data-router-wrapper>
+    <div data-router-view="{% if route %}{{ route }}{% else %}Template{% endif %}">
+      {% block content %}{% endblock %}
+      <!-- END content -->
+    </div>
   </div>
   <div id="gl"></div>
   <button aria-label="Change color theme" class="theme-btn js-ui-load hide-cursor"></button>

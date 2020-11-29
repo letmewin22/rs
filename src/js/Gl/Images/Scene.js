@@ -61,6 +61,7 @@ export default class Scene {
 
   updateImages() {
     this.fVisibility = []
+
     this.figures = this.figures.filter((f) => {
       if (f.$img.dataset.bg !== this.$imgs[1].dataset.bg) {
         f.destroy()

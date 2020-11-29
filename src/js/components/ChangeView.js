@@ -3,7 +3,6 @@ import splitting from 'splitting'
 import noop from '@/utils/noop'
 
 export default class ChangeView {
-
   static prepare(cb) {
     cb = typeof cb !== undefined ? cb : noop
 

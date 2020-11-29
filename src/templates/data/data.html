@@ -1,44 +1,110 @@
 {% set 
-services = [
-	{
-		heading: 'Организация перевозок',
-		desc: "Перевезём любое количество груза ЖД-транспортом, избегая дополнительных перегрузок в пути следования. Помогаем компаниям и предприятиям экономить на транспортировке грузов.",
-		img: './img/services/1.jpg'
-	},
-	{
-		heading: 'Аренда вагонов',
-		desc: "Предоставляем вагоны в аренду компаниям и предприятиям, которые не хотят зависеть от экспедитора. Если у вас стабильный объём перевозок — аренда вагонов поможет достигнуть транспортной независимости.",
-		img: './img/services/2.jpg'
-	},
-	{
-		heading: 'Ремонт вагонов',
-		desc: "Организовываем ремонт ваших вагонов в наших депо. Восстанавливаем и подготавливаем к работе подвижной состав. Также продаём запасные части — у нас можно купить нужную деталь в любом количестве.",
-		img: './img/services/3.jpg'
-	}
-] 
-%}
-
-{% set 
-advantages = [
-	{
-		heading: 'Быстро',
-		desc: "Грузовые ЖД-перевозки — самый быстрый способ перевезти большое количество груза сухопутным путём. "
-	},
-	{
-		heading: 'Выгодно',
-		desc: "При перевозках на средние и дальние расстояния, железнодорожные перевозки дешевле автомобильных."
-	},
-	{
-		heading: 'Удобно',
-		desc: "Все услуги в одном месте: от полного сопровождения любого этапа организации перевозок до отслеживания груза."
-	},
-	{
-		heading: 'Безопасно',
-		desc: "Ваш груз в безопасности: мы используем программное обеспечение, чтобы отслеживать, где находится груз. "
-	},
-	{
-		heading: 'Понятно',
-		desc: "Вам не нужно разбираться в сложной документации и договариваться с железной дорогой — мы уже всё подготовили."
-	}
+cases = [
+{
+    index: 1,
+    title: "EcKit",
+    page: "eckit",
+    strip: "&nbsp;/ EcKit <span class='it'>e-commerce</span>",
+    img: './img/posters/1.jpg',
+    color: "#1985FA",
+    secColor: "#0F63BE",
+    link: "https://eckit.org/",
+    description: "structure and text for SEO agency landing",
+    task: "Create a structure and texts for the landing agency that engage in SEO promotion.
+    The text should help to get away from dozens of competitors, convey the key values and features of the company; obtain the necessary number of leads, which will allow to realize the ambitions of the company EcKit.",
+    solution: "I held a briefing at which I found out the key values and features of the company. From scratch, i developed a landing structure, packed meanings into text, and then transferred to a text prototype: its helped the designer place emphasis on design."
+},
+{
+    index: 2,
+    title: "Grplast",
+    page: "greinplast",
+    strip: "&nbsp;/ Greinplast <span class='it'>Ukraine</span>",
+    img: './img/posters/2.jpg',
+    color: "#37d078",
+    secColor: "#29A65E",
+    link: "https://greinplast.ua/",
+    description: "Texts for the corporate website of the materials distributor",
+    task: "Create a structure and texts for the corporate site of the materials distributor. The main task is to talk about the services, assortment and real benefits of the company for consumers.",
+    solution: "For typical pages, i developed a single structure in the format of landing. This format allows to briefly and easily disclose the features and benefits of the service for consumers. Each text is optimized for a certain key query - so Google is easier to index pages."
+}, 
+{
+    index: 3,
+    title: "Blog",
+    page: "corporate-blog",
+    strip: "&nbsp;/ Corporate <span class='it'>Blog</span>",
+    img: './img/posters/3.jpg',
+    color: "#8F3EAC",
+    secColor: "#75338C",
+    link: "https://blog.emotion-agency.com/",
+    description: "Create and maintain an enterprise blog",
+    task: "Create a corporate agency blog from scratch to attract new customers through expert articles. Talk about solved problems, describe cases, share experience and expertise.",
+    solution: "We developed a corporate blog: we came up with a design concept, created a rubric and editorial policy, set up a subscription form and created an email marketing system. Articles are published every week - one in each column."
+}, 
+{
+    index: 4,
+    title: "KTL",
+    page: "kargotranslogistic",
+    strip: "&nbsp;/ Kargo <span class='it'>Translogistic</span>",
+    img: './img/posters/4.jpg',
+    color: "#f7a707",
+    secColor: "#D89E29",
+    link: "https://tk-ktl.org.ua/",
+    description: "Structure, prototype and texts for the company's corporate website",
+    task: "Create a structure, prototype, and texts for your enterprise site. The text should talk about the company's services and its approach to work, answer basic customer questions, and motivate them to fill out a feedback form to order a miscalculation of the cost of services.",
+    solution: "The structure and prototype of the site was developed on the basis of the client's business goals. Having collected all the information, in the texts i spoke about the most important thing for customers: what kind of service it is, how it will help and how to order it. Together with the designer, i placed visual accents in order to quickly convey key thoughts to the user of the site."
+},
+{
+    index: 5,
+    title: "Medium",
+    page: "medium",
+    img: './img/posters/5.jpg',
+    strip: "&nbsp;/ Medium <span class='it'>Article</span>",
+    color: "#D92424",
+    secColor: "#B50000",
+    link: "https://medium.com/@stets.roman96",
+    description: "Personal Blog Article",
+    task: "Maintain your own blog on the Medium site to share useful materials, personal opinions, case reviews and other expert content with potential customers and colleagues.",
+    solution: "Specifically, this article is an express analysis of the site from the point of view of copywriting and meanings. <br><br>
+    In the text, I told my observations, and showed how different elements of the site and key meanings affect the user."
+},
+{
+    index: 6,
+    title: "MVP",
+    page: "anti-crysis-landing",
+    strip: "&nbsp;/ Anti-crysis <span class='it'>landing</span>",
+    img: './img/posters/6.jpg',
+    color: "#AB32D6",
+    secColor: "#7E259D",
+    link: "https://mvp.emotion-agency.com/",
+    description: "Structure and text for landing",
+    task: "Create a situational landing that advertises the creation of MVP landing services from a creative agency. It was important to observe the tone of voice of the agency and write a sincere text to attract new customers.",
+    solution: "Make a profitable offer for business. I told why MVP landing from a creative agency for $500 is a good option to get a cool site to test a new direction. The text relied on facts: each of them is reinforced by a real advantage."
+},
+{
+    index: 7,
+    title: "Reex",
+    page: "reex",
+    strip: "&nbsp;/ Reex <span class='it'>Temp staff</span>",
+    img: './img/posters/7.jpg',
+    color: "#FFEB39",
+    secColor: "#DCC814",
+    link: "https://reex.com.ua/",
+    description: "Texts for the recruiting company corporate site",
+    task: "Write texts for ready-made design layouts of the corporate site. Using the text, convey to potential customers the idea of why it is profitable for a business to hire employees for temporary work.",
+    solution: "After the client briefing, I divided the collected information into sections. Each page has a unique list of questions to get all sorts of answers. Based on the information collected, I filled in the design models with text that tells consumers about the company, services and real benefits."
+},
+{
+    index: 8,
+    title: "Emotion",
+    page: "emotion-agency",
+    strip: "&nbsp;/ Emotion <span class='it'>Agency</span>",
+    img: './img/posters/8.jpg',
+    color: "#BF45EA",
+    secColor: "#9838BA",
+    link: "https://emotion-agency.com/",
+    description: "Texts for creative agency website",
+    task: "Create a structure and texts for the creative agency website to tell potential customers about our approach, services and features of cooperation.",
+    solution: "The peculiarity of the texts is a sincere and simple conversation with the user of the site without clever terms. I focused on the important meanings that people needed to convey. I written simply, very politely, as if i was telling an old friend about his work."
+}
 ] 
 %}

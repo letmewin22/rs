@@ -20,7 +20,6 @@ export default class Case extends Highway.Renderer {
 
     onLoaded(() => {
       setTimeout(() => {
-        console.log(window.scene)
         if (!window.scene) {
           import(
             /* webpackChunkName: "gl-images" */

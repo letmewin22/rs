@@ -9,6 +9,7 @@ export default class Figure {
   constructor(scene, $img) {
     this.scene = scene
     this.$img = $img
+    this.$btn = document.querySelector('.next-case__btn')
 
     this.mouse = new THREE.Vector3(0, 0, 0)
 
@@ -20,6 +21,8 @@ export default class Figure {
 
     this.$img.addEventListener('mouseenter', this.mouseEnter)
     this.$img.addEventListener('mouseleave', this.mouseLeave)
+    this.$btn && this.$btn.addEventListener('mouseenter', this.mouseEnter)
+    this.$btn && this.$btn.addEventListener('mouseleave', this.mouseLeave)
     this.$img.addEventListener('mousemove', this.mouseMove, false)
 
     this.loader = new THREE.TextureLoader()
@@ -41,7 +44,7 @@ export default class Figure {
       uDistortion: {value: 0},
       uTransition: {value: 0},
       uCenter: {value: 0},
-      uVisibility: {value: 1},
+      uVisibility: {value: 0},
       uScreenWidth: {value: window.innerWidth},
       uMouse: {value: new THREE.Vector3(0, 0, 0)},
     }
@@ -109,6 +112,8 @@ export default class Figure {
   removeHover() {
     this.$img.removeEventListener('mouseenter', this.mouseEnter)
     this.$img.removeEventListener('mouseleave', this.mouseLeave)
+    this.$btn && this.$btn.removeEventListener('mouseenter', this.mouseEnter)
+    this.$btn && this.$btn.removeEventListener('mouseleave', this.mouseLeave)
   }
 
   mouseMove(e) {
@@ -120,8 +125,7 @@ export default class Figure {
   }
 
   destroy() {
-    this.$img.removeEventListener('mouseenter', this.mouseEnter)
-    this.$img.removeEventListener('mouseleave', this.mouseLeave)
+    this.removeHover()
     this.$img.removeEventListener('mousemove', this.mouseMove)
 
     this.scene.remove(this.mesh)

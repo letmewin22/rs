@@ -24,16 +24,16 @@
   <div class="strips js-i {{classes}}">
     <div class="strip strip--1 strip--white">
       <div class="strip__wrapper">
-      {% for i in range(0, 4) -%}
-        <div class="strip__item">{{text|safe}}</div>
-      {% endfor %}
+        {% for i in range(0, 4) -%}
+          <div class="strip__item">{{text|safe}}</div>
+        {% endfor %}
       </div>
     </div>
     <div class="strip strip--2 strip--{{color}}">
       <div class="strip__wrapper">
-      {% for i in range(0, 4) -%}
-        <div class="strip__item">{{text|safe}}</div>
-      {% endfor %}
+        {% for i in range(0, 4) -%}
+          <div class="strip__item">{{text|safe}}</div>
+        {% endfor %}
       </div>
     </div>
   </div>

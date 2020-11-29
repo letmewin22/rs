@@ -1,21 +1,22 @@
 :root {
   --black: #222222;
-  --accent: #2E54B7;
-  --lg: #F1F1F1;
-  --accent2: linear-gradient(179.9deg, #2E54B7 -9.86%, #A04AF7 99.91%);
+  --accent: #2e54b7;
+  --lg: #f1f1f1;
+  --accent2: linear-gradient(179.9deg, #2e54b7 -9.86%, #a04af7 99.91%);
+  --accent3: #315ccb;
   --g-offset: 2.08vw;
-  --red: #E73737;
+  --red: #e73737;
   @media screen and (max-width: 960px) {
     --g-offset: 20px;
   }
 }
-
 
 //colors
 $black: var(--black);
 $accent: var(--accent);
 $lg: var(--lg);
 $accent2: var(--accent2);
+$accent3: var(--accent3);
 $red: var(--red);
 
 //screen config
