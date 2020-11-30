@@ -2,7 +2,7 @@ import './libs/ie-detect'
 import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
-import {Home, About, Case, Contacts} from '@core/renderers'
+import {Home, About, Case, Contacts, Cases} from '@core/renderers'
 import {Basic, FromNav, Distort} from '@core/transitions'
 import Hooks from '@core/Hooks'
 
@@ -41,6 +41,7 @@ const H = new Highway.Core({
     about: About,
     case: Case,
     contacts: Contacts,
+    cases: Cases,
   },
   transitions: {
     default: Basic,

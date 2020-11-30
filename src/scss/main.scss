@@ -109,15 +109,6 @@ button {
   margin: 0 !important;
 }
 
-// .a-i, .a-h {
-//   opacity: 0;
-//   transform: translateY(80px);
-// }
-
-// .a-l, .section__line.a-l {
-//   width: 0%;
-// }
-
 #gl {
   height: 100%;
   left: 0;
@@ -164,5 +155,11 @@ button {
         opacity: 0;
       }
     }
+  }
+}
+
+.mob-hidden {
+  @include media('<=#{$br4}') {
+    display: none;
   }
 }
