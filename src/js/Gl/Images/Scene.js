@@ -28,7 +28,7 @@ export default class Scene {
   }
 
   bounds() {
-    ['animate', 'resize'].forEach((fn) => {
+    ['animate', 'resize'].forEach(fn => {
       this[fn] = this[fn].bind(this)
     })
   }
@@ -52,7 +52,7 @@ export default class Scene {
 
     this.$container.appendChild(this.renderer.domElement)
 
-    this.$imgs.forEach((img) => {
+    this.$imgs.forEach(img => {
       const figureIns = new Figure(this.scene, img)
       this.figures.push(figureIns)
       this.fVisibility.push(figureIns.mesh.material.uniforms.uVisibility)
@@ -62,7 +62,7 @@ export default class Scene {
   updateImages() {
     this.fVisibility = []
 
-    this.figures = this.figures.filter((f) => {
+    this.figures = this.figures.filter(f => {
       if (f.$img.dataset.bg !== this.$imgs[1].dataset.bg) {
         f.destroy()
       }
@@ -71,7 +71,7 @@ export default class Scene {
 
     const figureIns = new Figure(this.scene, this.$imgs[0])
     this.figures.push(figureIns)
-    this.figures.forEach((f) => {
+    this.figures.forEach(f => {
       this.fVisibility.push(f.mesh.material.uniforms.uVisibility)
     })
   }
@@ -84,7 +84,7 @@ export default class Scene {
       this.fov,
       this.sizes.w / this.sizes.h,
       0.01,
-      1000,
+      1000
     )
 
     this.camera.position.set(0, 0, this.perspective)
@@ -102,11 +102,11 @@ export default class Scene {
     this.renderer.setSize(this.sizes.w, this.sizes.h)
     this.renderer.setPixelRatio(window.devicePixelRatio)
 
-    this.figures.forEach((figure) => figure.resize())
+    this.figures.forEach(figure => figure.resize())
   }
 
   updatePos(pos) {
-    this.figures.forEach((figure) => {
+    this.figures.forEach(figure => {
       figure.getSizes(pos)
       figure.resize()
     })
@@ -114,7 +114,7 @@ export default class Scene {
 
   animate() {
     this.time++
-    this.figures.forEach((figure) => {
+    this.figures.forEach(figure => {
       figure.update()
     })
     this.updatePos(state.scrolled)
@@ -145,7 +145,7 @@ export default class Scene {
   }
 
   destroy() {
-    this.figures.forEach((figure) => {
+    this.figures.forEach(figure => {
       figure.destroy()
     })
 

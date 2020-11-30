@@ -33,7 +33,6 @@
     "space-before-function-paren": [2, "never"],
     "constructor-super": 2,
     "arrow-spacing": 2,
-    "arrow-parens": [0, "never"],
     "comma-dangle": "off",
     "require-jsdoc": "off",
     "no-extend-native": "off",
@@ -43,7 +42,8 @@
       "ignoreUrls": true, 
       "ignoreRegExpLiterals": true,
       "ignoreTemplateLiterals": true
-    }]
+    }],
+    "arrow-parens": [1, "as-needed", { "requireForBlockBody": false }]
   },
 
   "extends": ["eslint:recommended", "google"]

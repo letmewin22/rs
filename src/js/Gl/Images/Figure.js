@@ -31,9 +31,9 @@ export default class Figure {
 
   bounds() {
     ['mouseEnter', 'mouseLeave', 'mouseMove', 'hoverOn', 'hoverOff'].forEach(
-      (fn) => {
+      fn => {
         this[fn] = this[fn].bind(this)
-      },
+      }
     )
   }
 
