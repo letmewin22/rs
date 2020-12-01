@@ -1,6 +1,6 @@
 import VirtualScroll from 'virtual-scroll'
 
-import {clamp, lerp} from '@/utils/math'
+import {lerp} from '@/utils/math'
 import {raf} from '@/utils/RAF'
 
 export class CasesStrip {
@@ -22,6 +22,7 @@ export class CasesStrip {
   time = [...Array(4)].fill(0)
   targetY = [...Array(4)].fill(0)
   currentY = [...Array(4)].fill(0)
+  isScrolling = [...Array(4)].fill(false)
 
   init() {
     this.virtualScroll()
@@ -30,9 +31,9 @@ export class CasesStrip {
   }
 
   virtualScroll() {
-    const vs = new VirtualScroll(this.opts)
+    this.vs = new VirtualScroll(this.opts)
 
-    vs.on(e => {
+    this.vs.on(e => {
       this.targetY = this.targetY.map(el => (el += e.deltaY))
     })
   }
@@ -61,23 +62,31 @@ export class CasesStrip {
 
   move(el, i) {
     this.time[i]++
-
     const speed = 60
     const multiplier = -80
+
+    const dif = Math.abs(
+      Math.round(this.targetY[i]) - Math.round(this.currentY[i])
+    )
+    if (dif >= 1) {
+      this.isScrolling[i] = true
+    } else {
+      this.isScrolling[i] = false
+    }
 
     const defaultSpeed = (this.time[i] / speed) * this.coef[i] * multiplier
     const result = (this.currentY[i] / 5) * this.coef[i] + defaultSpeed
 
     if (-result >= this.sizes[i].height / 2 + this.margin[i]) {
       this.time[i] = 0
-      this.targetY[i] = -500
+      this.targetY[i] = this.isScrolling[i] ? -500 : 0
       this.currentY[i] = 0
     }
 
     if (result > 0) {
       const maxValue = (this.sizes[i].height / 2 + this.margin[i]) * speed
       this.time[i] = maxValue / (this.coef[i] * -multiplier)
-      this.targetY[i] = 500
+      this.targetY[i] = this.isScrolling[i] ? 500 : 0
       this.currentY[i] = 0
     }
 
@@ -91,5 +100,10 @@ export class CasesStrip {
     this.currentY = this.currentY.map((el, i) =>
       lerp(el, this.targetY[i], 0.08)
     )
+  }
+
+  destroy() {
+    raf.off(this.animate)
+    this.vs.destroy()
   }
 }

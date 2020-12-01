@@ -23,7 +23,7 @@ export default class SmoothScroll {
       touchMultiplier: 3.8,
       firefoxMultiplier: 40,
       preventTouch: true,
-      // passive: false,
+      passive: true,
       el: document.querySelector('#scroll-container'),
     }
 
@@ -31,7 +31,7 @@ export default class SmoothScroll {
   }
 
   bind() {
-    ['scroll', 'resize'].forEach((fn) => {
+    ['scroll', 'resize'].forEach(fn => {
       this[fn] = this[fn].bind(this)
     })
   }
@@ -39,7 +39,7 @@ export default class SmoothScroll {
   virtualScroll() {
     const vs = new VirtualScroll(this.opts)
 
-    vs.on((e) => {
+    vs.on(e => {
       if (!isFixed()) {
         if (state.target === undefined) {
           this.targetY += e.deltaY

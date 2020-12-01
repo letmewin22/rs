@@ -7,6 +7,10 @@
   height: 100%;
   padding-left: vw(165);
   padding-right: vw(165);
+  @include media('<=#{$br3}') {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .cases-header__bg-text-wrapper {
@@ -41,17 +45,17 @@
 
 .cases-header__items {
   + .cases-header__items {
-    margin-top: 100px;
+    margin-top: size(100, 50);
   }
 }
 
 .cases-header__item {
-  width: 330px;
-  height: 472px;
+  width: size(330, 167);
+  height: size(472, 240);
   background: black;
-  // margin-top: 100px;
+  display: block;
   + .cases-header__item {
-    margin-top: 100px;
+    margin-top: size(100, 50);
   }
   @include cover;
 }

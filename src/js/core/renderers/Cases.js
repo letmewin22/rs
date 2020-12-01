@@ -6,8 +6,13 @@ import {CasesStrip} from '@/components/CasesStrip'
 export default class Cases extends Highway.Renderer {
   onEnterCompleted() {
     onLoaded(() => ChangeView.in())
-
-    new CasesStrip()
+    this.casesStrip = new CasesStrip()
   }
-  onLeave() {}
+  onLeaveComleted() {
+    if (!document.querySelector('.js-cloned')) {
+      window.scene && window.scene.destroy()
+      window.scene = undefined
+    }
+    this.casesStrip.destroy()
+  }
 }

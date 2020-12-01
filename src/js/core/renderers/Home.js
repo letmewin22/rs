@@ -20,7 +20,7 @@ class Home extends Highway.Renderer {
       import(
         /* webpackChunkName: "gl-images" */
         '@/Gl/Images/Scene.js'
-      ).then((module) => {
+      ).then(module => {
         const Scene = module.default
         const imgs = document.querySelectorAll('.js-webgl-image')
         setTimeout(() => {
