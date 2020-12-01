@@ -23,7 +23,7 @@ export default class SmoothScroll {
       touchMultiplier: 3.8,
       firefoxMultiplier: 40,
       preventTouch: true,
-      passive: true,
+      passive: false,
       el: document.querySelector('#scroll-container'),
     }
 

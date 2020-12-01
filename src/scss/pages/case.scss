@@ -125,12 +125,17 @@
   }
   @include media('<=#{$br4}') {
     margin: 0 auto;
-    width: 100%;
+    width: 80%;
   }
 }
 
 .next-case {
-  height: var(--vh);
+  @include media('>=#{$br2}') {
+    height: var(--vh);
+  }
+  @include media('<=#{$br2}') {
+   margin-bottom: 60px;
+  }
 }
 
 .next-case__container {
@@ -145,6 +150,10 @@
   position: relative;
   margin-top: size(80, 40);
   margin-bottom: size(80, 40);
+  @include media('<=#{$br2}') {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 .line {
@@ -195,9 +204,7 @@
 
 .next-case__btn {
   @include media('<=#{$br2}') {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    margin-top: 24px;
   }
 }
