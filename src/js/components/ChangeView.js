@@ -16,7 +16,7 @@ export default class ChangeView {
     }
 
     lines.length &&
-      lines.forEach((el) => {
+      lines.forEach(el => {
         !el.classList.contains('splitting') &&
           splitting({target: el, by: 'chars'})
       })
@@ -29,18 +29,21 @@ export default class ChangeView {
     let i
     let hr
     let vr
+    let st
 
     if (hidden.length) {
       chars = document.querySelectorAll('.js-i-hidden .char')
       i = document.querySelectorAll('.js-i-hidden .js-i')
       hr = document.querySelectorAll('.js-i-hidden .js-hr')
       vr = document.querySelectorAll('.js-i-hidden .js-vr')
-      hidden.forEach((el) => el.classList.remove('js-i-hidden'))
+      st = document.querySelector('.js-i-hidden .js-st')
+      hidden.forEach(el => el.classList.remove('js-i-hidden'))
     } else {
       chars = document.querySelectorAll('.js-in-view .char')
       i = document.querySelectorAll('.js-in-view .js-i')
       hr = document.querySelectorAll('.js-in-view .js-hr')
       vr = document.querySelectorAll('.js-in-view .js-vr')
+      st = document.querySelector('.js-in-view .js-st')
     }
     const tl = gsap.timeline({onComplete: cb})
 
@@ -79,6 +82,12 @@ export default class ChangeView {
         height: 0,
       })
 
+    st &&
+      tl.set(st, {
+        opacity: 0,
+        visibility: 'hidden',
+      })
+
     chars.length &&
       chars[0].closest('.h2') &&
       tl.to(chars[0].closest('.h2'), {
@@ -93,6 +102,13 @@ export default class ChangeView {
         opacity: 1,
       })
 
+    st &&
+      tl.to(st, {
+        duration: 1,
+        opacity: 1,
+        visibility: 'visible',
+      })
+
     chars.length &&
       tl.to(
         chars,
@@ -102,11 +118,12 @@ export default class ChangeView {
             ease: 'expo.out',
             stagger: 0.016,
           },
-          charsTo,
-        ),
+          charsTo
+        )
       )
 
     window.scene && window.scene.show()
+    window.casesStrip && window.casesStrip.in()
 
     i.length &&
       tl.to(
@@ -118,7 +135,7 @@ export default class ChangeView {
           ease: 'expo.out',
           stagger: 0.12,
         },
-        0.2,
+        0.2
       )
 
     hr.length &&
@@ -131,7 +148,7 @@ export default class ChangeView {
           ease: 'expo.out',
           stagger: 0.12,
         },
-        0.2,
+        0.2
       )
 
     vr.length &&
@@ -144,13 +161,13 @@ export default class ChangeView {
           ease: 'expo.out',
           stagger: 0.12,
         },
-        0.2,
+        0.2
       )
   }
   static out(cb) {
     this.prepare(cb)
 
-    document.querySelectorAll('.js-in-view').forEach((el) => {
+    document.querySelectorAll('.js-in-view').forEach(el => {
       el.classList.add('js-i-hidden')
     })
 
@@ -158,6 +175,7 @@ export default class ChangeView {
     const i = document.querySelectorAll('.js-in-view .js-i')
     const hr = document.querySelectorAll('.js-in-view .js-hr')
     const vr = document.querySelectorAll('.js-in-view .js-vr')
+    const st = document.querySelector('.js-in-view .js-st')
 
     const tl = gsap.timeline({onComplete: cb})
 
@@ -178,6 +196,7 @@ export default class ChangeView {
 
     chars.length && tl.set(chars, set)
     window.scene && window.scene.hide()
+    window.casesStrip && window.casesStrip.out()
 
     i.length &&
       tl.set(i, {
@@ -197,6 +216,12 @@ export default class ChangeView {
         height: '100%',
       })
 
+    st &&
+      tl.set(st, {
+        opacity: 1,
+        visibility: 'visible',
+      })
+
     chars.length &&
       tl.to(
         chars,
@@ -206,8 +231,8 @@ export default class ChangeView {
             ease: 'expo.in',
             stagger: 0.016,
           },
-          charsTo,
-        ),
+          charsTo
+        )
       )
 
     i.length &&
@@ -220,7 +245,7 @@ export default class ChangeView {
           ease: 'expo.in',
           stagger: 0.05,
         },
-        0,
+        0
       )
 
     hr.length &&
@@ -233,7 +258,7 @@ export default class ChangeView {
           ease: 'expo.in',
           stagger: 0.05,
         },
-        0,
+        0
       )
 
     vr.length &&
@@ -246,7 +271,20 @@ export default class ChangeView {
           ease: 'expo.in',
           stagger: 0.05,
         },
-        0,
+        0
+      )
+    st &&
+      tl.to(
+        st,
+        {
+          duration: 1,
+          opacity: 0,
+          onComplete: () => {
+            st.style.visibility = 'hidden'
+          },
+          // visibility: 'hidden',
+        },
+        0
       )
   }
 }

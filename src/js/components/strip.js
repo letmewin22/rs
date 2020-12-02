@@ -5,7 +5,7 @@ const strip = (el, elLines, duration, dir = 'left') => {
 
   const x = dir === 'left' ? '-50%' : '50%'
 
-  element.forEach((elem) => {
+  element.forEach(elem => {
     elem.classList.add('repeat-activated')
     const tl = gsap.timeline({repeat: -1})
     tl.to(elem.querySelector('.' + elLines), {
@@ -22,4 +22,3 @@ const strip = (el, elLines, duration, dir = 'left') => {
 }
 
 export default strip
-

@@ -3,51 +3,14 @@
   height: var(--vh);
 }
 
-.cases-header__container {
-  height: 100%;
-  padding-left: vw(165);
-  padding-right: vw(165);
-  @include media('<=#{$br3}') {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-.cases-header__bg-text-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(100% - 40px);
-  text-align: center;
-}
-
-.cases-header__bg-text {
-  color: white;
-  font-size: font-vw(250);
-}
-
 .cases-header__cases {
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.cases-header__strip {
-  height: 100%;
   overflow: hidden;
-  // display: flex;
-  // justify-content: center;
-  // flex-direction: column;
-  // align-items: center;
 }
 
-.cases-header__items {
-  + .cases-header__items {
-    margin-top: size(100, 50);
-  }
-}
 
 .cases-header__item {
   width: size(330, 167);
@@ -60,3 +23,67 @@
   @include cover;
 }
 
+.cases-header__strips {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.cases-header__strip {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.cases-header__strip-item {
+  font-size: font-vw(160);
+  @include h;
+  line-height: 1em;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  transition: opacity .5s ease;
+  span {
+    display: inline-block;
+  }
+  &.hidden {
+    opacity: 0.4;
+  }
+  @include media('<=#{$br3}') {
+    font-size: size(160, 44);
+  }
+}
+
+.cases-header__strip-item-num {
+  @include reg;
+  font-size: vw(24);
+  line-height: 1em;
+  position: relative;
+  top: vw(-10);
+  right: vw(-10);
+  margin-right: vw(72);
+  @include media('<=#{$br3}') {
+    font-size: 10px;
+  }
+}
+
+.cases-header__imgs-wrapper {
+  width: vw(467);
+  height: vw(668);
+  @include vcenter(absolute);
+  @include media('<=#{$br3}') {
+    width: 283px;
+    height: 405px;
+  }
+}
+
+.cases-header__img {
+  width: vw(467);
+  height: vw(668);
+  @include cover;
+  position: absolute;
+  @include media('<=#{$br3}') {
+    width: 283px;
+    height: 405px;
+  }
+}

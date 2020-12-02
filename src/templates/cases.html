@@ -1,79 +1,37 @@
 {% set title = "Cases" %}
 {% set route = "cases" %}
 {% extends "layouts/_layout.html" %}
+{% import "data/data.html" as items %}
 
 {% block content %}
   <header data-visible="hide" class="header cases-header js-i-hidden">
-    <div class="cases-header__bg-text-wrapper">
-      <h1 class="h1 cases-header__bg-text js-l">My works</h1>
+    <div class="cases-header__imgs-wrapper">
+      {% for item in items.cases %}
+        <div 
+          style="opacity:0;display:none" 
+          class="cases-header__img img js-webgl-image hide-cursor" 
+          data-pli 
+          data-bg="{{item.img}}"
+        ></div>
+      {% endfor %}
     </div>
-    <div class="container cases-header__container">
-      <div class="cases-header__cases js-i">
-        <div class="cases-header__strip">
-          <div class="cases-header__items-wrapper">
-            <div class="cases-header__items">
-              <a  href="./eckit.html" class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/1.jpg"></a>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/3.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/2.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/4.jpg"></div>
-            </div>
-            <div class="cases-header__items">
-              <a href="./eckit.html" class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/1.jpg"></a>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/3.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/2.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/4.jpg"></div>
-            </div>
+    <div class="cases-header__cases js-st">
+      <div class="cases-header__strips">
+        {% for i in range(0, 2) -%}
+          <div class="cases-header__strip">
+            {% for item in items.cases %}
+              <a
+              data-index="{{item.index}}"
+              data-transition="distort"
+              href="./{{item.page}}.html" 
+              class="cases-header__strip-item hide-cursor"
+              >
+                  {{item.strip|safe}}
+                <span class="cases-header__strip-item-num">&nbsp;0{{item.index}}</span>
+              </a>
+            {% endfor %}
           </div>
-        </div>
-        <div class="cases-header__strip">
-          <div class="cases-header__items-wrapper">
-            <div class="cases-header__items">
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/5.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/6.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/7.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/8.jpg"></div>
-            </div>
-            <div class="cases-header__items">
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/5.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/6.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/7.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/8.jpg"></div>
-            </div>
-          </div>
-        </div>
-        <div class="cases-header__strip mob-hidden">
-          <div class="cases-header__items-wrapper">
-            <div class="cases-header__items">
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/1.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/2.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/3.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/4.jpg"></div>
-            </div>
-            <div class="cases-header__items">
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/1.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/2.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/3.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/4.jpg"></div>
-            </div>
-          </div>
-        </div>
-        <div class="cases-header__strip mob-hidden">
-          <div class="cases-header__items-wrapper">
-            <div class="cases-header__items">
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/6.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/5.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/8.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/7.jpg"></div>
-            </div>
-            <div class="cases-header__items">
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/6.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/5.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/8.jpg"></div>
-              <div class="cases-header__item js-webgl-image" data-pli data-bg="./img/posters/7.jpg"></div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
-    </div>
-  </header>
-{% endblock %}
+    </header>
+  {% endblock %}

@@ -76,13 +76,13 @@ hooks.useBothStart(() => {
     ...document.querySelectorAll('.section'),
     ...document.querySelectorAll('footer'),
   ]
-  sections.forEach((section) => {
+  sections.forEach(section => {
     intersectionOvserver(section).on()
   })
 
   const btns = document.querySelectorAll('.js-sticky')
 
-  btns.forEach((btn) => {
+  btns.forEach(btn => {
     new Button(btn)
   })
   smoothScroll && smoothScroll.reset()
@@ -93,7 +93,7 @@ hooks.useLoad(() => {
     import(
       /* webpackChunkName: "smooth-scroll" */
       './components/SmoothScroll/SmoothScroll'
-    ).then((module) => {
+    ).then(module => {
       const SmoothScroll = module.default
       smoothScroll = new SmoothScroll('#scroll-container')
     })
@@ -118,7 +118,7 @@ hooks.useLoad(() => {
 const links = document.querySelectorAll('nav a')
 
 hooks.useBoth(() => {
-  links.forEach((link) => {
+  links.forEach(link => {
     link.parentNode.classList.remove('is-active')
     link.href === location.href && link.parentNode.classList.add('is-active')
   })

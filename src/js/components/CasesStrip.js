@@ -1,108 +1,138 @@
 import VirtualScroll from 'virtual-scroll'
-
+import gsap from 'gsap'
 import {lerp} from '@/utils/math'
 import {raf} from '@/utils/RAF'
+import {state} from '@/state'
 
 export class CasesStrip {
-  constructor() {
-    const selector = '.cases-header__strip .cases-header__items-wrapper'
-    this.strips = [...document.querySelectorAll(selector)]
+  $strip = document.querySelector('.cases-header__strips')
+  $links = document.querySelectorAll('.cases-header__strip-item')
+  $imgs = document.querySelectorAll('.cases-header__img')
+  $parent = document.querySelector('.js-st')
+  targetY = 0
+  currentY = 0
+  ease = 0.06
 
-    this.opts = {
-      touchMultiplier: 3.8,
-      firefoxMultiplier: 40,
-      preventTouch: true,
-      el: document.querySelector('#scroll-container'),
-    }
-
-    this.init()
+  opts = {
+    touchMultiplier: 3.8,
+    firefoxMultiplier: 40,
+    preventTouch: true,
+    el: document.querySelector('#scroll-container'),
   }
 
-  coef = [0.9, 0.5, 0.8, 0.4]
-  time = [...Array(4)].fill(0)
-  targetY = [...Array(4)].fill(0)
-  currentY = [...Array(4)].fill(0)
-  isScrolling = [...Array(4)].fill(false)
-
-  init() {
-    this.virtualScroll()
-    this.animate = this.animate.bind(this)
-    raf.on(this.animate)
+  constructor() {
+    this.bounds()
+    this.init()
   }
 
   virtualScroll() {
     this.vs = new VirtualScroll(this.opts)
 
     this.vs.on(e => {
-      this.targetY = this.targetY.map(el => (el += e.deltaY))
+      const dir = window.innerWidth > 960 ? e.deltaY : e.deltaX
+      this.targetY += dir
     })
+  }
+
+  bounds() {
+    const methods = ['onMouseEnter', 'onMouseLeave', 'animate']
+    methods.forEach(fn => (this[fn] = this[fn].bind(this)))
+  }
+
+  init() {
+    this.virtualScroll()
+
+    this.$links.forEach(el => {
+      el.addEventListener('mouseenter', this.onMouseEnter)
+      el.addEventListener('mouseleave', this.onMouseLeave)
+    })
+    raf.on(this.animate)
+  }
+
+  in() {
+    this.targetY -= this.sizes.width / 16
+  }
+
+  out() {
+    this.targetY += this.sizes.width / 16
+  }
+
+  onMouseEnter(e) {
+    const idx = +e.target.dataset.index - 1
+
+    window.scene && window.scene.fVisibility.forEach(el => (el.value = 0))
+
+    this.$imgs.forEach(img => (img.style.display = 'none'))
+    this.$imgs[idx].style.display = 'block'
+
+    window.scene &&
+      gsap.to(window.scene.fVisibility[idx], {
+        duration: 1,
+        value: 1,
+        ease: 'expo.out',
+        stagger: 0.016,
+      })
+
+    window.scene && window.scene.figures[idx].mouseEnter()
+
+    this.$links.forEach(el => el.classList.add('hidden'))
+    e.target.classList.remove('hidden')
+  }
+
+  onMouseLeave() {
+    if (!state.glTransition) {
+      this.$links.forEach(el => el.classList.remove('hidden'))
+      this.$imgs.forEach(img => (img.style.display = 'none'))
+      window.scene && window.scene.fVisibility.forEach(el => (el.value = 0))
+      window.scene && window.scene.figures.forEach(el => el.mouseLeave())
+    }
   }
 
   get sizes() {
-    return this.strips.map(el => el.getBoundingClientRect())
+    return this.$strip.getBoundingClientRect()
   }
 
-  get margin() {
-    return this.strips.map(el => {
-      const child = el.querySelectorAll('.cases-header__items')[1]
-      const marginTop = getComputedStyle(child).marginTop
-      return +marginTop.replace('px', '') / 2
-    })
-  }
+  transform($el, pos, veloctiy) {
+    const t = `matrix3d(
+     1, 0, 0, 0, 
+     0, 1, 0, 0,
+     0, 0, 1, 0, 
+     ${pos}, 0, 0, 1
+    ) 
+    skewX(${-veloctiy / 80}deg)
+    `
 
-  matrix(el, distance) {
-    const t = `matrix3d(1, 0, 0, 0,
-      0, 1, 0, 0,
-      0, 0, 1, 0,
-      0, ${distance}, 0, 1)`
-
-    el.style.transform = t
-    el.style.willChange = 'transform'
-  }
-
-  move(el, i) {
-    this.time[i]++
-    const speed = 60
-    const multiplier = -80
-
-    const dif = Math.abs(
-      Math.round(this.targetY[i]) - Math.round(this.currentY[i])
-    )
-    if (dif >= 1) {
-      this.isScrolling[i] = true
-    } else {
-      this.isScrolling[i] = false
-    }
-
-    const defaultSpeed = (this.time[i] / speed) * this.coef[i] * multiplier
-    const result = (this.currentY[i] / 5) * this.coef[i] + defaultSpeed
-
-    if (-result >= this.sizes[i].height / 2 + this.margin[i]) {
-      this.time[i] = 0
-      this.targetY[i] = this.isScrolling[i] ? -500 : 0
-      this.currentY[i] = 0
-    }
-
-    if (result > 0) {
-      const maxValue = (this.sizes[i].height / 2 + this.margin[i]) * speed
-      this.time[i] = maxValue / (this.coef[i] * -multiplier)
-      this.targetY[i] = this.isScrolling[i] ? 500 : 0
-      this.currentY[i] = 0
-    }
-
-    this.matrix(el, result)
+    $el.style.transform = t
+    $el.style.willChange = 'transform'
   }
 
   animate() {
-    this.strips.forEach((el, i) => {
-      this.move(el, i)
-    })
-    this.currentY = this.currentY.map((el, i) =>
-      lerp(el, this.targetY[i], 0.08)
-    )
+    this.currentY = lerp(this.currentY, this.targetY, this.ease)
+    this.currentY = Math.round(this.currentY * 100) / 100
+
+    let percent = (this.currentY / this.sizes.width) * 100
+    const velocity = this.currentY - this.targetY
+
+    if (-percent >= 50) {
+      percent = 0
+      this.targetY = -velocity
+      this.currentY = 0
+    }
+
+    if (percent > 0) {
+      percent = -50
+      this.targetY = -this.sizes.width / 2 - velocity
+      this.currentY = -this.sizes.width / 2
+    }
+
+    this.transform(this.$strip, this.currentY, velocity)
   }
 
   destroy() {
+    this.$links.forEach(el => {
+      el.removeEventListener('mouseenter', this.onMouseEnter)
+      el.removeEventListener('mouseleave', this.onMouseLeave)
+    })
     raf.off(this.animate)
     this.vs.destroy()
   }

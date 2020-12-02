@@ -15,7 +15,7 @@ export default class Case extends Highway.Renderer {
     strip('strip--1', 'strip__wrapper', 20)
     strip('strip--2', 'strip__wrapper', 24, 'right')
 
-    document.querySelectorAll('[data-scroll]').forEach((el) => {
+    document.querySelectorAll('[data-scroll]').forEach(el => {
       new EMagic(el)
     })
 
@@ -25,7 +25,7 @@ export default class Case extends Highway.Renderer {
           import(
             /* webpackChunkName: "gl-images" */
             '@/Gl/Images/Scene.js'
-          ).then((module) => {
+          ).then(module => {
             const Scene = module.default
             const imgs = document.querySelectorAll('.js-webgl-image')
             window.scene = new Scene('#gl', imgs)

@@ -9,7 +9,7 @@ export default class Figure {
   constructor(scene, $img) {
     this.scene = scene
     this.$img = $img
-    this.$btn = document.querySelector('.next-case__btn')
+    this.$btn = document.querySelector('.js-case-btn')
 
     this.mouse = new THREE.Vector2(0, 0)
 

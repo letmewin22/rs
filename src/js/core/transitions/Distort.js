@@ -62,15 +62,23 @@ export default class Distort extends Highway.Transition {
     })
   }
 
-  out({done, trigger}) {
-    if (trigger.dataset.index) {
-      cloneNode(trigger)
-      state.glTransitionI = +trigger.dataset.index - 1
+  out({from, done, trigger}) {
+    if (from.dataset.routerView === 'cases') {
+      const idx = +trigger.dataset.index - 1
+      const img = from.querySelectorAll('.cases-header__img')[idx]
+      state.glTransitionI = idx
+      cloneNode(img)
     } else {
-      const node = trigger.parentNode.querySelector('[data-index]')
-      state.glTransitionI = +node.dataset.index
-      cloneNode(node)
+      if (trigger.dataset.index) {
+        cloneNode(trigger)
+        state.glTransitionI = +trigger.dataset.index - 1
+      } else {
+        const node = trigger.parentNode.querySelector('[data-index]')
+        state.glTransitionI = +node.dataset.index
+        cloneNode(node)
+      }
     }
+
     state.glTransition = true
     ChangeView.out(done)
   }
