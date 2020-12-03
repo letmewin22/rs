@@ -27,11 +27,24 @@
               class="cases-header__strip-item hide-cursor"
               >
                   {{item.strip|safe}}
-                <span class="cases-header__strip-item-num">&nbsp;0{{item.index}}</span>
+                <span class="cases-header__strip-item-num case-num">
+                <span class="case-num__num">0{{item.index}}</span>
+                  {% include "./partials/svg/_my-works.html" %}
+                </span>
               </a>
             {% endfor %}
           </div>
         {% endfor %}
+      </div>
+      <div class="cases-header__scroll-down">
+        <div class="cases-header__scroll-down-wrapper">
+          <div class="cases-header__scroll-down-item cases-header__scroll-down-item--desc">
+            {% include "./partials/svg/_scroll-down.html" %}
+          </div>
+          <div class="cases-header__scroll-down-item cases-header__scroll-down-item--mob">
+            {% include "./partials/svg/_swipe-aside.html" %}
+          </div>
+        </div>
       </div>
     </header>
   {% endblock %}

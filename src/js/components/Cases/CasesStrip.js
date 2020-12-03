@@ -3,12 +3,16 @@ import gsap from 'gsap'
 import {lerp} from '@/utils/math'
 import {raf} from '@/utils/RAF'
 import {state} from '@/state'
+import {Circles} from './Circles'
+import {casesState} from './casesState'
 
 export class CasesStrip {
   $strip = document.querySelector('.cases-header__strips')
   $links = document.querySelectorAll('.cases-header__strip-item')
   $imgs = document.querySelectorAll('.cases-header__img')
   $parent = document.querySelector('.js-st')
+  $stripCircles = document.querySelectorAll('.case-num svg')
+  $scrollDown = document.querySelector('.cases-header__scroll-down-wrapper')
   targetY = 0
   currentY = 0
   ease = 0.06
@@ -23,6 +27,15 @@ export class CasesStrip {
   constructor() {
     this.bounds()
     this.init()
+
+    this.circles = new Circles(this.$scrollDown, {
+      auto: true,
+      speed: 4,
+    })
+
+    this.$stripCircles.forEach(el => {
+      new Circles(el)
+    })
   }
 
   virtualScroll() {
@@ -80,7 +93,7 @@ export class CasesStrip {
   }
 
   onMouseLeave() {
-    if (!state.glTransition) {
+    if (!state.glTransition && window.innerWidth > 960) {
       this.$links.forEach(el => el.classList.remove('hidden'))
       this.$imgs.forEach(img => (img.style.display = 'none'))
       window.scene && window.scene.fVisibility.forEach(el => (el.value = 0))
@@ -99,7 +112,7 @@ export class CasesStrip {
      0, 0, 1, 0, 
      ${pos}, 0, 0, 1
     ) 
-    skewX(${-veloctiy / 80}deg)
+    skewX(${-veloctiy / 50}deg)
     `
 
     $el.style.transform = t
@@ -110,8 +123,12 @@ export class CasesStrip {
     this.currentY = lerp(this.currentY, this.targetY, this.ease)
     this.currentY = Math.round(this.currentY * 100) / 100
 
+    casesState.scrollPos = this.currentY / 10
+
     let percent = (this.currentY / this.sizes.width) * 100
     const velocity = this.currentY - this.targetY
+
+    casesState.velocity = velocity
 
     if (-percent >= 50) {
       percent = 0
@@ -135,5 +152,6 @@ export class CasesStrip {
     })
     raf.off(this.animate)
     this.vs.destroy()
+    this.circles.destroy()
   }
 }

@@ -29,7 +29,13 @@
   grid-template-rows: 1fr 1fr 1fr;
   grid-row-gap: 20px;
   @include media('<=#{$br2}') {
-  grid-template-columns: 8.5em 1fr;
+    grid-template-columns: 11.5em 1fr;
+  }
+  @include media('<=#{$br3}') {
+    grid-template-columns: 9.5em 1fr;
+  }
+  @include media('<=#{$br4}') {
+    grid-template-columns: 8.5em 1fr;
   }
   @include media('<=360px') {
     grid-template-rows: 1fr 1fr 1fr 1fr;

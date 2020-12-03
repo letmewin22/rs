@@ -1,6 +1,6 @@
 import Highway from '@dogstudio/highway'
 import {onLoaded} from '@/utils/onLoaded'
-import {CasesStrip} from '@/components/CasesStrip'
+import {CasesStrip} from '@/components/Cases/CasesStrip'
 import ChangeView from '@/components/ChangeView'
 
 export default class Cases extends Highway.Renderer {
