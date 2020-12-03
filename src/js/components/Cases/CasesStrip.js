@@ -11,8 +11,10 @@ export class CasesStrip {
   $links = document.querySelectorAll('.cases-header__strip-item')
   $imgs = document.querySelectorAll('.cases-header__img')
   $parent = document.querySelector('.js-st')
+
   $stripCircles = document.querySelectorAll('.case-num svg')
   $scrollDown = document.querySelector('.cases-header__scroll-down-wrapper')
+
   targetY = 0
   currentY = 0
   ease = 0.06
@@ -27,14 +29,18 @@ export class CasesStrip {
   constructor() {
     this.bounds()
     this.init()
+    this.circlesInstances = []
 
     this.circles = new Circles(this.$scrollDown, {
       auto: true,
       speed: 4,
     })
 
+    this.circlesInstances.push(this.circles)
+
     this.$stripCircles.forEach(el => {
-      new Circles(el)
+      const i = new Circles(el)
+      this.circlesInstances.push(i)
     })
   }
 
@@ -152,6 +158,6 @@ export class CasesStrip {
     })
     raf.off(this.animate)
     this.vs.destroy()
-    this.circles.destroy()
+    this.circlesInstances.forEach(instance => instance.destroy())
   }
 }

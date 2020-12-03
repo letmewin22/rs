@@ -13,6 +13,7 @@ const config = {
   hash: 'e' + Date.now(),
   build: {
     html: projectFolder + '/',
+    sw: projectFolder + '/',
     php: projectFolder + '/',
     css: projectFolder + '/css/',
     js: projectFolder + '/js/',
@@ -23,7 +24,12 @@ const config = {
   },
   src: {
     templates: 'src/templates',
-    html: [sourceFolder + '/*.html', '!' + sourceFolder + '/_*.html', '!' + sourceFolder + '/data'],
+    html: [
+      sourceFolder + '/*.html',
+      '!' + sourceFolder + '/_*.html',
+      '!' + sourceFolder + '/data',
+    ],
+    sw: ['src/sw.js', 'src/manifest.json'],
     php: projectFolder + '/**/*.php',
     css: sourceFolder + '/scss/app.scss',
     js: sourceFolder + '/js/app.js',
@@ -38,20 +44,20 @@ const config = {
     js: sourceFolder + '/js/**/*.{js,glsl,json}',
     img: sourceFolder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
     video: sourceFolder + '/video/**/*',
-    audio: sourceFolder + '/audio/**/*'
+    audio: sourceFolder + '/audio/**/*',
   },
   clean: './' + projectFolder + '/',
   cleanJS: projectFolder + '/js/app.*',
   cleanCSS: projectFolder + '/css',
 
-  setEnv: function(env) {
+  setEnv: function (env) {
     if (typeof env !== 'string') return
     this.env = env
     this.production = env === 'production'
     process.env.NODE_ENV = env
   },
 
-  logEnv: function() {
+  logEnv: function () {
     util.log(
       'Environment:',
       util.colors.white.bgMagenta(' ' + process.env.NODE_ENV + ' ')
@@ -63,4 +69,4 @@ const config = {
 
 config.setEnv(production ? 'production' : 'development')
 
-module.exports = config 
+module.exports = config

@@ -6,11 +6,17 @@
     <title>{% if title %}{{ title }}{% else %}Template{% endif %}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#131116">
+    <meta name="theme-color" content="#222222">
     <link rel="icon" href="img/favicons/favicon.ico" type="image/x-icon">
     <meta name="description" content="{% if description %}{{ description }}{% else %}Template{% endif %}">
     <meta property="og:title" content="{% if title %}{{ title }}{% else %}Template{% endif %}">
     <meta property="og:description" content="{% if description %}{{ description }}{% else %}Template{% endif %}">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicons/favicon.ico">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}Template{% endif %}">
+    <meta name="twitter:description" content="{% if description %}{{ description }}{% else %}Template{% endif %}">
+    <meta name="twitter:image" content="img/favicons/twitter-img.png">
+    <meta property="og:image" content="img/favicons/twitter-img.png">
     {% include "partials/_fonts-include.html" %}
     <!-- BEGIN styles -->
     <link rel="stylesheet" media="all" href="css/app.css">

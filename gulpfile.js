@@ -6,6 +6,7 @@ const config = require('././gulp/config')
 
 const server = require('./gulp/tasks/server').bind(null, browsersync)
 const html = require('./gulp/tasks/html').bind(null, browsersync)
+const sw = require('./gulp/tasks/sw')
 const php = require('./gulp/tasks/php').bind(null)
 const css = require('./gulp/tasks/css').bind(null, browsersync)
 const js = require('./gulp/tasks/js').bind(null, browsersync)
@@ -18,7 +19,6 @@ const svgSprites = require('./gulp/tasks/svgSprite')
 const otfConvert = require('./gulp/tasks/otfConvert')
 const fontsInclude = require('./gulp/tasks/fontsInclude')
 const cp = require('./gulp/tasks/createPages/cp')
-
 
 function wpBuild(done) {
   config.setEnv('production')
@@ -35,7 +35,6 @@ function wpDev(done) {
 otfConvert()
 
 svgSprites()
-
 
 function watchFiles() {
   gulp.watch([config.watch.css], css)
@@ -54,20 +53,16 @@ function cleanPHP() {
   return del([config.cleanJS, config.cleanCSS], {force: true})
 }
 
-
 const build = gulp.series(
   clean,
   wpBuild,
   gulp.parallel(css, images, fonts, video, audio),
   js,
-  html
+  html,
+  sw
 )
 
-const tophp = gulp.series(
-  cleanPHP,
-  wpBuild,
-  gulp.parallel(php, js, css)
-)
+const tophp = gulp.series(cleanPHP, wpBuild, gulp.parallel(php, js, css))
 
 const dev = gulp.series(
   clean,
@@ -76,11 +71,7 @@ const dev = gulp.series(
   html
 )
 
-const watch = gulp.series(
-  wpDev,
-  gulp.parallel(dev, watchFiles, server)
-)
-
+const watch = gulp.series(wpDev, gulp.parallel(dev, watchFiles, server))
 
 exports.fonts = fonts
 exports.images = images

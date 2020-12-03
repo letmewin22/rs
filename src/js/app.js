@@ -2,7 +2,7 @@ import './libs/ie-detect'
 import './libs/sayHello'
 
 import Highway from '@dogstudio/highway'
-import {Home, About, Case, Contacts, Cases} from '@core/renderers'
+import {Home, About, Case, Contacts, Cases, ErrorPage} from '@core/renderers'
 import {Basic, FromNav, Distort} from '@core/transitions'
 import Hooks from '@core/Hooks'
 
@@ -25,13 +25,7 @@ import bgWebP from './utils/bgWebP'
 
 import FormSubmit from './form/FormSubmit'
 import {setState, state} from './state'
-
-/**
-* @todo
- 1. Адаптивные изображения
- 2. Анимации на gl-картинках по мышке !?
- 3. 404 страница
-* */
+import * as serviceWorker from './serviceworker'
 
 process.env.NODE_ENV === 'production' && cssWebP()
 
@@ -42,6 +36,7 @@ const H = new Highway.Core({
     case: Case,
     contacts: Contacts,
     cases: Cases,
+    errorPage: ErrorPage,
   },
   transitions: {
     default: Basic,
@@ -123,3 +118,5 @@ hooks.useBoth(() => {
     link.href === location.href && link.parentNode.classList.add('is-active')
   })
 })
+
+process.env.NODE_ENV === 'production' && serviceWorker.register()

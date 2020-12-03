@@ -23,7 +23,7 @@ export default class Cases extends Highway.Renderer {
       })
     })
   }
-  onLeaveComleted() {
+  onLeaveCompleted() {
     if (!document.querySelector('.js-cloned')) {
       window.scene && window.scene.destroy()
       window.scene = undefined

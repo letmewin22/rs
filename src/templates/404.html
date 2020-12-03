@@ -1,0 +1,28 @@
+{% set title = "Roman Stets | 404 Error" %}
+{% set route = "errorPage" %}
+{% extends "layouts/_layout.html" %}
+
+{% import "data/data.html" as items %}
+{% block content %}
+  <header data-visible="hide" class="header error-header js-i-hidden">
+    <div class="container footer__container nm">
+      <div class="strips js-i">
+        <div class="strip strip--1 strip--white">
+          <div class="strip__wrapper">
+            {% for i in range(0, 4) -%}
+              <div class="strip__item">&nbsp;/ 404 &nbsp;/ 404 &nbsp;/ 404</div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="strip strip--2 strip--blue">
+          <div class="strip__wrapper">
+            {% for i in range(0, 4) -%}
+              <div class="strip__item">&nbsp;/ Page not found</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {{ mixins.link('bring me back', 'footer__btn js-i', href="/") }}
+    </div>
+  </header>
+{% endblock %}
