@@ -1,3 +1,4 @@
+// @ts-nocheck
 importScripts(
   'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js'
 )
@@ -24,7 +25,7 @@ if (workbox) {
   */
   workbox.routing.registerRoute(
     // cache js, css, scc files
-    /.*\.(?:css|js|scss|)/,
+    /.*\.(?:css|scss|)/,
     // use cache but update in the background ASAP
     new workbox.strategies.StaleWhileRevalidate({
       // use a custom cache name
@@ -39,5 +40,5 @@ and control a web page as soon as possible
   workbox.core.skipWaiting()
   workbox.core.clientsClaim()
 } else {
-  console.log("Oops! Workbox didn't load ðŸ‘º")
+  console.log("Oops! Workbox didn't load")
 }
