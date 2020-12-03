@@ -29,7 +29,7 @@ const config = {
       '!' + sourceFolder + '/_*.html',
       '!' + sourceFolder + '/data',
     ],
-    sw: ['src/sw.js', 'src/manifest.json'],
+    sw: ['src/sw.js', 'src/manifest.json', 'src/sitemap.xml', 'src/robots.txt'],
     php: projectFolder + '/**/*.php',
     css: sourceFolder + '/scss/app.scss',
     js: sourceFolder + '/js/app.js',
