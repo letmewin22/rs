@@ -3,7 +3,6 @@ import {state} from '@/state'
 import {resize} from '@/utils/Resize'
 
 export class Parallax {
-
   constructor() {
     this.$els = document.querySelectorAll('[data-parallax]')
     this.$sections = document.querySelectorAll('[data-section-parallax]')
@@ -24,7 +23,6 @@ export class Parallax {
     })
   }
 
-
   move(el, distance, scale = 1) {
     const target = el
     const parent = target.closest('.js-in-view')
@@ -39,37 +37,41 @@ export class Parallax {
   }
 
   els() {
-    this.$els.length && this.$els.forEach(($el, i) => {
-      const coef = +$el.dataset.parallax
-      const start = -(this.sizes[i] - this.sizes[i]*(1+coef))
-      const end = state.scrolled * coef
-      this.move($el, start - end)
-    })
+    this.$els.length &&
+      this.$els.forEach(($el, i) => {
+        const coef = +$el.dataset.parallax
+        const start = -(this.sizes[i] - this.sizes[i] * (1 + coef))
+        const end = state.scrolled * coef
+        this.move($el, start - end)
+      })
   }
 
   imgs() {
-    this.$imgs.length && this.$imgs.forEach(($el, i) => {
-      const coef = +$el.dataset.imgParallax
-      const start = (this.imgSizes[i] - this.imgSizes[i]*(1+coef))
-      const end = state.scrolled * coef
-      this.move($el, start + end, $el.dataset.scale)
-    })
+    this.$imgs.length &&
+      this.$imgs.forEach(($el, i) => {
+        const coef = +$el.dataset.imgParallax
+        const start = this.imgSizes[i] - this.imgSizes[i] * (1 + coef)
+        const end = state.scrolled * coef
+        this.move($el, start + end, $el.dataset.scale)
+      })
   }
 
   sections() {
-    this.$sections.length && this.$sections.forEach($el => {
-      const coef = +$el.dataset.sectionParallax
-      const target = state.scrolled * coef
-      this.move($el, target)
-    })
+    this.$sections.length &&
+      this.$sections.forEach($el => {
+        const coef = +$el.dataset.sectionParallax
+        const target = state.scrolled * coef
+        this.move($el, target)
+      })
   }
 
   getSize($els, array) {
-    $els.length && $els.forEach($el => {
-      const b = $el.getBoundingClientRect()
-      const size = b.top - b.height / 2
-      array.push(size)
-    })
+    $els.length &&
+      $els.forEach($el => {
+        const b = $el.getBoundingClientRect()
+        const size = b.top - b.height / 2
+        array.push(size)
+      })
   }
 
   resize() {
@@ -77,7 +79,7 @@ export class Parallax {
     this.getSize(this.$els, this.sizes)
     this.imgSizes = []
     this.getSize(this.$imgs, this.imgSizes)
-    window.innerWidth > 960 ? raf.on(this.animate) : raf.off(this.animate)
+    window.innerWidth > 1024 ? raf.on(this.animate) : raf.off(this.animate)
   }
 
   animate() {

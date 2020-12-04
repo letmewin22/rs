@@ -5,7 +5,7 @@ export default class Button {
   constructor($el) {
     this.$btn = $el
 
-    window.innerWidth > 960 ? this.init() : this.destroy()
+    window.innerWidth > 1024 ? this.init() : this.destroy()
   }
 
   init() {
@@ -35,21 +35,18 @@ export default class Button {
   }
 
   mouseHandler(e) {
-
     this.$stickyItems.forEach(el => {
-
       const bounds = el.getBoundingClientRect()
       const [x, y] = el.dataset.power.split(', ')
       const s = this.computedProps(e, bounds)
 
-      gsap.to( el,
-        {
-          delay: 0,
-          duration: 1,
-          y: s.y * +y,
-          x: s.x * +x,
-          ease: 'power2.out',
-        })
+      gsap.to(el, {
+        delay: 0,
+        duration: 1,
+        y: s.y * +y,
+        x: s.x * +x,
+        ease: 'power2.out',
+      })
     })
   }
 
@@ -62,6 +59,6 @@ export default class Button {
   destroy() {
     this.area && this.area.removeEventListener('mousemove', this.mouseHandler)
     this.area &&
-    this.area.removeEventListener('mouseleave', this.mouseleaveHandler)
+      this.area.removeEventListener('mouseleave', this.mouseleaveHandler)
   }
 }

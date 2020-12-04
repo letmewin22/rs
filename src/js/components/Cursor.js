@@ -12,7 +12,7 @@ export class Cursor {
       x: 0,
       y: 0,
       destX: 0,
-      destY: 0
+      destY: 0,
     }
 
     this.init()
@@ -32,8 +32,8 @@ export class Cursor {
   }
 
   onMouseMove(e) {
-    this.mouse.x = e.clientX - (this.cursorBounds.width / 2)
-    this.mouse.y = e.clientY - (this.cursorBounds.height / 2)
+    this.mouse.x = e.clientX - this.cursorBounds.width / 2
+    this.mouse.y = e.clientY - this.cursorBounds.height / 2
 
     const target = e.target
     const parent = target.closest('.hide-cursor')
@@ -53,15 +53,14 @@ export class Cursor {
   }
 
   onMouseEnter() {
-    if (window.innerWidth > 960) {
+    if (window.innerWidth > 1024) {
       this.toggleView(true)
       window.addEventListener('mousemove', this.onMouseMove)
     }
-
   }
 
   onMouseLeave() {
-    if (window.innerWidth > 960) {
+    if (window.innerWidth > 1024) {
       window.removeEventListener('mousemove', this.onMouseMove)
       this.toggleView(false)
     }

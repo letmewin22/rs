@@ -180,7 +180,7 @@ video::-webkit-media-controls {
   }
 }
 
-.phiposophy-section__items {
+.philosophy-section__items {
   width: 100%;
   position: relative;
   margin-top: 40px;
@@ -190,9 +190,13 @@ video::-webkit-media-controls {
     grid-auto-rows: 29.427vw;
     margin-top: 0px;
   }
+  @include media('<=#{$br2}') {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
-.phiposophy-section__item {
+.philosophy-section__item {
   border-radius: 50%;
   border: 1px var(--secondary) solid;
   padding-left: 55px;
@@ -240,7 +244,7 @@ video::-webkit-media-controls {
   }
 }
 
-.phiposophy-section__h2-container {
+.philosophy-section__h2-container {
   @include media('>#{$br2}') {
     position: absolute;
     left: 0;
@@ -288,7 +292,7 @@ video::-webkit-media-controls {
 
 .join-section__cols {
   margin-top: -15vw;
-  @media screen and (max-height: 680px) and (orientation: landscape) and (min-width: 960px) {
+  @media screen and (max-height: 680px) and (orientation: landscape) and (min-width: 1024px) {
     margin-top: -13.8vw;
   }
   @include media('<=#{$br2}') {

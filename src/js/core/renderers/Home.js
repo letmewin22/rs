@@ -6,7 +6,7 @@ import ChangeView from '@/components/ChangeView'
 
 class Home extends Highway.Renderer {
   onEnterCompleted() {
-    if (screen.width > 960) {
+    if (screen.width > 1024) {
       document.querySelector('.h1-withcols__img').innerHTML += `
         <img width="600" height="600" 
         class="inline-img__img inline-img__img--2" 

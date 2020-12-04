@@ -78,14 +78,14 @@ export default class ScrollBar {
   }
 
   events() {
-    const progressUpdate = (e) => {
+    const progressUpdate = e => {
       const h = this.scrollbar.offsetHeight
       let target
       let o
 
       setState(state, (state.scrollbar = true))
 
-      const changePos = (o) => {
+      const changePos = o => {
         target = clamp(-this.el.scrollHeight * (o / h), 0, this.max)
         gsap.to(state, {
           duration: 0.1,
@@ -141,7 +141,7 @@ export default class ScrollBar {
 
     this.el.parentNode.addEventListener('touchend', touchend, {passive: false})
 
-    screen.width > 960 &&
+    screen.width > 1024 &&
       this.scrollbar.addEventListener('click', progressUpdate)
 
     raf.on(this.scroll.bind(this))
@@ -167,7 +167,7 @@ export default class ScrollBar {
 
   destroy() {
     document.querySelectorAll('.scrollbar').length > 0 &&
-      document.querySelectorAll('.scrollbar').forEach((el) => {
+      document.querySelectorAll('.scrollbar').forEach(el => {
         el.classList.add('hidden')
         el.parentNode.removeChild(el)
       })

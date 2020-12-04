@@ -16,7 +16,7 @@ export default class SmoothScroll {
     this.currentY = 0
 
     let ease = 0
-    resize.on(() => (ease = window.innerWidth > 960 ? 0.08 : 0.1))
+    resize.on(() => (ease = window.innerWidth > 1024 ? 0.08 : 0.1))
     this.ease = ease
 
     this.opts = {

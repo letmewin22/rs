@@ -48,7 +48,7 @@ export class CasesStrip {
     this.vs = new VirtualScroll(this.opts)
 
     this.vs.on(e => {
-      const dir = window.innerWidth > 960 ? e.deltaY : e.deltaX
+      const dir = window.innerWidth > 1024 ? e.deltaY : e.deltaX
       this.targetY += dir
     })
   }
@@ -99,7 +99,7 @@ export class CasesStrip {
   }
 
   onMouseLeave() {
-    if (!state.glTransition && window.innerWidth > 960) {
+    if (!state.glTransition && window.innerWidth > 1024) {
       this.$links.forEach(el => el.classList.remove('hidden'))
       this.$imgs.forEach(img => (img.style.display = 'none'))
       window.scene && window.scene.fVisibility.forEach(el => (el.value = 0))

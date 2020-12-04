@@ -6,7 +6,7 @@
   --accent3: #315ccb;
   --g-offset: 2.08vw;
   --red: #e73737;
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 1024px) {
     --g-offset: 20px;
   }
 }
@@ -25,7 +25,7 @@ $minWidth: 375;
 
 //breakpoints
 $br1: 1060px;
-$br2: 960px;
+$br2: 1024px;
 $br3: 768px;
 $br4: 460px;
 

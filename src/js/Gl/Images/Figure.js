@@ -90,7 +90,7 @@ export default class Figure {
     this.sizes.set(width, height)
     this.offset.set(left - ww / 2 + width / 2, pos + wh / 2 - top - height / 2)
     const x = ((left - ww / 2) / (ww / 2)) * 0.5
-    this.mesh.material.uniforms.uCenter.value = ww > 960 ? x : 0
+    this.mesh.material.uniforms.uCenter.value = ww > 1024 ? x : 0
   }
 
   update() {

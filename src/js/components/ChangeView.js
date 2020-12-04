@@ -57,7 +57,7 @@ export default class ChangeView {
       rotationX: 0,
     }
 
-    if (screen.width <= 960) {
+    if (screen.width <= 1024) {
       set.opacity = '0'
       charsTo.opacity = 1
     }
@@ -189,7 +189,7 @@ export default class ChangeView {
       rotationX: 60,
     }
 
-    if (screen.width <= 960) {
+    if (screen.width <= 1024) {
       set.opacity = '1'
       charsTo.opacity = 0
     }

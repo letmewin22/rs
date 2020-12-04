@@ -151,7 +151,7 @@ button {
   .js-l {
     .char {
       transform: translateY(110%) rotateX(60);
-      @include media('<=960px') {
+      @include media('<=1024px') {
         opacity: 0;
       }
     }
