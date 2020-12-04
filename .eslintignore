@@ -1,3 +1,5 @@
 src/js/libs/*
 src/sw.js
 node_modules
+static
+build

@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const gulpConfig = require('./gulp/config')
 const EntrypointsPlugin = require('emotion-webpack-entrypoints-plugin')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 // const BundleAnalyzerPlugin =
 // require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -91,7 +92,12 @@ function createConfig(env) {
       new EntrypointsPlugin({
         dir: path.resolve(__dirname, 'src/templates/layouts'),
       }),
-    ],
+      isProduction &&
+        new WorkboxWebpackPlugin.InjectManifest({
+          swSrc: './static/sw.js',
+          swDest: '../sw.js',
+        }),
+    ].filter(Boolean),
   }
 
   // if (isProduction) {

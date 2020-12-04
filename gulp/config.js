@@ -28,9 +28,9 @@ const config = {
     html: [
       sourceFolder + '/*.html',
       '!' + sourceFolder + '/_*.html',
-      '!' + sourceFolder + '/data',
+      '!' + sourceFolder + '/data/data.html',
     ],
-    static: staticFolder + '/**/*',
+    static: [staticFolder + '/**/*', '!' + staticFolder + '/sw.js'],
     php: projectFolder + '/**/*.php',
     css: sourceFolder + '/scss/app.scss',
     js: sourceFolder + '/js/app.js',
