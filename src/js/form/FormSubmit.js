@@ -16,7 +16,7 @@ export default class FormSubmit extends FormInputs {
 
   requestLoad() {
     this.form.reset()
-    // window.dataLayer.push({'event': 'form_sent'})
+    // window.dataLayer.push({event: 'form_sent'})
     document.body.classList.remove('form-focused')
     for (const input of this.input) {
       input.parentNode.classList.remove('focus')

@@ -7,11 +7,11 @@
   width: 12px;
   user-select: none;
   overflow: hidden;
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     &:hover {
       .scrollbar__thumb {
         width: 10px;
-        opacity: .7;
+        opacity: 0.7;
         border-radius: 10px;
         background-color: $accent;
       }
@@ -36,7 +36,8 @@
   user-select: none;
   margin-right: 2px;
   margin-top: 4px;
-  transition: width .2s ease, opacity 0.3s ease, border-radius 0.3s ease, background-color .3s ease;
+  transition: width 0.2s ease, opacity 0.3s ease, border-radius 0.3s ease,
+    background-color 0.3s ease;
   right: 0;
   opacity: 0;
   &.scrolling {
@@ -44,7 +45,7 @@
   }
   &.active {
     width: 10px;
-    opacity: .7;
+    opacity: 0.7;
     border-radius: 10px;
     background-color: $accent;
   }

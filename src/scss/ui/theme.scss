@@ -11,29 +11,72 @@ body {
   --secondary: white;
   --acc: var(--accent2);
   background-color: var(--primary);
-  .theme-btn {
+  .theme-btn__circle {
     background-color: $lg;
+  }
+  .theme-btn__text--lighten {
+    display: block;
+  }
+  .theme-btn__text--darken {
+    display: none;
   }
 }
 
 .theme-btn {
   width: size(30, 24);
   height: size(30, 24);
-  border-radius: 50%;
-  background-color: $black;
   position: fixed;
   right: $g-offset;
   bottom: size(36, 20);
-  transition: background 0.5s ease,
-    transform 0.5s cubic-bezier(0.17, 0.67, 0.3, 1.33), opacity 0.5s ease;
+  transition: opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.17, 0.67, 0.3, 1.33);
   z-index: 100;
-  &:hover {
-    transform: scale(1.1);
+  @include media('>#{$br2}') {
+    &:hover {
+      .theme-btn__circle {
+        transform: scale(1.1);
+      }
+      .theme-btn__text {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-50%);
+      }
+    }
   }
   &.disabled {
     opacity: 0 !important;
     transform: scale(0.5);
   }
+}
+
+.theme-btn__circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: background 0.5s ease,
+    transform 0.5s cubic-bezier(0.17, 0.67, 0.3, 1.33);
+  background-color: $black;
+  display: block;
+  position: relative;
+}
+
+.theme-btn__text {
+  position: absolute;
+  top: 50%;
+  left: size(-50, -44);
+  color: var(--secondary);
+  line-height: 1em;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(70%);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.theme-btn__text--darken {
+  display: block;
+}
+.theme-btn__text--lighten {
+  display: none;
 }
 
 .theme-overlay {

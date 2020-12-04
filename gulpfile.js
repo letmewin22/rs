@@ -6,7 +6,7 @@ const config = require('././gulp/config')
 
 const server = require('./gulp/tasks/server').bind(null, browsersync)
 const html = require('./gulp/tasks/html').bind(null, browsersync)
-const sw = require('./gulp/tasks/sw')
+const staticFiles = require('./gulp/tasks/static').bind(null, browsersync)
 const php = require('./gulp/tasks/php').bind(null)
 const css = require('./gulp/tasks/css').bind(null, browsersync)
 const js = require('./gulp/tasks/js').bind(null, browsersync)
@@ -59,7 +59,7 @@ const build = gulp.series(
   gulp.parallel(css, images, fonts, video, audio),
   js,
   html,
-  sw
+  staticFiles
 )
 
 const tophp = gulp.series(cleanPHP, wpBuild, gulp.parallel(php, js, css))
@@ -68,7 +68,8 @@ const dev = gulp.series(
   clean,
   gulp.parallel(css, images, fonts, video, audio),
   js,
-  html
+  html,
+  staticFiles
 )
 
 const watch = gulp.series(wpDev, gulp.parallel(dev, watchFiles, server))

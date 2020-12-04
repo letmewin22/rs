@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     &:hover {
       .btn__circle-overlay {
         transform: translateY(0%);

@@ -31,7 +31,6 @@
   background: var(--secondary);
   @include bt;
   margin-bottom: 12px;
-  
 }
 
 .footer__cols {
@@ -51,13 +50,17 @@
   }
 }
 
-.footer__link  {
+.footer__link {
   font-size: 1.1vw;
   line-height: 1em;
   width: fit-content;
+  transition: color 0.3s ease;
   &--2 {
     grid-row-start: 1;
     grid-row-end: 1;
+  }
+  &:hover {
+    color: var(--accent);
   }
   @include media('<=#{$br2}') {
     display: none;
@@ -70,15 +73,15 @@
   grid-row-end: 1;
   justify-self: end;
   font-size: 0.8vw;
-  color: #284A9F;
+  color: #284a9f;
   line-height: 1em;
   @include media('<=#{$br2}') {
     font-size: 16px;
   }
 }
 
-[data-theme=e-black] {
+[data-theme='e-black'] {
   .footer__made-by {
     color: white;
-  } 
+  }
 }

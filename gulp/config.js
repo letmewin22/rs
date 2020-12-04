@@ -3,6 +3,7 @@ const foldersName = require('./foldersName')
 
 const projectFolder = foldersName.projectFolder
 const sourceFolder = foldersName.sourceFolder
+const staticFolder = foldersName.staticFolder
 
 const production = util.env.production || util.env.prod || false
 
@@ -13,7 +14,7 @@ const config = {
   hash: 'e' + Date.now(),
   build: {
     html: projectFolder + '/',
-    sw: projectFolder + '/',
+    static: projectFolder + '/',
     php: projectFolder + '/',
     css: projectFolder + '/css/',
     js: projectFolder + '/js/',
@@ -29,7 +30,7 @@ const config = {
       '!' + sourceFolder + '/_*.html',
       '!' + sourceFolder + '/data',
     ],
-    sw: ['src/sw.js', 'src/manifest.json', 'src/sitemap.xml', 'src/robots.txt'],
+    static: staticFolder + '/**/*',
     php: projectFolder + '/**/*.php',
     css: sourceFolder + '/scss/app.scss',
     js: sourceFolder + '/js/app.js',

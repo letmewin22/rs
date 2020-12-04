@@ -8,6 +8,16 @@ if (workbox) {
   /*  cache images in the e.g others folder; edit to other folders you got
    and config in the sw-config.js file
     */
+
+  self.addEventListener('fetch', event => {
+    event.respondWith(
+      caches
+        .match(event.request)
+        .then(response => response || fetch(event.request))
+        .catch(() => caches.match('/'))
+    )
+  })
+
   workbox.routing.registerRoute(
     /(.*)others(.*)\.(?:png|gif|jpg|webp|jpeg)/,
     new workbox.strategies.CacheFirst({
@@ -20,12 +30,10 @@ if (workbox) {
       ],
     })
   )
-  /* Make your JS and CSS âš¡ fast by returning the assets from the cache,
-  while making sure they are updated in the background for the next use.
-  */
+
   workbox.routing.registerRoute(
-    // cache js, css, scc files
-    /.*\.(?:css|scss|)/,
+    // cache js, css files
+    /.*\.(?:css|sccs)/,
     // use cache but update in the background ASAP
     new workbox.strategies.StaleWhileRevalidate({
       // use a custom cache name
@@ -37,7 +45,12 @@ if (workbox) {
   /* Install a new service worker and have it update
 and control a web page as soon as possible
 */
-  workbox.core.skipWaiting()
+  self.addEventListener('message', event => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+      self.skipWaiting()
+    }
+  })
+
   workbox.core.clientsClaim()
 } else {
   console.log("Oops! Workbox didn't load")

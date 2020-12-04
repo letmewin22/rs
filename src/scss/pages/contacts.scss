@@ -43,4 +43,10 @@
   text-transform: uppercase;
   margin-top: 20px;
   line-height: 1em;
+  transition: color 0.3s ease;
+  @include media('>#{$br2}') {
+    &:hover {
+      color: var(--accent);
+    }
+  }
 }

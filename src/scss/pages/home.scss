@@ -75,7 +75,7 @@ video::-webkit-media-controls {
 }
 
 .inline-img {
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     &:hover {
       z-index: 1000;
       position: relative;
@@ -166,7 +166,7 @@ video::-webkit-media-controls {
   margin: 0 auto;
   margin-top: 40px;
   order: 3;
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     position: absolute;
     z-index: 10;
     margin: 0px;
@@ -184,7 +184,7 @@ video::-webkit-media-controls {
   width: 100%;
   position: relative;
   margin-top: 40px;
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     display: grid;
     grid-template-columns: 30vw 22.14vw 42vw;
     grid-auto-rows: 29.427vw;
@@ -209,7 +209,7 @@ video::-webkit-media-controls {
     padding-right: 10px;
     font-size: 16px;
   }
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     &--first {
       width: 31vw;
       height: 31vw;
@@ -241,7 +241,7 @@ video::-webkit-media-controls {
 }
 
 .phiposophy-section__h2-container {
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     position: absolute;
     left: 0;
   }
@@ -343,7 +343,7 @@ video::-webkit-media-controls {
     @include cover;
     padding-bottom: 141.648%;
   }
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     &--1 {
       margin-top: 23.4vw;
       max-width: 62%;
@@ -388,7 +388,7 @@ video::-webkit-media-controls {
 }
 
 .cases-section__btn {
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     position: absolute;
     top: 22%;
   }

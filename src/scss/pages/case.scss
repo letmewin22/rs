@@ -1,6 +1,6 @@
 .case-header {
   position: relative;
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     height: var(--vh);
   }
   @include media('<=#{$br2}') {
@@ -17,7 +17,7 @@
   }
 }
 .case-header__text {
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     max-width: vw(265);
   }
   @include media('<=#{$br2}') {
@@ -29,7 +29,7 @@
 
 .case-header__strips {
   position: absolute;
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     top: 29%;
   }
   @include media('<=#{$br2}') {
@@ -38,7 +38,7 @@
 }
 
 .case-header__cols {
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     margin-top: vw(580);
   }
   @include media('<=#{$br2}') {
@@ -48,7 +48,7 @@
 
 .case-header__btn-wrapper {
   position: relative;
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     top: vw(-45);
   }
   @include media('<=#{$br2}') {
@@ -74,7 +74,7 @@
   .img {
     padding-bottom: toimg(594, 849);
   }
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -130,11 +130,11 @@
 }
 
 .next-case {
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     height: var(--vh);
   }
   @include media('<=#{$br2}') {
-   margin-bottom: 60px;
+    margin-bottom: 60px;
   }
 }
 

@@ -13,12 +13,12 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: var(--vh);
   overflow-y: auto;
   overflow-x: hidden;
   visibility: hidden;
   z-index: 99;
-  transition: color .5s ease;
+  transition: color 0.5s ease;
 }
 
 .form-wrapper__container {
@@ -41,6 +41,9 @@
       opacity: 1;
     }
   }
+  @include media('<=#{$br2}') {
+    padding-bottom: 32px;
+  }
 }
 
 .form__label {
@@ -49,7 +52,7 @@
 
 .form__btn {
   z-index: 100;
-  @include media('>=#{$br2}') {
+  @include media('>#{$br2}') {
     position: absolute;
     right: 0;
     bottom: -5vw;
@@ -129,7 +132,7 @@
   height: 1px;
   z-index: 100;
   background: var(--acc);
-  transition: width .5s ease, background .3s ease;
+  transition: width 0.5s ease, background 0.3s ease;
 }
 
 .form__input {
@@ -157,7 +160,7 @@
   // transform: translateX(-50%);
   left: 0;
   line-height: 1em;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
   opacity: 0;
 }
 

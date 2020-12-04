@@ -31,9 +31,11 @@ export default class Loader {
     this.circle = this.progressHTML.getTotalLength()
     this.step = this.circle / this.countImages
 
-    document.body.style.cursor = 'wait'
+    document.documentElement.style.cursor = 'wait'
+    document.body.style.pointerEvents = 'none'
     document.body.classList.remove('loading')
     document.body.classList.add('e-fixed')
+
     document.querySelector('.site-wrapper').style.cssText = `
       transition: opacity 1s ease;
     `
@@ -57,7 +59,7 @@ export default class Loader {
   afterLoad() {
     if (!this.state) {
       this.state = true
-      this.$text.forEach((el) => {
+      this.$text.forEach(el => {
         el.style.overflow = 'hidden'
         splitting({target: el, by: 'chars'})
       })
@@ -73,7 +75,7 @@ export default class Loader {
     const count = c ?? Number(100 * (this.loadedLength / this.countImages))
     const offset = o ?? this.circle + this.loadedLength * this.step
 
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       gsap.to(this.num, {
         duration: d ?? 0.5,
         val: count,
@@ -126,7 +128,7 @@ export default class Loader {
         duration: 0.5,
         ease: 'expo.in',
       },
-      0.61,
+      0.61
     )
 
     tl.to(
@@ -136,7 +138,7 @@ export default class Loader {
         duration: 1.5,
         ease: 'power4.inOut',
       },
-      0.31,
+      0.31
     )
 
     tl.to(
@@ -148,7 +150,7 @@ export default class Loader {
         ease: 'expo.in',
         stagger: 0.016,
       },
-      0.8,
+      0.8
     )
 
     tl.to(
@@ -161,9 +163,11 @@ export default class Loader {
         onComplete: () => {
           this.cb()
           setState(state, (state.isLoaded = true))
+          document.documentElement.style.cursor = 'auto'
+          document.body.style.pointerEvents = 'auto'
         },
       },
-      0.8,
+      0.8
     )
     tl.to(
       this.$ui,
@@ -171,7 +175,7 @@ export default class Loader {
         duration: 1,
         opacity: 1,
       },
-      0.8,
+      0.8
     )
   }
 }
