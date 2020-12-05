@@ -74,7 +74,7 @@ export default class Distort extends Highway.Transition {
         state.glTransitionI = +trigger.dataset.index - 1
       } else {
         const node = trigger.parentNode.querySelector('[data-index]')
-        state.glTransitionI = +node.dataset.index
+        state.glTransitionI = +node.dataset.index - 1
         cloneNode(node)
       }
     }

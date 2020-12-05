@@ -26,9 +26,9 @@
               href="./{{item.page}}" 
               class="cases-header__strip-item hide-cursor"
               >
-                  {{item.strip|safe}}
+                {{item.strip|safe}}
                 <span class="cases-header__strip-item-num case-num">
-                <span class="case-num__num">0{{item.index}}</span>
+                  <span class="case-num__num">0{{item.index}}</span>
                   {% include "./partials/svg/_my-works.html" %}
                 </span>
               </a>
@@ -46,5 +46,6 @@
           </div>
         </div>
       </div>
-    </header>
-  {% endblock %}
+    </div>
+  </header>
+{% endblock %}
