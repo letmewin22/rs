@@ -54,6 +54,7 @@ export default class Nav {
   open() {
     if (this.isActive) {
       this.isActive = false
+      document.body.style.pointerEvents = 'none'
       document.querySelector('.js-nav-open').style.display = 'none'
       document.querySelector('.js-nav-close').style.display = 'block'
       this.$logo.setAttribute('data-transition', 'nav')
@@ -66,6 +67,7 @@ export default class Nav {
   close(isAnimating) {
     if (this.isActive) {
       this.isActive = false
+      document.body.style.pointerEvents = 'none'
       document.querySelector('.js-nav-open').style.display = 'block'
       document.querySelector('.js-nav-close').style.display = 'none'
       this.$nav.classList.remove('e-open')
@@ -78,6 +80,7 @@ export default class Nav {
     const tl = gsap.timeline({
       onComplete: () => {
         this.isActive = true
+        document.body.style.pointerEvents = 'auto'
       },
     })
     const items = this.$nav.querySelectorAll('.char')
@@ -120,9 +123,11 @@ export default class Nav {
           if (isAnimating) {
             ChangeView.in(() => {
               this.isActive = true
+              document.body.style.pointerEvents = 'auto'
             })
           } else {
             this.isActive = true
+            document.body.style.pointerEvents = 'auto'
           }
         },
       },

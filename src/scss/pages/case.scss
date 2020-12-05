@@ -39,7 +39,7 @@
 
 .case-header__cols {
   @include media('>#{$br2}') {
-    margin-top: vw(580);
+    margin-top: 60vh;
   }
   @include media('<=#{$br2}') {
     text-align: center;
@@ -78,6 +78,9 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+  }
+  @media screen and (max-width: 1260px) and (min-height: 700px) {
+    width: calc(22vw + 18vh);
   }
   @include media('<=#{$br2}') {
     position: relative;

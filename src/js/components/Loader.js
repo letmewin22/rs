@@ -164,7 +164,6 @@ export default class Loader {
           this.cb()
           setState(state, (state.isLoaded = true))
           document.documentElement.style.cursor = 'auto'
-          document.body.style.pointerEvents = 'auto'
         },
       },
       0.8

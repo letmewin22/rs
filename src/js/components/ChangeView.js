@@ -20,6 +20,7 @@ export default class ChangeView {
         !el.classList.contains('splitting') &&
           splitting({target: el, by: 'chars'})
       })
+    cb
   }
 
   static in(cb) {
@@ -45,7 +46,12 @@ export default class ChangeView {
       vr = document.querySelectorAll('.js-in-view .js-vr')
       st = document.querySelector('.js-in-view .js-st')
     }
-    const tl = gsap.timeline({onComplete: cb})
+    const tl = gsap.timeline({
+      onComplete: () => {
+        document.body.style.pointerEvents = 'auto'
+        cb && cb()
+      },
+    })
 
     const set = {
       y: '110%',
