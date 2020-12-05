@@ -13,7 +13,7 @@ export default class About extends Highway.Renderer {
       import(
         /* webpackChunkName: "gl-torus" */
         '@/Gl/Torus/Scene.js'
-      ).then((module) => {
+      ).then(module => {
         const Scene = module.default
         window.scene = new Scene('#gl-torus')
         ChangeView.in()

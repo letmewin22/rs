@@ -17,7 +17,7 @@ class Resize {
   }
 
   resizeHandler() {
-    this.cbArray.forEach((cb) => cb())
+    this.cbArray.forEach(cb => cb())
   }
 
   on(cb) {
@@ -47,6 +47,6 @@ class Resize {
 const resizeInstance = new Resize()
 
 export const resize = {
-  on: (cb) => resizeInstance.on(cb),
-  off: (cb) => resizeInstance.off(cb)
+  on: cb => resizeInstance.on(cb),
+  off: cb => resizeInstance.off(cb)
 }

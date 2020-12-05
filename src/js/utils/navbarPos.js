@@ -4,7 +4,7 @@ import {raf} from './RAF'
 
 export default class NavbarPos {
   constructor() {
-    this.mouseFunc = (e) => {
+    this.mouseFunc = e => {
       this.mouseHandler(e)
     }
   }

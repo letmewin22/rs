@@ -18,7 +18,7 @@ export default class FormPopUp {
   }
 
   init() {
-    this.$formItems.forEach((el) => {
+    this.$formItems.forEach(el => {
       splitting({target: el, by: 'chars'})
     })
 
@@ -103,7 +103,7 @@ export default class FormPopUp {
   }
 
   destroy() {
-    this.$openBtn.forEach((btn) => btn.removeEventListener('click', this.open))
+    this.$openBtn.forEach(btn => btn.removeEventListener('click', this.open))
     this.$closeBtn.removeEventListener('click', this.close)
   }
 }

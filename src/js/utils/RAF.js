@@ -21,6 +21,6 @@ class RAF {
 const RAFInstance = new RAF()
 
 export const raf = {
-  on: (cb) => RAFInstance.on(cb),
-  off: (cb) => RAFInstance.off(cb),
+  on: cb => RAFInstance.on(cb),
+  off: cb => RAFInstance.off(cb),
 }

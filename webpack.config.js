@@ -1,6 +1,5 @@
 const webpack = require('webpack')
 const path = require('path')
-const gulpConfig = require('./gulp/config')
 const EntrypointsPlugin = require('emotion-webpack-entrypoints-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 // const BundleAnalyzerPlugin =
@@ -10,7 +9,7 @@ function createConfig(env) {
   const isProduction = env === 'production'
 
   const devName = '[name].js'
-  const buildName = `[name].${gulpConfig.hash}.js`
+  const buildName = '[name].[contenthash:8].js'
 
   const filename = env === 'production' ? buildName : devName
 
@@ -24,6 +23,9 @@ function createConfig(env) {
     }, // If you need support IE11
     output: {
       filename,
+      chunkFilename: isProduction
+        ? '[name].[contenthash:8].chunk.js'
+        : '[name].chunk.js',
       path: path.resolve(__dirname, 'build/js/'),
       publicPath: './js/',
     },
@@ -69,6 +71,9 @@ function createConfig(env) {
       hints: process.env.NODE_ENV === 'production' ? 'warning' : false,
     },
     optimization: {
+      runtimeChunk: {
+        name: entrypoint => `runtime-${entrypoint.name}`,
+      },
       minimize: isProduction,
       splitChunks: {
         // include all types of chunks

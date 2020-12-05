@@ -4,7 +4,7 @@ import splitting from 'splitting'
 import FormPopUp from '@/components/FormPopUp'
 import {resize} from '@/utils/Resize'
 
-export const animation = (el) => {
+export const animation = el => {
   const form = el
   const btn = form.querySelector('.form__btn')
   const tnx = document.querySelector('.form-thankyou')
@@ -12,7 +12,7 @@ export const animation = (el) => {
   const lines = document.querySelectorAll('.js-fl')
 
   lines.length &&
-    lines.forEach((el) => {
+    lines.forEach(el => {
       !el.classList.contains('splitting') &&
         splitting({target: el, by: 'chars'})
     })

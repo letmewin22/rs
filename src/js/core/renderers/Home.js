@@ -17,13 +17,14 @@ class Home extends Highway.Renderer {
     strip('strip--blue', 'strip__wrapper', 24, 'right')
 
     onLoaded(() => {
-      import(
-        /* webpackChunkName: "gl-images" */
-        '@/Gl/Images/Scene.js'
-      ).then(module => {
-        const Scene = module.default
-        const imgs = document.querySelectorAll('.js-webgl-image')
-        setTimeout(() => {
+      setTimeout(() => {
+        import(
+          /* webpackChunkName: "gl-images" */
+          '@/Gl/Images/Scene.js'
+        ).then(module => {
+          const Scene = module.default
+          const imgs = document.querySelectorAll('.js-webgl-image')
+
           window.scene = new Scene('#gl', imgs)
           setTimeout(() => ChangeView.in(), 100)
         }, 210)

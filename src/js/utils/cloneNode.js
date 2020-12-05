@@ -1,4 +1,4 @@
-export const cloneNode = ($el) => {
+export const cloneNode = $el => {
   const b = $el.getBoundingClientRect()
 
   $el.parentNode.insertBefore($el.cloneNode(true), $el)

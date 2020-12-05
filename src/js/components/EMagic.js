@@ -10,7 +10,7 @@ export class EMagic {
   }
 
   bounds() {
-    ['animate'].forEach((fn) => {
+    ['animate'].forEach(fn => {
       this[fn] = this[fn].bind(this)
     })
   }
@@ -55,7 +55,7 @@ export class EMagic {
   }
 
   animate() {
-    this.$children.forEach(($child) => {
+    this.$children.forEach($child => {
       this.transform($child, [0, 1], [0, 70])
     })
   }
